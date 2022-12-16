@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Comparing model performance with a simple baseline &#8212; Scikit-learn course</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -40,22 +38,23 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/sklearn_mooc.js"></script>
     <script src="../_static/matomo.js"></script>
-    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -68,7 +67,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -77,9 +90,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -267,8 +281,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_video.html">
+    <a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_visualization_video.html">
      🎥 Visualizing scikit-learn pipelines in Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_categorical_pipeline_visualization.html">
+     Visualizing scikit-learn pipelines in Jupyter
     </a>
    </li>
    <li class="toctree-l2">
@@ -1324,12 +1343,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -1337,99 +1361,196 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_scripts/cross_validation_baseline.py"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.py</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/INRIA/scikit-learn-mooc/main?urlpath=tree/python_scripts/cross_validation_baseline.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc/issues/new?title=Issue%20on%20page%20%2Fpython_scripts/cross_validation_baseline.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc/edit/main/python_scripts/cross_validation_baseline.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/python_scripts/cross_validation_baseline.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.py</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/INRIA/scikit-learn-mooc"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/INRIA/scikit-learn-mooc/issues/new?title=Issue%20on%20page%20%2Fpython_scripts/cross_validation_baseline.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/INRIA/scikit-learn-mooc/edit/main/python_scripts/cross_validation_baseline.py"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
 </div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/INRIA/scikit-learn-mooc/main?urlpath=tree/python_scripts/cross_validation_baseline.py"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
     </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-        </div>
-    </div>
-</div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Comparing model performance with a simple baseline</h1>
@@ -1440,11 +1561,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="comparing-model-performance-with-a-simple-baseline">
-<h1>Comparing model performance with a simple baseline<a class="headerlink" href="#comparing-model-performance-with-a-simple-baseline" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="comparing-model-performance-with-a-simple-baseline">
+<h1>Comparing model performance with a simple baseline<a class="headerlink" href="#comparing-model-performance-with-a-simple-baseline" title="Permalink to this headline">#</a></h1>
 <p>In this notebook, we present how to compare the generalization performance of
 a model to a minimal baseline. In regression, we can use the <code class="docutils literal notranslate"><span class="pre">DummyRegressor</span></code>
 class to predict the mean target value observed on the training set without
@@ -1458,10 +1580,10 @@ section named “Appendix - Datasets description” at the end of this MOOC.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_california_housing</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.datasets import fetch_california_housing
 
-<span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">target</span> <span class="o">*=</span> <span class="mi">100</span>  <span class="c1"># rescale the target in k$</span>
+data, target = fetch_california_housing(return_X_y=True, as_frame=True)
+target *= 100  # rescale the target in k$
 </pre></div>
 </div>
 </div>
@@ -1470,9 +1592,9 @@ section named “Appendix - Datasets description” at the end of this MOOC.</p>
 splitter with 20% of the data held on the validation side of the split.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">ShuffleSplit</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import ShuffleSplit
 
-<span class="n">cv</span> <span class="o">=</span> <span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+cv = ShuffleSplit(n_splits=30, test_size=0.2, random_state=0)
 </pre></div>
 </div>
 </div>
@@ -1482,31 +1604,31 @@ which is our model of interest. Besides, we will store the testing error in a
 pandas series to make it easier to plot the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.model_selection import cross_validate
 
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">()</span>
-<span class="n">cv_results_tree_regressor</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
-    <span class="n">regressor</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span>
-<span class="p">)</span>
+regressor = DecisionTreeRegressor()
+cv_results_tree_regressor = cross_validate(
+    regressor, data, target, cv=cv, scoring=&quot;neg_mean_absolute_error&quot;, n_jobs=2
+)
 
-<span class="n">errors_tree_regressor</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
-    <span class="o">-</span><span class="n">cv_results_tree_regressor</span><span class="p">[</span><span class="s2">&quot;test_score&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Decision tree regressor&quot;</span>
-<span class="p">)</span>
-<span class="n">errors_tree_regressor</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+errors_tree_regressor = pd.Series(
+    -cv_results_tree_regressor[&quot;test_score&quot;], name=&quot;Decision tree regressor&quot;
+)
+errors_tree_regressor.describe()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    30.000000
-mean     45.609471
-std       1.159310
-min      43.267991
-25%      44.931381
-50%      45.689080
-75%      46.363459
-max      48.029695
+mean     45.634676
+std       1.168537
+min      43.337974
+25%      44.894971
+50%      45.488281
+75%      46.482235
+max      48.141468
 Name: Decision tree regressor, dtype: float64
 </pre></div>
 </div>
@@ -1518,16 +1640,16 @@ training target variable. Therefore, the dummy regressor does not use any
 information from the input features stored in the dataframe named <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.dummy</span> <span class="kn">import</span> <span class="n">DummyRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.dummy import DummyRegressor
 
-<span class="n">dummy</span> <span class="o">=</span> <span class="n">DummyRegressor</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
-<span class="n">result_dummy</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
-    <span class="n">dummy</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span>
-<span class="p">)</span>
-<span class="n">errors_dummy_regressor</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
-    <span class="o">-</span><span class="n">result_dummy</span><span class="p">[</span><span class="s2">&quot;test_score&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Dummy regressor&quot;</span>
-<span class="p">)</span>
-<span class="n">errors_dummy_regressor</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+dummy = DummyRegressor(strategy=&quot;mean&quot;)
+result_dummy = cross_validate(
+    dummy, data, target, cv=cv, scoring=&quot;neg_mean_absolute_error&quot;, n_jobs=2
+)
+errors_dummy_regressor = pd.Series(
+    -result_dummy[&quot;test_score&quot;], name=&quot;Dummy regressor&quot;
+)
+errors_dummy_regressor.describe()
 </pre></div>
 </div>
 </div>
@@ -1549,11 +1671,11 @@ Name: Dummy regressor, dtype: float64
 and the actual decision tree regressor.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_errors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
-    <span class="p">[</span><span class="n">errors_tree_regressor</span><span class="p">,</span> <span class="n">errors_dummy_regressor</span><span class="p">],</span>
-    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">all_errors</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>all_errors = pd.concat(
+    [errors_tree_regressor, errors_dummy_regressor],
+    axis=1,
+)
+all_errors
 </pre></div>
 </div>
 </div>
@@ -1583,152 +1705,152 @@ and the actual decision tree regressor.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>46.783740</td>
+      <td>46.804352</td>
       <td>90.713153</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>46.368989</td>
+      <td>46.497526</td>
       <td>90.539353</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>44.397837</td>
+      <td>44.568211</td>
       <td>91.941912</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>43.679570</td>
+      <td>43.509659</td>
       <td>90.213912</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>48.029695</td>
+      <td>48.141468</td>
       <td>92.015862</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>44.890713</td>
+      <td>45.077655</td>
       <td>90.542490</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>43.806942</td>
+      <td>43.337974</td>
       <td>89.757566</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>45.053385</td>
+      <td>44.993210</td>
       <td>92.477244</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>45.056943</td>
+      <td>44.806773</td>
       <td>90.947952</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>44.328163</td>
+      <td>44.862224</td>
       <td>91.991373</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>46.643311</td>
+      <td>46.468214</td>
       <td>92.023571</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>45.826443</td>
+      <td>46.097882</td>
       <td>90.556965</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>45.882792</td>
+      <td>46.165519</td>
       <td>91.539567</td>
     </tr>
     <tr>
       <th>13</th>
-      <td>45.346362</td>
+      <td>45.438052</td>
       <td>91.185225</td>
     </tr>
     <tr>
       <th>14</th>
-      <td>46.603139</td>
+      <td>47.250112</td>
       <td>92.298971</td>
     </tr>
     <tr>
       <th>15</th>
-      <td>44.567094</td>
+      <td>44.453384</td>
       <td>91.084639</td>
     </tr>
     <tr>
       <th>16</th>
-      <td>45.934517</td>
+      <td>45.869402</td>
       <td>90.984471</td>
     </tr>
     <tr>
       <th>17</th>
-      <td>46.865520</td>
+      <td>46.486908</td>
       <td>89.981744</td>
     </tr>
     <tr>
       <th>18</th>
-      <td>45.411884</td>
+      <td>45.027148</td>
       <td>90.547140</td>
     </tr>
     <tr>
       <th>19</th>
-      <td>47.160046</td>
+      <td>46.939141</td>
       <td>89.820219</td>
     </tr>
     <tr>
       <th>20</th>
-      <td>43.267991</td>
+      <td>43.862878</td>
       <td>91.768721</td>
     </tr>
     <tr>
       <th>21</th>
-      <td>45.658253</td>
+      <td>45.538509</td>
       <td>92.305556</td>
     </tr>
     <tr>
       <th>22</th>
-      <td>45.285458</td>
+      <td>45.362542</td>
       <td>90.503017</td>
     </tr>
     <tr>
       <th>23</th>
-      <td>46.346870</td>
+      <td>46.937737</td>
       <td>92.147974</td>
     </tr>
     <tr>
       <th>24</th>
-      <td>46.213320</td>
+      <td>46.021677</td>
       <td>91.386320</td>
     </tr>
     <tr>
       <th>25</th>
-      <td>45.719908</td>
+      <td>45.203941</td>
       <td>90.815660</td>
     </tr>
     <tr>
       <th>26</th>
-      <td>44.048858</td>
+      <td>44.526961</td>
       <td>92.216574</td>
     </tr>
     <tr>
       <th>27</th>
-      <td>46.167412</td>
+      <td>46.040108</td>
       <td>90.107460</td>
     </tr>
     <tr>
       <th>28</th>
-      <td>45.533758</td>
+      <td>45.271379</td>
       <td>90.620318</td>
     </tr>
     <tr>
       <th>29</th>
-      <td>47.405228</td>
+      <td>47.479742</td>
       <td>91.165331</td>
     </tr>
   </tbody>
@@ -1737,14 +1859,14 @@ and the actual decision tree regressor.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+import numpy as np
 
-<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
-<span class="n">all_errors</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Mean absolute error (k$)&quot;</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cross-validation testing errors&quot;</span><span class="p">)</span>
+bins = np.linspace(start=0, stop=100, num=80)
+all_errors.plot.hist(bins=bins, edgecolor=&quot;black&quot;)
+plt.legend(bbox_to_anchor=(1.05, 0.8), loc=&quot;upper left&quot;)
+plt.xlabel(&quot;Mean absolute error (k$)&quot;)
+_ = plt.title(&quot;Cross-validation testing errors&quot;)
 </pre></div>
 </div>
 </div>
@@ -1766,14 +1888,14 @@ have used the median instead. See the online documentation of the
 class for other options. For this particular example, using the mean instead
 of the median does not make much of a difference but this could have been the
 case for dataset with extreme outliers.</p>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "INRIA/scikit-learn-mooc",
-            ref: "main",
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -1790,9 +1912,11 @@ case for dataset with extreme outliers.</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../evaluation/cross_validation_baseline_index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1808,17 +1932,17 @@ case for dataset with extreme outliers.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
-    
-      By scikit-learn developers<br/>
-    
-        &copy; Copyright 2021.<br/>
-      <div class="extra_footer">
-        <div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By scikit-learn developers<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      <div>
   <div class="mooc_add">
    <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Join the full MOOC for better learning!</a>
   </div>
@@ -1829,16 +1953,20 @@ case for dataset with extreme outliers.</p>
   with many thanks to the <a href="https://scikit-learn.org">scikit-learn</a> community as a whole!
 </div>
 
-      </div>
-  </p>
-</footer>
-</main>
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

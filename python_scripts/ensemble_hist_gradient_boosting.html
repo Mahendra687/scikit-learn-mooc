@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Speeding-up gradient-boosting &#8212; Scikit-learn course</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -40,22 +38,23 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/sklearn_mooc.js"></script>
     <script src="../_static/matomo.js"></script>
-    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -68,7 +67,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -77,9 +90,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -267,8 +281,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_video.html">
+    <a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_visualization_video.html">
      🎥 Visualizing scikit-learn pipelines in Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_categorical_pipeline_visualization.html">
+     Visualizing scikit-learn pipelines in Jupyter
     </a>
    </li>
    <li class="toctree-l2">
@@ -1324,12 +1343,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -1337,99 +1361,196 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_scripts/ensemble_hist_gradient_boosting.py"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.py</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/INRIA/scikit-learn-mooc/main?urlpath=tree/python_scripts/ensemble_hist_gradient_boosting.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc/issues/new?title=Issue%20on%20page%20%2Fpython_scripts/ensemble_hist_gradient_boosting.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc/edit/main/python_scripts/ensemble_hist_gradient_boosting.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/python_scripts/ensemble_hist_gradient_boosting.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.py</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/INRIA/scikit-learn-mooc"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/INRIA/scikit-learn-mooc/issues/new?title=Issue%20on%20page%20%2Fpython_scripts/ensemble_hist_gradient_boosting.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/INRIA/scikit-learn-mooc/edit/main/python_scripts/ensemble_hist_gradient_boosting.py"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
 </div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/INRIA/scikit-learn-mooc/main?urlpath=tree/python_scripts/ensemble_hist_gradient_boosting.py"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
     </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-        </div>
-    </div>
-</div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Speeding-up gradient-boosting</h1>
@@ -1440,11 +1561,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="speeding-up-gradient-boosting">
-<h1>Speeding-up gradient-boosting<a class="headerlink" href="#speeding-up-gradient-boosting" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="speeding-up-gradient-boosting">
+<h1>Speeding-up gradient-boosting<a class="headerlink" href="#speeding-up-gradient-boosting" title="Permalink to this headline">#</a></h1>
 <p>In this notebook, we present a modified version of gradient boosting which
 uses a reduced number of splits when building the different trees. This
 algorithm is called “histogram gradient boosting” in scikit-learn.</p>
@@ -1467,10 +1589,10 @@ gradient-boosting, we can add more estimators to overcome this issue.</p>
 from scikit-learn. First, we will load the California housing dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_california_housing</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.datasets import fetch_california_housing
 
-<span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">target</span> <span class="o">*=</span> <span class="mi">100</span>  <span class="c1"># rescale the target in k$</span>
+data, target = fetch_california_housing(return_X_y=True, as_frame=True)
+target *= 100  # rescale the target in k$
 </pre></div>
 </div>
 </div>
@@ -1483,36 +1605,36 @@ Appendix - Datasets description section at the end of this MOOC.</p>
 <p>We will make a quick benchmark of the original gradient boosting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import cross_validate
+from sklearn.ensemble import GradientBoostingRegressor
 
-<span class="n">gradient_boosting</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-<span class="n">cv_results_gbdt</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
-    <span class="n">gradient_boosting</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span>
-    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span>
-<span class="p">)</span>
+gradient_boosting = GradientBoostingRegressor(n_estimators=200)
+cv_results_gbdt = cross_validate(
+    gradient_boosting, data, target, scoring=&quot;neg_mean_absolute_error&quot;,
+    n_jobs=2
+)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gradient Boosting Decision Tree&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean absolute error via cross-validation: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="o">-</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> +/- &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> k$&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average fit time: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;fit_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average score time: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;score_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Gradient Boosting Decision Tree&quot;)
+print(f&quot;Mean absolute error via cross-validation: &quot;
+      f&quot;{-cv_results_gbdt[&#39;test_score&#39;].mean():.3f} ± &quot;
+      f&quot;{cv_results_gbdt[&#39;test_score&#39;].std():.3f} k$&quot;)
+print(f&quot;Average fit time: &quot;
+      f&quot;{cv_results_gbdt[&#39;fit_time&#39;].mean():.3f} seconds&quot;)
+print(f&quot;Average score time: &quot;
+      f&quot;{cv_results_gbdt[&#39;score_time&#39;].mean():.3f} seconds&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient Boosting Decision Tree
-Mean absolute error via cross-validation: 46.386 +/- 2.913 k$
-Average fit time: 6.036 seconds
-Average score time: 0.008 seconds
+Mean absolute error via cross-validation: 46.451 ± 2.914 k$
+Average fit time: 8.026 seconds
+Average score time: 0.010 seconds
 </pre></div>
 </div>
 </div>
@@ -1525,25 +1647,25 @@ this preprocessing with the gradient boosting.</p>
 <p>We can first demonstrate the transformation done by the <code class="docutils literal notranslate"><span class="pre">KBinsDiscretizer</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">KBinsDiscretizer</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+from sklearn.preprocessing import KBinsDiscretizer
 
-<span class="n">discretizer</span> <span class="o">=</span> <span class="n">KBinsDiscretizer</span><span class="p">(</span>
-    <span class="n">n_bins</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">encode</span><span class="o">=</span><span class="s2">&quot;ordinal&quot;</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;quantile&quot;</span><span class="p">)</span>
-<span class="n">data_trans</span> <span class="o">=</span> <span class="n">discretizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">data_trans</span>
+discretizer = KBinsDiscretizer(
+    n_bins=256, encode=&quot;ordinal&quot;, strategy=&quot;quantile&quot;)
+data_trans = discretizer.fit_transform(data)
+data_trans
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/sklearn/preprocessing/_discretization.py:233: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 1 are removed. Consider decreasing the number of bins.
-  &quot;decreasing the number of bins.&quot; % jj
-/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/sklearn/preprocessing/_discretization.py:233: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 3 are removed. Consider decreasing the number of bins.
-  &quot;decreasing the number of bins.&quot; % jj
-/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/sklearn/preprocessing/_discretization.py:233: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 6 are removed. Consider decreasing the number of bins.
-  &quot;decreasing the number of bins.&quot; % jj
-/opt/hostedtoolcache/Python/3.7.13/x64/lib/python3.7/site-packages/sklearn/preprocessing/_discretization.py:233: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 7 are removed. Consider decreasing the number of bins.
-  &quot;decreasing the number of bins.&quot; % jj
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 1 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 3 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 6 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 7 are removed. Consider decreasing the number of bins.
+  warnings.warn(
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[249.,  39., 231., ...,  83., 162.,  30.],
@@ -1569,7 +1691,7 @@ Each value represents the bin index when the distribution by quantile is
 performed. We can check the number of bins per feature.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">col</span><span class="p">))</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">data_trans</span><span class="o">.</span><span class="n">T</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>[len(np.unique(col)) for col in data_trans.T]
 </pre></div>
 </div>
 </div>
@@ -1584,36 +1706,84 @@ features. Now, we will use this transformer to discretize data before
 training the gradient boosting regressor.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.pipeline import make_pipeline
 
-<span class="n">gradient_boosting</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
-    <span class="n">discretizer</span><span class="p">,</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">))</span>
-<span class="n">cv_results_gbdt</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
-    <span class="n">gradient_boosting</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span>
-    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+gradient_boosting = make_pipeline(
+    discretizer, GradientBoostingRegressor(n_estimators=200))
+cv_results_gbdt = cross_validate(
+    gradient_boosting, data, target, scoring=&quot;neg_mean_absolute_error&quot;,
+    n_jobs=2,
+)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 1 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 1 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 3 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 3 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 6 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 7 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 6 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 7 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 1 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 3 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 6 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 7 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 1 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 3 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 6 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 7 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 1 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 3 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 6 are removed. Consider decreasing the number of bins.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_discretization.py:279: UserWarning: Bins whose width are too small (i.e., &lt;= 1e-8) in feature 7 are removed. Consider decreasing the number of bins.
+  warnings.warn(
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gradient Boosting Decision Tree with KBinsDiscretizer&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean absolute error via cross-validation: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="o">-</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> +/- &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> k$&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average fit time: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;fit_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average score time: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;score_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Gradient Boosting Decision Tree with KBinsDiscretizer&quot;)
+print(f&quot;Mean absolute error via cross-validation: &quot;
+      f&quot;{-cv_results_gbdt[&#39;test_score&#39;].mean():.3f} ± &quot;
+      f&quot;{cv_results_gbdt[&#39;test_score&#39;].std():.3f} k$&quot;)
+print(f&quot;Average fit time: &quot;
+      f&quot;{cv_results_gbdt[&#39;fit_time&#39;].mean():.3f} seconds&quot;)
+print(f&quot;Average score time: &quot;
+      f&quot;{cv_results_gbdt[&#39;score_time&#39;].mean():.3f} seconds&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient Boosting Decision Tree with KBinsDiscretizer
-Mean absolute error via cross-validation: 45.817 +/- 2.198 k$
-Average fit time: 3.727 seconds
-Average score time: 0.010 seconds
+Mean absolute error via cross-validation: 45.775 ± 2.032 k$
+Average fit time: 4.824 seconds
+Average score time: 0.012 seconds
 </pre></div>
 </div>
 </div>
@@ -1630,36 +1800,36 @@ than gradient boosting when the dataset has over 10,000 samples.</p>
 computation times with the experiment of the previous section.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">HistGradientBoostingRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.ensemble import HistGradientBoostingRegressor
 
-<span class="n">histogram_gradient_boosting</span> <span class="o">=</span> <span class="n">HistGradientBoostingRegressor</span><span class="p">(</span>
-    <span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">cv_results_hgbdt</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
-    <span class="n">histogram_gradient_boosting</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
-    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+histogram_gradient_boosting = HistGradientBoostingRegressor(
+    max_iter=200, random_state=0)
+cv_results_hgbdt = cross_validate(
+    histogram_gradient_boosting, data, target,
+    scoring=&quot;neg_mean_absolute_error&quot;, n_jobs=2,
+)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Histogram Gradient Boosting Decision Tree&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean absolute error via cross-validation: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="o">-</span><span class="n">cv_results_hgbdt</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> +/- &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_hgbdt</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> k$&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average fit time: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_hgbdt</span><span class="p">[</span><span class="s1">&#39;fit_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average score time: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_hgbdt</span><span class="p">[</span><span class="s1">&#39;score_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Histogram Gradient Boosting Decision Tree&quot;)
+print(f&quot;Mean absolute error via cross-validation: &quot;
+      f&quot;{-cv_results_hgbdt[&#39;test_score&#39;].mean():.3f} ± &quot;
+      f&quot;{cv_results_hgbdt[&#39;test_score&#39;].std():.3f} k$&quot;)
+print(f&quot;Average fit time: &quot;
+      f&quot;{cv_results_hgbdt[&#39;fit_time&#39;].mean():.3f} seconds&quot;)
+print(f&quot;Average score time: &quot;
+      f&quot;{cv_results_hgbdt[&#39;score_time&#39;].mean():.3f} seconds&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Histogram Gradient Boosting Decision Tree
-Mean absolute error via cross-validation: 43.758 +/- 2.694 k$
-Average fit time: 0.730 seconds
-Average score time: 0.058 seconds
+Mean absolute error via cross-validation: 43.758 ± 2.694 k$
+Average fit time: 0.746 seconds
+Average score time: 0.064 seconds
 </pre></div>
 </div>
 </div>
@@ -1667,14 +1837,14 @@ Average score time: 0.058 seconds
 <p>The histogram gradient-boosting is the best algorithm in terms of score.
 It will also scale when the number of samples increases, while the normal
 gradient-boosting will not.</p>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "INRIA/scikit-learn-mooc",
-            ref: "main",
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -1691,9 +1861,11 @@ gradient-boosting will not.</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="ensemble_sol_03.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1709,17 +1881,17 @@ gradient-boosting will not.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
-    
-      By scikit-learn developers<br/>
-    
-        &copy; Copyright 2021.<br/>
-      <div class="extra_footer">
-        <div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By scikit-learn developers<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      <div>
   <div class="mooc_add">
    <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Join the full MOOC for better learning!</a>
   </div>
@@ -1730,16 +1902,20 @@ gradient-boosting will not.</p>
   with many thanks to the <a href="https://scikit-learn.org">scikit-learn</a> community as a whole!
 </div>
 
-      </div>
-  </p>
-</footer>
-</main>
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

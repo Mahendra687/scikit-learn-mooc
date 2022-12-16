@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Hyperparameter tuning by grid-search &#8212; Scikit-learn course</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -40,22 +38,23 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/sklearn_mooc.js"></script>
     <script src="../_static/matomo.js"></script>
-    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -68,7 +67,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -77,9 +90,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -267,8 +281,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_video.html">
+    <a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_visualization_video.html">
      🎥 Visualizing scikit-learn pipelines in Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_categorical_pipeline_visualization.html">
+     Visualizing scikit-learn pipelines in Jupyter
     </a>
    </li>
    <li class="toctree-l2">
@@ -1324,112 +1343,226 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_scripts/parameter_tuning_grid_search.py"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.py</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/INRIA/scikit-learn-mooc"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/INRIA/scikit-learn-mooc/issues/new?title=Issue%20on%20page%20%2Fpython_scripts/parameter_tuning_grid_search.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/INRIA/scikit-learn-mooc/edit/main/python_scripts/parameter_tuning_grid_search.py"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/INRIA/scikit-learn-mooc/main?urlpath=tree/python_scripts/parameter_tuning_grid_search.py"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/INRIA/scikit-learn-mooc/main?urlpath=tree/python_scripts/parameter_tuning_grid_search.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc/issues/new?title=Issue%20on%20page%20%2Fpython_scripts/parameter_tuning_grid_search.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc/edit/main/python_scripts/parameter_tuning_grid_search.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/python_scripts/parameter_tuning_grid_search.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.py</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#our-predictive-model">
    Our predictive model
@@ -1442,12 +1575,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Hyperparameter tuning by grid-search</h1>
@@ -1476,31 +1608,32 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="hyperparameter-tuning-by-grid-search">
-<h1>Hyperparameter tuning by grid-search<a class="headerlink" href="#hyperparameter-tuning-by-grid-search" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="hyperparameter-tuning-by-grid-search">
+<h1>Hyperparameter tuning by grid-search<a class="headerlink" href="#hyperparameter-tuning-by-grid-search" title="Permalink to this headline">#</a></h1>
 <p>In the previous notebook, we saw that hyperparameters can affect the
 generalization performance of a model. In this notebook, we will show how to
 optimize hyperparameters using a grid-search approach.</p>
-<div class="section" id="our-predictive-model">
-<h2>Our predictive model<a class="headerlink" href="#our-predictive-model" title="Permalink to this headline">¶</a></h2>
+<section id="our-predictive-model">
+<h2>Our predictive model<a class="headerlink" href="#our-predictive-model" title="Permalink to this headline">#</a></h2>
 <p>Let us reload the dataset as we did previously:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">set_config</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn import set_config
 
-<span class="n">set_config</span><span class="p">(</span><span class="n">display</span><span class="o">=</span><span class="s2">&quot;diagram&quot;</span><span class="p">)</span>
+set_config(display=&quot;diagram&quot;)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 
-<span class="n">adult_census</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../datasets/adult-census.csv&quot;</span><span class="p">)</span>
+adult_census = pd.read_csv(&quot;../datasets/adult-census.csv&quot;)
 </pre></div>
 </div>
 </div>
@@ -1508,9 +1641,9 @@ optimize hyperparameters using a grid-search approach.</p>
 <p>We extract the column containing the target.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_name</span> <span class="o">=</span> <span class="s2">&quot;class&quot;</span>
-<span class="n">target</span> <span class="o">=</span> <span class="n">adult_census</span><span class="p">[</span><span class="n">target_name</span><span class="p">]</span>
-<span class="n">target</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>target_name = &quot;class&quot;
+target = adult_census[target_name]
+target
 </pre></div>
 </div>
 </div>
@@ -1535,8 +1668,8 @@ Name: class, Length: 48842, dtype: object
 duplicates the information from the <code class="docutils literal notranslate"><span class="pre">&quot;education&quot;</span></code> column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">adult_census</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">target_name</span><span class="p">,</span> <span class="s2">&quot;education-num&quot;</span><span class="p">])</span>
-<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data = adult_census.drop(columns=[target_name, &quot;education-num&quot;])
+data.head()
 </pre></div>
 </div>
 </div>
@@ -1656,10 +1789,10 @@ duplicates the information from the <code class="docutils literal notranslate"><
 <p>Once the dataset is loaded, we split it into a training and testing sets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import train_test_split
 
-<span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span> <span class="n">target_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+data_train, data_test, target_train, target_test = train_test_split(
+    data, target, random_state=42)
 </pre></div>
 </div>
 </div>
@@ -1669,10 +1802,10 @@ numerical and categorical features.</p>
 <p>The first step is to select all the categorical columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_selector</span> <span class="k">as</span> <span class="n">selector</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.compose import make_column_selector as selector
 
-<span class="n">categorical_columns_selector</span> <span class="o">=</span> <span class="n">selector</span><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
-<span class="n">categorical_columns</span> <span class="o">=</span> <span class="n">categorical_columns_selector</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+categorical_columns_selector = selector(dtype_include=object)
+categorical_columns = categorical_columns_selector(data)
 </pre></div>
 </div>
 </div>
@@ -1689,10 +1822,10 @@ representations.</p></li>
 <p>We now build our <code class="docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code> by passing it the known categories.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OrdinalEncoder</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.preprocessing import OrdinalEncoder
 
-<span class="n">categorical_preprocessor</span> <span class="o">=</span> <span class="n">OrdinalEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;use_encoded_value&quot;</span><span class="p">,</span>
-                                          <span class="n">unknown_value</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+categorical_preprocessor = OrdinalEncoder(handle_unknown=&quot;use_encoded_value&quot;,
+                                          unknown_value=-1)
 </pre></div>
 </div>
 </div>
@@ -1701,11 +1834,11 @@ representations.</p></li>
 apply the <code class="docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code> to them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.compose import ColumnTransformer
 
-<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">&#39;cat_preprocessor&#39;</span><span class="p">,</span> <span class="n">categorical_preprocessor</span><span class="p">,</span> <span class="n">categorical_columns</span><span class="p">)],</span>
-    <span class="n">remainder</span><span class="o">=</span><span class="s1">&#39;passthrough&#39;</span><span class="p">,</span> <span class="n">sparse_threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+preprocessor = ColumnTransformer([
+    (&#39;cat_preprocessor&#39;, categorical_preprocessor, categorical_columns)],
+    remainder=&#39;passthrough&#39;, sparse_threshold=0)
 </pre></div>
 </div>
 </div>
@@ -1714,19 +1847,19 @@ apply the <code class="docutils literal notranslate"><span class="pre">OrdinalEn
 predict whether or not a person earns more than 50 k$ a year.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">HistGradientBoostingClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.ensemble import HistGradientBoostingClassifier
+from sklearn.pipeline import Pipeline
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="p">(</span><span class="s2">&quot;preprocessor&quot;</span><span class="p">,</span> <span class="n">preprocessor</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;classifier&quot;</span><span class="p">,</span>
-     <span class="n">HistGradientBoostingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="mi">4</span><span class="p">))])</span>
-<span class="n">model</span>
+model = Pipeline([
+    (&quot;preprocessor&quot;, preprocessor),
+    (&quot;classifier&quot;,
+     HistGradientBoostingClassifier(random_state=42, max_leaf_nodes=4))])
+model
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 {color: black;background-color: white;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 pre{padding: 0;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-toggleable {background-color: white;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-estimator:hover {background-color: #d4ebff;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-item {z-index: 1;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-parallel::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-parallel-item:only-child::after {width: 0;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;position: relative;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-label-container {position: relative;z-index: 2;text-align: center;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-a2d63b17-14d3-470b-9fbd-35ead402be50 div.sk-text-repr-fallback {display: none;}</style><div id="sk-a2d63b17-14d3-470b-9fbd-35ead402be50" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;preprocessor&#x27;,
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;preprocessor&#x27;,
                  ColumnTransformer(remainder=&#x27;passthrough&#x27;, sparse_threshold=0,
                                    transformers=[(&#x27;cat_preprocessor&#x27;,
                                                   OrdinalEncoder(handle_unknown=&#x27;use_encoded_value&#x27;,
@@ -1738,7 +1871,7 @@ predict whether or not a person earns more than 50 k$ a year.</p>
                                                    &#x27;native-country&#x27;])])),
                 (&#x27;classifier&#x27;,
                  HistGradientBoostingClassifier(max_leaf_nodes=4,
-                                                random_state=42))])</pre><b>Please rerun this cell to show the HTML repr or trust the notebook.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="ab2a033d-5ece-4de1-80fa-54ed69b5c11f" type="checkbox" ><label for="ab2a033d-5ece-4de1-80fa-54ed69b5c11f" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;preprocessor&#x27;,
+                                                random_state=42))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;preprocessor&#x27;,
                  ColumnTransformer(remainder=&#x27;passthrough&#x27;, sparse_threshold=0,
                                    transformers=[(&#x27;cat_preprocessor&#x27;,
                                                   OrdinalEncoder(handle_unknown=&#x27;use_encoded_value&#x27;,
@@ -1750,17 +1883,17 @@ predict whether or not a person earns more than 50 k$ a year.</p>
                                                    &#x27;native-country&#x27;])])),
                 (&#x27;classifier&#x27;,
                  HistGradientBoostingClassifier(max_leaf_nodes=4,
-                                                random_state=42))])</pre></div></div></div><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="97b0a091-92f1-43b5-b253-de9bd6659589" type="checkbox" ><label for="97b0a091-92f1-43b5-b253-de9bd6659589" class="sk-toggleable__label sk-toggleable__label-arrow">preprocessor: ColumnTransformer</label><div class="sk-toggleable__content"><pre>ColumnTransformer(remainder=&#x27;passthrough&#x27;, sparse_threshold=0,
+                                                random_state=42))])</pre></div></div></div><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">preprocessor: ColumnTransformer</label><div class="sk-toggleable__content"><pre>ColumnTransformer(remainder=&#x27;passthrough&#x27;, sparse_threshold=0,
                   transformers=[(&#x27;cat_preprocessor&#x27;,
                                  OrdinalEncoder(handle_unknown=&#x27;use_encoded_value&#x27;,
                                                 unknown_value=-1),
                                  [&#x27;workclass&#x27;, &#x27;education&#x27;, &#x27;marital-status&#x27;,
                                   &#x27;occupation&#x27;, &#x27;relationship&#x27;, &#x27;race&#x27;, &#x27;sex&#x27;,
-                                  &#x27;native-country&#x27;])])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="1abfb820-202e-459b-8f33-5e56f692dd3b" type="checkbox" ><label for="1abfb820-202e-459b-8f33-5e56f692dd3b" class="sk-toggleable__label sk-toggleable__label-arrow">cat_preprocessor</label><div class="sk-toggleable__content"><pre>[&#x27;workclass&#x27;, &#x27;education&#x27;, &#x27;marital-status&#x27;, &#x27;occupation&#x27;, &#x27;relationship&#x27;, &#x27;race&#x27;, &#x27;sex&#x27;, &#x27;native-country&#x27;]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="f441b153-5a1f-41d8-95b9-0925b6cf4429" type="checkbox" ><label for="f441b153-5a1f-41d8-95b9-0925b6cf4429" class="sk-toggleable__label sk-toggleable__label-arrow">OrdinalEncoder</label><div class="sk-toggleable__content"><pre>OrdinalEncoder(handle_unknown=&#x27;use_encoded_value&#x27;, unknown_value=-1)</pre></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="130640ba-ea94-4a1a-97fb-b1c02b62312f" type="checkbox" ><label for="130640ba-ea94-4a1a-97fb-b1c02b62312f" class="sk-toggleable__label sk-toggleable__label-arrow">remainder</label><div class="sk-toggleable__content"><pre></pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="deff7e0d-4288-4483-b54a-da0d57132c06" type="checkbox" ><label for="deff7e0d-4288-4483-b54a-da0d57132c06" class="sk-toggleable__label sk-toggleable__label-arrow">passthrough</label><div class="sk-toggleable__content"><pre>passthrough</pre></div></div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="a8badfcd-a56d-4ef2-86bb-dbde1f888202" type="checkbox" ><label for="a8badfcd-a56d-4ef2-86bb-dbde1f888202" class="sk-toggleable__label sk-toggleable__label-arrow">HistGradientBoostingClassifier</label><div class="sk-toggleable__content"><pre>HistGradientBoostingClassifier(max_leaf_nodes=4, random_state=42)</pre></div></div></div></div></div></div></div></div></div>
+                                  &#x27;native-country&#x27;])])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">cat_preprocessor</label><div class="sk-toggleable__content"><pre>[&#x27;workclass&#x27;, &#x27;education&#x27;, &#x27;marital-status&#x27;, &#x27;occupation&#x27;, &#x27;relationship&#x27;, &#x27;race&#x27;, &#x27;sex&#x27;, &#x27;native-country&#x27;]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label sk-toggleable__label-arrow">OrdinalEncoder</label><div class="sk-toggleable__content"><pre>OrdinalEncoder(handle_unknown=&#x27;use_encoded_value&#x27;, unknown_value=-1)</pre></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label sk-toggleable__label-arrow">remainder</label><div class="sk-toggleable__content"><pre></pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label sk-toggleable__label-arrow">passthrough</label><div class="sk-toggleable__content"><pre>passthrough</pre></div></div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-7" type="checkbox" ><label for="sk-estimator-id-7" class="sk-toggleable__label sk-toggleable__label-arrow">HistGradientBoostingClassifier</label><div class="sk-toggleable__content"><pre>HistGradientBoostingClassifier(max_leaf_nodes=4, random_state=42)</pre></div></div></div></div></div></div></div></div></div>
 </div>
-</div>
-<div class="section" id="tuning-using-a-grid-search">
-<h2>Tuning using a grid-search<a class="headerlink" href="#tuning-using-a-grid-search" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="tuning-using-a-grid-search">
+<h2>Tuning using a grid-search<a class="headerlink" href="#tuning-using-a-grid-search" title="Permalink to this headline">#</a></h2>
 <p>In the previous exercise we used one <code class="docutils literal notranslate"><span class="pre">for</span></code> loop for each hyperparameter to find the
 best combination over a fixed grid of values. <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> is a scikit-learn class
 that implements a very similar logic with less repetitive code.</p>
@@ -1769,24 +1902,24 @@ Since the grid-search will be costly, we will only explore the combination
 learning-rate and the maximum number of nodes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%time
+from sklearn.model_selection import GridSearchCV
 
-<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;classifier__learning_rate&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
-    <span class="s1">&#39;classifier__max_leaf_nodes&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">)}</span>
-<span class="n">model_grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span>
-                                 <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">model_grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
+param_grid = {
+    &#39;classifier__learning_rate&#39;: (0.01, 0.1, 1, 10),
+    &#39;classifier__max_leaf_nodes&#39;: (3, 10, 30)}
+model_grid_search = GridSearchCV(model, param_grid=param_grid,
+                                 n_jobs=2, cv=2)
+model_grid_search.fit(data_train, target_train)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.16 s, sys: 117 ms, total: 1.28 s
-Wall time: 6.23 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.2 s, sys: 48.5 ms, total: 1.25 s
+Wall time: 6.7 s
 </pre></div>
 </div>
-<div class="output text_html"><style>#sk-8dfca87e-0314-4a50-8780-0545076ec093 {color: black;background-color: white;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 pre{padding: 0;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-toggleable {background-color: white;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-estimator:hover {background-color: #d4ebff;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-item {z-index: 1;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-parallel::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-parallel-item:only-child::after {width: 0;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;position: relative;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-label-container {position: relative;z-index: 2;text-align: center;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-8dfca87e-0314-4a50-8780-0545076ec093 div.sk-text-repr-fallback {display: none;}</style><div id="sk-8dfca87e-0314-4a50-8780-0545076ec093" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(cv=2,
+<div class="output text_html"><style>#sk-container-id-2 {color: black;background-color: white;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(cv=2,
              estimator=Pipeline(steps=[(&#x27;preprocessor&#x27;,
                                         ColumnTransformer(remainder=&#x27;passthrough&#x27;,
                                                           sparse_threshold=0,
@@ -1806,7 +1939,7 @@ Wall time: 6.23 s
                                                                        random_state=42))]),
              n_jobs=2,
              param_grid={&#x27;classifier__learning_rate&#x27;: (0.01, 0.1, 1, 10),
-                         &#x27;classifier__max_leaf_nodes&#x27;: (3, 10, 30)})</pre><b>Please rerun this cell to show the HTML repr or trust the notebook.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="336441ab-53da-482c-bd01-e746de856f8d" type="checkbox" ><label for="336441ab-53da-482c-bd01-e746de856f8d" class="sk-toggleable__label sk-toggleable__label-arrow">GridSearchCV</label><div class="sk-toggleable__content"><pre>GridSearchCV(cv=2,
+                         &#x27;classifier__max_leaf_nodes&#x27;: (3, 10, 30)})</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-8" type="checkbox" ><label for="sk-estimator-id-8" class="sk-toggleable__label sk-toggleable__label-arrow">GridSearchCV</label><div class="sk-toggleable__content"><pre>GridSearchCV(cv=2,
              estimator=Pipeline(steps=[(&#x27;preprocessor&#x27;,
                                         ColumnTransformer(remainder=&#x27;passthrough&#x27;,
                                                           sparse_threshold=0,
@@ -1826,22 +1959,34 @@ Wall time: 6.23 s
                                                                        random_state=42))]),
              n_jobs=2,
              param_grid={&#x27;classifier__learning_rate&#x27;: (0.01, 0.1, 1, 10),
-                         &#x27;classifier__max_leaf_nodes&#x27;: (3, 10, 30)})</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="b256b3f0-9828-4fa2-adf0-8d1c665f2cb5" type="checkbox" ><label for="b256b3f0-9828-4fa2-adf0-8d1c665f2cb5" class="sk-toggleable__label sk-toggleable__label-arrow">preprocessor: ColumnTransformer</label><div class="sk-toggleable__content"><pre>ColumnTransformer(remainder=&#x27;passthrough&#x27;, sparse_threshold=0,
+                         &#x27;classifier__max_leaf_nodes&#x27;: (3, 10, 30)})</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-9" type="checkbox" ><label for="sk-estimator-id-9" class="sk-toggleable__label sk-toggleable__label-arrow">estimator: Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;preprocessor&#x27;,
+                 ColumnTransformer(remainder=&#x27;passthrough&#x27;, sparse_threshold=0,
+                                   transformers=[(&#x27;cat_preprocessor&#x27;,
+                                                  OrdinalEncoder(handle_unknown=&#x27;use_encoded_value&#x27;,
+                                                                 unknown_value=-1),
+                                                  [&#x27;workclass&#x27;, &#x27;education&#x27;,
+                                                   &#x27;marital-status&#x27;,
+                                                   &#x27;occupation&#x27;, &#x27;relationship&#x27;,
+                                                   &#x27;race&#x27;, &#x27;sex&#x27;,
+                                                   &#x27;native-country&#x27;])])),
+                (&#x27;classifier&#x27;,
+                 HistGradientBoostingClassifier(max_leaf_nodes=4,
+                                                random_state=42))])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-10" type="checkbox" ><label for="sk-estimator-id-10" class="sk-toggleable__label sk-toggleable__label-arrow">preprocessor: ColumnTransformer</label><div class="sk-toggleable__content"><pre>ColumnTransformer(remainder=&#x27;passthrough&#x27;, sparse_threshold=0,
                   transformers=[(&#x27;cat_preprocessor&#x27;,
                                  OrdinalEncoder(handle_unknown=&#x27;use_encoded_value&#x27;,
                                                 unknown_value=-1),
                                  [&#x27;workclass&#x27;, &#x27;education&#x27;, &#x27;marital-status&#x27;,
                                   &#x27;occupation&#x27;, &#x27;relationship&#x27;, &#x27;race&#x27;, &#x27;sex&#x27;,
-                                  &#x27;native-country&#x27;])])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="0576cae0-1663-473d-ab5d-8e85fb2abb57" type="checkbox" ><label for="0576cae0-1663-473d-ab5d-8e85fb2abb57" class="sk-toggleable__label sk-toggleable__label-arrow">cat_preprocessor</label><div class="sk-toggleable__content"><pre>[&#x27;workclass&#x27;, &#x27;education&#x27;, &#x27;marital-status&#x27;, &#x27;occupation&#x27;, &#x27;relationship&#x27;, &#x27;race&#x27;, &#x27;sex&#x27;, &#x27;native-country&#x27;]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="c4502b54-0dea-4ac9-b796-47dab641f874" type="checkbox" ><label for="c4502b54-0dea-4ac9-b796-47dab641f874" class="sk-toggleable__label sk-toggleable__label-arrow">OrdinalEncoder</label><div class="sk-toggleable__content"><pre>OrdinalEncoder(handle_unknown=&#x27;use_encoded_value&#x27;, unknown_value=-1)</pre></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="415d7f9e-f03a-4a56-9c58-c591a9362262" type="checkbox" ><label for="415d7f9e-f03a-4a56-9c58-c591a9362262" class="sk-toggleable__label sk-toggleable__label-arrow">remainder</label><div class="sk-toggleable__content"><pre></pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="753e2b26-ad0f-4018-925c-030071cf8acf" type="checkbox" ><label for="753e2b26-ad0f-4018-925c-030071cf8acf" class="sk-toggleable__label sk-toggleable__label-arrow">passthrough</label><div class="sk-toggleable__content"><pre>passthrough</pre></div></div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="ef1213aa-33a3-4534-80d3-4b39bdaa6979" type="checkbox" ><label for="ef1213aa-33a3-4534-80d3-4b39bdaa6979" class="sk-toggleable__label sk-toggleable__label-arrow">HistGradientBoostingClassifier</label><div class="sk-toggleable__content"><pre>HistGradientBoostingClassifier(max_leaf_nodes=4, random_state=42)</pre></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
+                                  &#x27;native-country&#x27;])])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-11" type="checkbox" ><label for="sk-estimator-id-11" class="sk-toggleable__label sk-toggleable__label-arrow">cat_preprocessor</label><div class="sk-toggleable__content"><pre>[&#x27;workclass&#x27;, &#x27;education&#x27;, &#x27;marital-status&#x27;, &#x27;occupation&#x27;, &#x27;relationship&#x27;, &#x27;race&#x27;, &#x27;sex&#x27;, &#x27;native-country&#x27;]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-12" type="checkbox" ><label for="sk-estimator-id-12" class="sk-toggleable__label sk-toggleable__label-arrow">OrdinalEncoder</label><div class="sk-toggleable__content"><pre>OrdinalEncoder(handle_unknown=&#x27;use_encoded_value&#x27;, unknown_value=-1)</pre></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-13" type="checkbox" ><label for="sk-estimator-id-13" class="sk-toggleable__label sk-toggleable__label-arrow">remainder</label><div class="sk-toggleable__content"><pre></pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-14" type="checkbox" ><label for="sk-estimator-id-14" class="sk-toggleable__label sk-toggleable__label-arrow">passthrough</label><div class="sk-toggleable__content"><pre>passthrough</pre></div></div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-15" type="checkbox" ><label for="sk-estimator-id-15" class="sk-toggleable__label sk-toggleable__label-arrow">HistGradientBoostingClassifier</label><div class="sk-toggleable__content"><pre>HistGradientBoostingClassifier(max_leaf_nodes=4, random_state=42)</pre></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
 </div>
 <p>Finally, we will check the accuracy of our model using the test set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="n">model_grid_search</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">target_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;The test accuracy score of the grid-searched pipeline is: &quot;</span>
-    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>accuracy = model_grid_search.score(data_test, target_test)
+print(
+    f&quot;The test accuracy score of the grid-searched pipeline is: &quot;
+    f&quot;{accuracy:.2f}&quot;
+)
 </pre></div>
 </div>
 </div>
@@ -1875,7 +2020,7 @@ the best parameters found during <code class="docutils literal notranslate"><spa
 parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_grid_search</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model_grid_search.predict(data_test.iloc[0:5])
 </pre></div>
 </div>
 </div>
@@ -1889,8 +2034,8 @@ parameters.</p>
 attribute.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The best set of parameters is: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model_grid_search</span><span class="o">.</span><span class="n">best_params_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;The best set of parameters is: &quot;
+      f&quot;{model_grid_search.best_params_}&quot;)
 </pre></div>
 </div>
 </div>
@@ -1908,9 +2053,9 @@ best parameters “by hand” through a double for loop.</p>
 from these results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_grid_search</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
-    <span class="s2">&quot;mean_test_score&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">cv_results</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cv_results = pd.DataFrame(model_grid_search.cv_results_).sort_values(
+    &quot;mean_test_score&quot;, ascending=False)
+cv_results.head()
 </pre></div>
 </div>
 </div>
@@ -1950,10 +2095,10 @@ from these results.</p>
   <tbody>
     <tr>
       <th>5</th>
-      <td>0.439551</td>
-      <td>0.043752</td>
-      <td>0.204149</td>
-      <td>0.015679</td>
+      <td>0.478244</td>
+      <td>0.042115</td>
+      <td>0.216205</td>
+      <td>0.010084</td>
       <td>0.1</td>
       <td>30</td>
       <td>{'classifier__learning_rate': 0.1, 'classifier...</td>
@@ -1965,10 +2110,10 @@ from these results.</p>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.338571</td>
-      <td>0.005240</td>
-      <td>0.179281</td>
-      <td>0.000974</td>
+      <td>0.364785</td>
+      <td>0.003219</td>
+      <td>0.191188</td>
+      <td>0.000134</td>
       <td>0.1</td>
       <td>10</td>
       <td>{'classifier__learning_rate': 0.1, 'classifier...</td>
@@ -1980,47 +2125,47 @@ from these results.</p>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.116406</td>
-      <td>0.005304</td>
-      <td>0.081790</td>
-      <td>0.003252</td>
+      <td>0.116205</td>
+      <td>0.001469</td>
+      <td>0.077694</td>
+      <td>0.001300</td>
       <td>1</td>
       <td>10</td>
       <td>{'classifier__learning_rate': 1, 'classifier__...</td>
-      <td>0.854826</td>
-      <td>0.862899</td>
-      <td>0.858863</td>
-      <td>0.004036</td>
+      <td>0.858648</td>
+      <td>0.862408</td>
+      <td>0.860528</td>
+      <td>0.001880</td>
       <td>3</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.155894</td>
-      <td>0.034794</td>
-      <td>0.091553</td>
-      <td>0.010079</td>
+      <td>0.134553</td>
+      <td>0.011439</td>
+      <td>0.077655</td>
+      <td>0.000465</td>
       <td>1</td>
       <td>3</td>
       <td>{'classifier__learning_rate': 1, 'classifier__...</td>
-      <td>0.853844</td>
-      <td>0.860934</td>
-      <td>0.857389</td>
-      <td>0.003545</td>
+      <td>0.859358</td>
+      <td>0.859514</td>
+      <td>0.859436</td>
+      <td>0.000078</td>
       <td>4</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>0.259266</td>
-      <td>0.010792</td>
-      <td>0.132978</td>
-      <td>0.002171</td>
-      <td>0.1</td>
-      <td>3</td>
-      <td>{'classifier__learning_rate': 0.1, 'classifier...</td>
-      <td>0.852752</td>
-      <td>0.853781</td>
-      <td>0.853266</td>
-      <td>0.000515</td>
+      <th>8</th>
+      <td>0.127048</td>
+      <td>0.010578</td>
+      <td>0.083104</td>
+      <td>0.006860</td>
+      <td>1</td>
+      <td>30</td>
+      <td>{'classifier__learning_rate': 1, 'classifier__...</td>
+      <td>0.855536</td>
+      <td>0.856129</td>
+      <td>0.855832</td>
+      <td>0.000296</td>
       <td>5</td>
     </tr>
   </tbody>
@@ -2031,25 +2176,25 @@ from these results.</p>
 names to remove the <code class="docutils literal notranslate"><span class="pre">&quot;param_classifier__&quot;</span></code> prefix for readability:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the parameter names</span>
-<span class="n">column_results</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;param_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">param_grid</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
-<span class="n">column_results</span> <span class="o">+=</span> <span class="p">[</span>
-    <span class="s2">&quot;mean_test_score&quot;</span><span class="p">,</span> <span class="s2">&quot;std_test_score&quot;</span><span class="p">,</span> <span class="s2">&quot;rank_test_score&quot;</span><span class="p">]</span>
-<span class="n">cv_results</span> <span class="o">=</span> <span class="n">cv_results</span><span class="p">[</span><span class="n">column_results</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># get the parameter names
+column_results = [f&quot;param_{name}&quot; for name in param_grid.keys()]
+column_results += [
+    &quot;mean_test_score&quot;, &quot;std_test_score&quot;, &quot;rank_test_score&quot;]
+cv_results = cv_results[column_results]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">shorten_param</span><span class="p">(</span><span class="n">param_name</span><span class="p">):</span>
-    <span class="k">if</span> <span class="s2">&quot;__&quot;</span> <span class="ow">in</span> <span class="n">param_name</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">param_name</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">param_name</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def shorten_param(param_name):
+    if &quot;__&quot; in param_name:
+        return param_name.rsplit(&quot;__&quot;, 1)[1]
+    return param_name
 
 
-<span class="n">cv_results</span> <span class="o">=</span> <span class="n">cv_results</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">shorten_param</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">cv_results</span>
+cv_results = cv_results.rename(shorten_param, axis=1)
+cv_results
 </pre></div>
 </div>
 </div>
@@ -2100,17 +2245,25 @@ names to remove the <code class="docutils literal notranslate"><span class="pre"
       <th>7</th>
       <td>1</td>
       <td>10</td>
-      <td>0.858863</td>
-      <td>0.004036</td>
+      <td>0.860528</td>
+      <td>0.001880</td>
       <td>3</td>
     </tr>
     <tr>
       <th>6</th>
       <td>1</td>
       <td>3</td>
-      <td>0.857389</td>
-      <td>0.003545</td>
+      <td>0.859436</td>
+      <td>0.000078</td>
       <td>4</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1</td>
+      <td>30</td>
+      <td>0.855832</td>
+      <td>0.000296</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>3</th>
@@ -2118,14 +2271,6 @@ names to remove the <code class="docutils literal notranslate"><span class="pre"
       <td>3</td>
       <td>0.853266</td>
       <td>0.000515</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>1</td>
-      <td>30</td>
-      <td>0.851028</td>
-      <td>0.002707</td>
       <td>6</td>
     </tr>
     <tr>
@@ -2153,20 +2298,12 @@ names to remove the <code class="docutils literal notranslate"><span class="pre"
       <td>9</td>
     </tr>
     <tr>
-      <th>10</th>
-      <td>10</td>
-      <td>10</td>
-      <td>0.618080</td>
-      <td>0.124277</td>
-      <td>10</td>
-    </tr>
-    <tr>
       <th>11</th>
       <td>10</td>
       <td>30</td>
-      <td>0.549338</td>
-      <td>0.210599</td>
-      <td>11</td>
+      <td>0.288200</td>
+      <td>0.050539</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>9</th>
@@ -2174,6 +2311,14 @@ names to remove the <code class="docutils literal notranslate"><span class="pre"
       <td>3</td>
       <td>0.283476</td>
       <td>0.003775</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>10</td>
+      <td>10</td>
+      <td>0.262564</td>
+      <td>0.006326</td>
       <td>12</td>
     </tr>
   </tbody>
@@ -2189,11 +2334,11 @@ heatmap. We need to transform our <code class="docutils literal notranslate"><sp
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pivoted_cv_results</span> <span class="o">=</span> <span class="n">cv_results</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
-    <span class="n">values</span><span class="o">=</span><span class="s2">&quot;mean_test_score&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;learning_rate&quot;</span><span class="p">],</span>
-    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;max_leaf_nodes&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pivoted_cv_results = cv_results.pivot_table(
+    values=&quot;mean_test_score&quot;, index=[&quot;learning_rate&quot;],
+    columns=[&quot;max_leaf_nodes&quot;])
 
-<span class="n">pivoted_cv_results</span>
+pivoted_cv_results
 </pre></div>
 </div>
 </div>
@@ -2242,15 +2387,15 @@ heatmap. We need to transform our <code class="docutils literal notranslate"><sp
     </tr>
     <tr>
       <th>1.00</th>
-      <td>0.857389</td>
-      <td>0.858863</td>
-      <td>0.851028</td>
+      <td>0.859436</td>
+      <td>0.860528</td>
+      <td>0.855832</td>
     </tr>
     <tr>
       <th>10.00</th>
       <td>0.283476</td>
-      <td>0.618080</td>
-      <td>0.549338</td>
+      <td>0.262564</td>
+      <td>0.288200</td>
     </tr>
   </tbody>
 </table>
@@ -2259,11 +2404,11 @@ heatmap. We need to transform our <code class="docutils literal notranslate"><sp
 <p>We can use a heatmap representation to show the above dataframe visually.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import seaborn as sns
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">pivoted_cv_results</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
-                 <span class="n">vmax</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+ax = sns.heatmap(pivoted_cv_results, annot=True, cmap=&quot;YlGnBu&quot;, vmin=0.7,
+                 vmax=0.9)
+ax.invert_yaxis()
 </pre></div>
 </div>
 </div>
@@ -2295,15 +2440,15 @@ grid-search;</p></li>
 <li><p>that searching for more than two hyperparamters is too costly;</p></li>
 <li><p>that a grid-search does not necessarily find an optimal solution.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "INRIA/scikit-learn-mooc",
-            ref: "main",
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -2320,9 +2465,11 @@ grid-search;</p></li>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../tuning/parameter_tuning_automated_index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -2338,17 +2485,17 @@ grid-search;</p></li>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
-    
-      By scikit-learn developers<br/>
-    
-        &copy; Copyright 2021.<br/>
-      <div class="extra_footer">
-        <div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By scikit-learn developers<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      <div>
   <div class="mooc_add">
    <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Join the full MOOC for better learning!</a>
   </div>
@@ -2359,16 +2506,20 @@ grid-search;</p></li>
   with many thanks to the <a href="https://scikit-learn.org">scikit-learn</a> community as a whole!
 </div>
 
-      </div>
-  </p>
-</footer>
-</main>
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

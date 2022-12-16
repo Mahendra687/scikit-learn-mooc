@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Non i.i.d. data &#8212; Scikit-learn course</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -40,15 +38,17 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/sklearn_mooc.js"></script>
     <script src="../_static/matomo.js"></script>
-    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -57,7 +57,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -70,7 +69,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -79,9 +92,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -269,8 +283,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_video.html">
+    <a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_visualization_video.html">
      🎥 Visualizing scikit-learn pipelines in Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_categorical_pipeline_visualization.html">
+     Visualizing scikit-learn pipelines in Jupyter
     </a>
    </li>
    <li class="toctree-l2">
@@ -1326,12 +1345,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -1339,99 +1363,196 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_scripts/cross_validation_time.py"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.py</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/INRIA/scikit-learn-mooc/main?urlpath=tree/python_scripts/cross_validation_time.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc/issues/new?title=Issue%20on%20page%20%2Fpython_scripts/cross_validation_time.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc/edit/main/python_scripts/cross_validation_time.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/python_scripts/cross_validation_time.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.py</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/INRIA/scikit-learn-mooc"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/INRIA/scikit-learn-mooc/issues/new?title=Issue%20on%20page%20%2Fpython_scripts/cross_validation_time.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/INRIA/scikit-learn-mooc/edit/main/python_scripts/cross_validation_time.py"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
 </div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/INRIA/scikit-learn-mooc/main?urlpath=tree/python_scripts/cross_validation_time.py"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
     </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-        </div>
-    </div>
-</div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Non i.i.d. data</h1>
@@ -1442,11 +1563,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="non-i-i-d-data">
-<h1>Non i.i.d. data<a class="headerlink" href="#non-i-i-d-data" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="non-i-i-d-data">
+<h1>Non i.i.d. data<a class="headerlink" href="#non-i-i-d-data" title="Permalink to this headline">#</a></h1>
 <p>In machine learning, it is quite common to assume that the data are i.i.d,
 meaning that the generative process does not have any memory of past samples
 to generate new samples.</p>
@@ -1462,19 +1584,19 @@ previous cross-validation strategies presented. We are going to load financial
 quotations from some energy companies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 
-<span class="n">symbols</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;TOT&quot;</span><span class="p">:</span> <span class="s2">&quot;Total&quot;</span><span class="p">,</span> <span class="s2">&quot;XOM&quot;</span><span class="p">:</span> <span class="s2">&quot;Exxon&quot;</span><span class="p">,</span> <span class="s2">&quot;CVX&quot;</span><span class="p">:</span> <span class="s2">&quot;Chevron&quot;</span><span class="p">,</span>
-           <span class="s2">&quot;COP&quot;</span><span class="p">:</span> <span class="s2">&quot;ConocoPhillips&quot;</span><span class="p">,</span> <span class="s2">&quot;VLO&quot;</span><span class="p">:</span> <span class="s2">&quot;Valero Energy&quot;</span><span class="p">}</span>
-<span class="n">template_name</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;../datasets/financial-data/</span><span class="si">{}</span><span class="s2">.csv&quot;</span><span class="p">)</span>
+symbols = {&quot;TOT&quot;: &quot;Total&quot;, &quot;XOM&quot;: &quot;Exxon&quot;, &quot;CVX&quot;: &quot;Chevron&quot;,
+           &quot;COP&quot;: &quot;ConocoPhillips&quot;, &quot;VLO&quot;: &quot;Valero Energy&quot;}
+template_name = (&quot;../datasets/financial-data/{}.csv&quot;)
 
-<span class="n">quotes</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
-        <span class="n">template_name</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">symbol</span><span class="p">),</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span>
-    <span class="p">)</span>
-    <span class="n">quotes</span><span class="p">[</span><span class="n">symbols</span><span class="p">[</span><span class="n">symbol</span><span class="p">]]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;open&quot;</span><span class="p">]</span>
-<span class="n">quotes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">quotes</span><span class="p">)</span>
+quotes = {}
+for symbol in symbols:
+    data = pd.read_csv(
+        template_name.format(symbol), index_col=0, parse_dates=True
+    )
+    quotes[symbols[symbol]] = data[&quot;open&quot;]
+quotes = pd.DataFrame(quotes)
 </pre></div>
 </div>
 </div>
@@ -1482,12 +1604,12 @@ quotations from some energy companies.</p>
 <p>We can start by plotting the different financial quotations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
 
-<span class="n">quotes</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Quote value&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Stock values over time&quot;</span><span class="p">)</span>
+quotes.plot()
+plt.ylabel(&quot;Quote value&quot;)
+plt.legend(bbox_to_anchor=(1.05, 0.8), loc=&quot;upper left&quot;)
+_ = plt.title(&quot;Stock values over time&quot;)
 </pre></div>
 </div>
 </div>
@@ -1500,11 +1622,11 @@ companies’ quotes. To make explanatory plots, we first use a train-test split
 and then we evaluate other cross-validation methods.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import train_test_split
 
-<span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">quotes</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Chevron&quot;</span><span class="p">]),</span> <span class="n">quotes</span><span class="p">[</span><span class="s2">&quot;Chevron&quot;</span><span class="p">]</span>
-<span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span> <span class="n">target_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+data, target = quotes.drop(columns=[&quot;Chevron&quot;]), quotes[&quot;Chevron&quot;]
+data_train, data_test, target_train, target_test = train_test_split(
+    data, target, shuffle=True, random_state=0)
 </pre></div>
 </div>
 </div>
@@ -1515,9 +1637,9 @@ check the generalization performance of our model.</p>
 <p>Let’s first define our model</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.tree import DecisionTreeRegressor
 
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">()</span>
+regressor = DecisionTreeRegressor()
 </pre></div>
 </div>
 </div>
@@ -1525,9 +1647,9 @@ check the generalization performance of our model.</p>
 <p>And now the cross-validation strategy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">ShuffleSplit</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import ShuffleSplit
 
-<span class="n">cv</span> <span class="o">=</span> <span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+cv = ShuffleSplit(random_state=0)
 </pre></div>
 </div>
 </div>
@@ -1535,17 +1657,17 @@ check the generalization performance of our model.</p>
 <p>Finally, we perform the evaluation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import cross_val_score
 
-<span class="n">test_score</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
-                             <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The mean R2 is: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+test_score = cross_val_score(regressor, data_train, target_train, cv=cv,
+                             n_jobs=2)
+print(f&quot;The mean R2 is: &quot;
+      f&quot;{test_score.mean():.2f} ± {test_score.std():.2f}&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean R2 is: 0.95 +/- 0.07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean R2 is: 0.95 ± 0.07
 </pre></div>
 </div>
 </div>
@@ -1558,10 +1680,10 @@ procedure with a single split and plot the prediction. We can use
 <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> for this purpose.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
-<span class="n">target_predicted</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
-<span class="c1"># Affect the index of `target_predicted` to ease the plotting</span>
-<span class="n">target_predicted</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">target_predicted</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">target_test</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regressor.fit(data_train, target_train)
+target_predicted = regressor.predict(data_test)
+# Affect the index of `target_predicted` to ease the plotting
+target_predicted = pd.Series(target_predicted, index=target_test.index)
 </pre></div>
 </div>
 </div>
@@ -1569,15 +1691,15 @@ procedure with a single split and plot the prediction. We can use
 <p>Let’s check the generalization performance of our model on this split.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import r2_score
 
-<span class="n">test_score</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The R2 on this single split is: </span><span class="si">{</span><span class="n">test_score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+test_score = r2_score(target_test, target_predicted)
+print(f&quot;The R2 on this single split is: {test_score:.2f}&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The R2 on this single split is: 0.82
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The R2 on this single split is: 0.83
 </pre></div>
 </div>
 </div>
@@ -1586,13 +1708,13 @@ procedure with a single split and plot the prediction. We can use
 We will plot the training, testing and prediction samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_train</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Training&quot;</span><span class="p">)</span>
-<span class="n">target_test</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Testing&quot;</span><span class="p">)</span>
-<span class="n">target_predicted</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Prediction&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>target_train.plot(label=&quot;Training&quot;)
+target_test.plot(label=&quot;Testing&quot;)
+target_predicted.plot(label=&quot;Prediction&quot;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Quote value&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Model predictions using a ShuffleSplit strategy&quot;</span><span class="p">)</span>
+plt.ylabel(&quot;Quote value&quot;)
+plt.legend(bbox_to_anchor=(1.05, 0.8), loc=&quot;upper left&quot;)
+_ = plt.title(&quot;Model predictions using a ShuffleSplit strategy&quot;)
 </pre></div>
 </div>
 </div>
@@ -1613,25 +1735,25 @@ the split. In this case, we will use the first 75% of the data to train and
 the remaining data to test.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span> <span class="n">target_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
-<span class="n">target_predicted</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
-<span class="n">target_predicted</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">target_predicted</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">target_test</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_train, data_test, target_train, target_test = train_test_split(
+    data, target, shuffle=False, random_state=0,
+)
+regressor.fit(data_train, target_train)
+target_predicted = regressor.predict(data_test)
+target_predicted = pd.Series(target_predicted, index=target_test.index)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_score</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The R2 on this single split is: </span><span class="si">{</span><span class="n">test_score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>test_score = r2_score(target_test, target_predicted)
+print(f&quot;The R2 on this single split is: {test_score:.2f}&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The R2 on this single split is: -2.17
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The R2 on this single split is: -2.16
 </pre></div>
 </div>
 </div>
@@ -1641,13 +1763,13 @@ performs worse than just predicting the mean of the target. We can visually
 check what we are predicting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_train</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Training&quot;</span><span class="p">)</span>
-<span class="n">target_test</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Testing&quot;</span><span class="p">)</span>
-<span class="n">target_predicted</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Prediction&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>target_train.plot(label=&quot;Training&quot;)
+target_test.plot(label=&quot;Testing&quot;)
+target_predicted.plot(label=&quot;Prediction&quot;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Quote value&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Model predictions using a split without shuffling&quot;</span><span class="p">)</span>
+plt.ylabel(&quot;Quote value&quot;)
+plt.legend(bbox_to_anchor=(1.05, 0.8), loc=&quot;upper left&quot;)
+_ = plt.title(&quot;Model predictions using a split without shuffling&quot;)
 </pre></div>
 </div>
 </div>
@@ -1664,19 +1786,19 @@ and predict each group’s information by using information from the other
 groups. We can use the <code class="docutils literal notranslate"><span class="pre">LeaveOneGroupOut</span></code> cross-validation for this purpose.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">LeaveOneGroupOut</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import LeaveOneGroupOut
 
-<span class="n">groups</span> <span class="o">=</span> <span class="n">quotes</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;Q&quot;</span><span class="p">)</span>
-<span class="n">cv</span> <span class="o">=</span> <span class="n">LeaveOneGroupOut</span><span class="p">()</span>
-<span class="n">test_score</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
-                             <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The mean R2 is: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+groups = quotes.index.to_period(&quot;Q&quot;)
+cv = LeaveOneGroupOut()
+test_score = cross_val_score(regressor, data, target,
+                             cv=cv, groups=groups, n_jobs=2)
+print(f&quot;The mean R2 is: &quot;
+      f&quot;{test_score.mean():.2f} ± {test_score.std():.2f}&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean R2 is: -1.12 +/- 2.06
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean R2 is: -0.75 ± 1.70
 </pre></div>
 </div>
 </div>
@@ -1690,18 +1812,18 @@ case, we can use the <code class="docutils literal notranslate"><span class="pre
 behaviour.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">TimeSeriesSplit</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import TimeSeriesSplit
 
-<span class="n">cv</span> <span class="o">=</span> <span class="n">TimeSeriesSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="n">groups</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
-<span class="n">test_score</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
-                             <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The mean R2 is: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+cv = TimeSeriesSplit(n_splits=groups.nunique())
+test_score = cross_val_score(regressor, data, target,
+                             cv=cv, groups=groups, n_jobs=2)
+print(f&quot;The mean R2 is: &quot;
+      f&quot;{test_score.mean():.2f} ± {test_score.std():.2f}&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean R2 is: -6.10 +/- 16.69
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean R2 is: -5.46 ± 16.63
 </pre></div>
 </div>
 </div>
@@ -1710,14 +1832,14 @@ behaviour.</p>
 cross-validation strategy which do not respect some assumptions such as having
 i.i.d data. It might lead to absurd results which could make think that a
 predictive model might work.</p>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "INRIA/scikit-learn-mooc",
-            ref: "main",
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -1734,9 +1856,11 @@ predictive model might work.</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="cross_validation_grouping.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1752,17 +1876,17 @@ predictive model might work.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
-    
-      By scikit-learn developers<br/>
-    
-        &copy; Copyright 2021.<br/>
-      <div class="extra_footer">
-        <div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By scikit-learn developers<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      <div>
   <div class="mooc_add">
    <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Join the full MOOC for better learning!</a>
   </div>
@@ -1773,16 +1897,20 @@ predictive model might work.</p>
   with many thanks to the <a href="https://scikit-learn.org">scikit-learn</a> community as a whole!
 </div>
 
-      </div>
-  </p>
-</footer>
-</main>
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
