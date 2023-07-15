@@ -683,8 +683,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="the-blood-transfusion-dataset">
 <h1>The blood transfusion dataset<a class="headerlink" href="#the-blood-transfusion-dataset" title="Permalink to this heading">#</a></h1>
 <p>In this notebook, we will present the “blood transfusion” dataset. This
-dataset is locally available in the directory <code class="docutils literal notranslate"><span class="pre">datasets</span></code> and it is stored as
-a comma separated value (CSV) file. We start by loading the entire dataset.</p>
+dataset is locally available in the directory <code class="docutils literal notranslate"><span class="pre">datasets</span></code> and it is stored as a
+comma separated value (CSV) file. We start by loading the entire dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -772,10 +772,10 @@ a comma separated value (CSV) file. We start by loading the entire dataset.</p>
 </table>
 </div></div></div>
 </div>
-<p>In this dataframe, we can see that the last column correspond to the target
-to be predicted called <code class="docutils literal notranslate"><span class="pre">&quot;Class&quot;</span></code>. We will create two variables, <code class="docutils literal notranslate"><span class="pre">data</span></code> and
-<code class="docutils literal notranslate"><span class="pre">target</span></code> to separate the data from which we could learn a predictive model
-and the <code class="docutils literal notranslate"><span class="pre">target</span></code> that should be predicted.</p>
+<p>In this dataframe, we can see that the last column correspond to the target to
+be predicted called <code class="docutils literal notranslate"><span class="pre">&quot;Class&quot;</span></code>. We will create two variables, <code class="docutils literal notranslate"><span class="pre">data</span></code> and
+<code class="docutils literal notranslate"><span class="pre">target</span></code> to separate the data from which we could learn a predictive model and
+the <code class="docutils literal notranslate"><span class="pre">target</span></code> that should be predicted.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">blood_transfusion</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">&quot;Class&quot;</span><span class="p">)</span>
@@ -856,19 +856,18 @@ and the <code class="docutils literal notranslate"><span class="pre">target</spa
 </table>
 </div></div></div>
 </div>
-<p>We observe four columns. Each record corresponds to a person that intended
-to give blood. The information stored in each column are:</p>
+<p>We observe four columns. Each record corresponds to a person that intended to
+give blood. The information stored in each column are:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Recency</span></code>: the time in months since the last time a person intended to
-give blood;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Frequency</span></code>: the number of time a person intended to give blood in the
-past;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Recency</span></code>: the time in months since the last time a person intended to give
+blood;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Frequency</span></code>: the number of time a person intended to give blood in the past;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Monetary</span></code>: the amount of blood given in the past (in c.c.);</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Time</span></code>: the time in months since the first time a person intended to give
 blood.</p></li>
 </ul>
-<p>Now, let’s have a look regarding the type of data that we are dealing in
-these columns and if any missing values are present in our dataset.</p>
+<p>Now, let’s have a look regarding the type of data that we are dealing in these
+columns and if any missing values are present in our dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
@@ -901,7 +900,7 @@ distributions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d8f16cbcbfa7a3e68b1ba72b4983d4fec60169cccc48dd0d20feb87cc569b1fe.png" src="../_images/d8f16cbcbfa7a3e68b1ba72b4983d4fec60169cccc48dd0d20feb87cc569b1fe.png" />
+<img alt="../_images/56b8fb657c50d804bbfa5e28c19184c356e6e9f6981fb713b823eb33bf3fb661.png" src="../_images/56b8fb657c50d804bbfa5e28c19184c356e6e9f6981fb713b823eb33bf3fb661.png" />
 </div>
 </div>
 <p>There is nothing shocking regarding the distributions. We only observe a high
@@ -937,7 +936,7 @@ Name: Class, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0ad0894acae8e8964360f5d2f8bc3723f992b7b2db6e9ae9846a400ff8f825ed.png" src="../_images/0ad0894acae8e8964360f5d2f8bc3723f992b7b2db6e9ae9846a400ff8f825ed.png" />
+<img alt="../_images/7815feffe778553354ba7b1e182789eb60dd61a06eb80464ec3fa994b4349f00.png" src="../_images/7815feffe778553354ba7b1e182789eb60dd61a06eb80464ec3fa994b4349f00.png" />
 </div>
 </div>
 <p>We see that the target is discrete and contains two categories: whether a
@@ -963,8 +962,8 @@ Name: proportion, dtype: float64
 important: a classifier that would predict always this <code class="docutils literal notranslate"><span class="pre">&quot;not</span> <span class="pre">donated&quot;</span></code> class
 would achieve an accuracy of 76% of good classification without using any
 information from the data itself. This issue is known as class imbalance. One
-should take care about the generalization performance metric used to evaluate a
-model as well as the predictive model chosen itself.</p>
+should take care about the generalization performance metric used to evaluate
+a model as well as the predictive model chosen itself.</p>
 <p>Now, let’s have a naive analysis to see if there is a link between features
 and the target using a pair plot representation.</p>
 <div class="cell docutils container">
@@ -976,18 +975,22 @@ and the target using a pair plot representation.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/64cd5d5f32a8d6a59ae534ae2896fbd058200a484be4743bb45ad7a8d1734d2f.png" src="../_images/64cd5d5f32a8d6a59ae534ae2896fbd058200a484be4743bb45ad7a8d1734d2f.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)
+</pre></div>
+</div>
+<img alt="../_images/b35b4e74b390ffe96797cd8bfa415849fd35209b1de70c91b36a058a9824b37c.png" src="../_images/b35b4e74b390ffe96797cd8bfa415849fd35209b1de70c91b36a058a9824b37c.png" />
 </div>
 </div>
 <p>Looking at the diagonal plots, we don’t see any feature that individually
 could help at separating the two classes. When looking at a pair of feature,
-we don’t see any striking combinations as well. However, we can note that
-the <code class="docutils literal notranslate"><span class="pre">&quot;Monetary&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Frequency&quot;</span></code> features are perfectly correlated: all the
-data points are aligned on a diagonal.</p>
+we don’t see any striking combinations as well. However, we can note that the
+<code class="docutils literal notranslate"><span class="pre">&quot;Monetary&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;Frequency&quot;</span></code> features are perfectly correlated: all the data
+points are aligned on a diagonal.</p>
 <p>As a conclusion, this dataset would be a challenging dataset: it suffer from
 class imbalance, correlated features and thus very few features will be
-available to learn a model, and none of the feature combinations were found
-to help at predicting.</p>
+available to learn a model, and none of the feature combinations were found to
+help at predicting.</p>
 </section>
 
     <script type="text/x-thebe-config">

@@ -683,12 +683,12 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-m4-05">
 <h1>📝 Exercise M4.05<a class="headerlink" href="#exercise-m4-05" title="Permalink to this heading">#</a></h1>
 <p>In the previous notebook we set <code class="docutils literal notranslate"><span class="pre">penalty=&quot;none&quot;</span></code> to disable regularization
-entirely. This parameter can also control the <strong>type</strong> of regularization to use,
-whereas the regularization <strong>strength</strong> is set using the parameter <code class="docutils literal notranslate"><span class="pre">C</span></code>.
-Setting<code class="docutils literal notranslate"><span class="pre">penalty=&quot;none&quot;</span></code> is equivalent to an infinitely large value of <code class="docutils literal notranslate"><span class="pre">C</span></code>.
-In this exercise, we ask you to train a logistic regression classifier using the
-<code class="docutils literal notranslate"><span class="pre">penalty=&quot;l2&quot;</span></code> regularization (which happens to be the default in scikit-learn)
-to find by yourself the effect of the parameter <code class="docutils literal notranslate"><span class="pre">C</span></code>.</p>
+entirely. This parameter can also control the <strong>type</strong> of regularization to
+use, whereas the regularization <strong>strength</strong> is set using the parameter <code class="docutils literal notranslate"><span class="pre">C</span></code>.
+Setting<code class="docutils literal notranslate"><span class="pre">penalty=&quot;none&quot;</span></code> is equivalent to an infinitely large value of <code class="docutils literal notranslate"><span class="pre">C</span></code>. In
+this exercise, we ask you to train a logistic regression classifier using the
+<code class="docutils literal notranslate"><span class="pre">penalty=&quot;l2&quot;</span></code> regularization (which happens to be the default in
+scikit-learn) to find by yourself the effect of the parameter <code class="docutils literal notranslate"><span class="pre">C</span></code>.</p>
 <p>We will start by loading the dataset.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -701,8 +701,9 @@ Appendix - Datasets description section at the end of this MOOC.</p>
 
 <span class="n">penguins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../datasets/penguins_classification.csv&quot;</span><span class="p">)</span>
 <span class="c1"># only keep the Adelie and Chinstrap classes</span>
-<span class="n">penguins</span> <span class="o">=</span> <span class="n">penguins</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Species&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-    <span class="p">[</span><span class="s2">&quot;Adelie&quot;</span><span class="p">,</span> <span class="s2">&quot;Chinstrap&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">penguins</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">penguins</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Species&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;Adelie&quot;</span><span class="p">,</span> <span class="s2">&quot;Chinstrap&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
 
 <span class="n">culmen_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Culmen Length (mm)&quot;</span><span class="p">,</span> <span class="s2">&quot;Culmen Depth (mm)&quot;</span><span class="p">]</span>
 <span class="n">target_column</span> <span class="o">=</span> <span class="s2">&quot;Species&quot;</span>
@@ -733,7 +734,8 @@ Appendix - Datasets description section at the end of this MOOC.</p>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 
 <span class="n">logistic_regression</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
-    <span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">))</span>
+    <span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>

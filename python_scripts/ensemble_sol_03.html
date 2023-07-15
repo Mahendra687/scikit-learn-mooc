@@ -684,10 +684,10 @@ document.write(`
 <h1>📃 Solution for Exercise M6.03<a class="headerlink" href="#solution-for-exercise-m6-03" title="Permalink to this heading">#</a></h1>
 <p>The aim of this exercise is to:</p>
 <ul class="simple">
-<li><p>verifying if a random forest or a gradient-boosting decision tree overfit
-if the number of estimators is not properly chosen;</p></li>
-<li><p>use the early-stopping strategy to avoid adding unnecessary trees, to
-get the best generalization performances.</p></li>
+<li><p>verifying if a random forest or a gradient-boosting decision tree overfit if
+the number of estimators is not properly chosen;</p></li>
+<li><p>use the early-stopping strategy to avoid adding unnecessary trees, to get
+the best generalization performances.</p></li>
 </ul>
 <p>We will use the California housing dataset to conduct our experiments.</p>
 <div class="cell docutils container">
@@ -698,7 +698,8 @@ get the best generalization performances.</p></li>
 <span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">target</span> <span class="o">*=</span> <span class="mi">100</span>  <span class="c1"># rescale the target in k$</span>
 <span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span> <span class="n">target_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -749,7 +750,10 @@ the performance of each model. Evaluate the list of parameters <code class="docu
     <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span>
     <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">gbdt_train_errors</span><span class="p">,</span> <span class="n">gbdt_validation_errors</span> <span class="o">=</span> <span class="o">-</span><span class="n">gbdt_train_scores</span><span class="p">,</span> <span class="o">-</span><span class="n">gbdt_validation_scores</span>
+<span class="n">gbdt_train_errors</span><span class="p">,</span> <span class="n">gbdt_validation_errors</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="o">-</span><span class="n">gbdt_train_scores</span><span class="p">,</span>
+    <span class="o">-</span><span class="n">gbdt_validation_scores</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="n">forest_train_scores</span><span class="p">,</span> <span class="n">forest_validation_scores</span> <span class="o">=</span> <span class="n">validation_curve</span><span class="p">(</span>
     <span class="n">forest</span><span class="p">,</span>
@@ -809,7 +813,7 @@ the performance of each model. Evaluate the list of parameters <code class="docu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/464d4cf602f05d1bce952e91991d65b1ddb3a15cb8d2146ee63de55e7e24e104.png" src="../_images/464d4cf602f05d1bce952e91991d65b1ddb3a15cb8d2146ee63de55e7e24e104.png" />
+<img alt="../_images/9d636d9b6d1d15813c37de49b1c6480bee0337c3b90eda50ad3b6a41b9d011c8.png" src="../_images/9d636d9b6d1d15813c37de49b1c6480bee0337c3b90eda50ad3b6a41b9d011c8.png" />
 </div>
 </div>
 <p>Both gradient boosting and random forest models will always improve when
@@ -821,8 +825,8 @@ out-of-sample set to compute the generalization performance of the model at
 each addition of a tree. Thus, if the generalization performance is not
 improving for several iterations, it will stop adding trees.</p>
 <p>Now, create a gradient-boosting model with <code class="docutils literal notranslate"><span class="pre">n_estimators=1_000</span></code>. This number
-of trees will be too large. Change the parameter <code class="docutils literal notranslate"><span class="pre">n_iter_no_change</span></code> such
-that the gradient boosting fitting will stop after adding 5 trees that do not
+of trees will be too large. Change the parameter <code class="docutils literal notranslate"><span class="pre">n_iter_no_change</span></code> such that
+the gradient boosting fitting will stop after adding 5 trees that do not
 improve the overall generalization performance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -834,30 +838,30 @@ improve the overall generalization performance.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>122
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>131
 </pre></div>
 </div>
 </div>
 </div>
 <p>We see that the number of trees used is far below 1000 with the current
-dataset. Training the gradient boosting model with the entire 1000 trees
-would have been useless.</p>
-<p>Estimate the generalization performance of this model again using
-the <code class="docutils literal notranslate"><span class="pre">sklearn.metrics.mean_absolute_error</span></code> metric but this time using
-the test set that we held out at the beginning of the notebook.
-Compare the resulting value with the values observed in the validation
-curve.</p>
+dataset. Training the gradient boosting model with the entire 1000 trees would
+have been useless.</p>
+<p>Estimate the generalization performance of this model again using the
+<code class="docutils literal notranslate"><span class="pre">sklearn.metrics.mean_absolute_error</span></code> metric but this time using the test set
+that we held out at the beginning of the notebook. Compare the resulting value
+with the values observed in the validation curve.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span>
+
 <span class="n">error</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">gbdt</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;On average, our GBDT regressor makes an error of </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> k$&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On average, our GBDT regressor makes an error of 36.70 k$
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On average, our GBDT regressor makes an error of 36.36 k$
 </pre></div>
 </div>
 </div>

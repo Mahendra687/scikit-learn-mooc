@@ -695,8 +695,8 @@ time, we will use the handwritten digits dataset.</p>
 </div>
 </div>
 </div>
-<p>We will recreate the same model used in the previous notebook:
-a logistic regression classifier with a preprocessor to scale the data.</p>
+<p>We will recreate the same model used in the previous notebook: a logistic
+regression classifier with a preprocessor to scale the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
@@ -715,11 +715,12 @@ without shuffling the data at first.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">KFold</span>
 
 <span class="n">cv</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">test_score_no_shuffling</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
-                                          <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The average accuracy is &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score_no_shuffling</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score_no_shuffling</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">test_score_no_shuffling</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;The average accuracy is &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score_no_shuffling</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score_no_shuffling</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -734,23 +735,26 @@ cross-validation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">test_score_with_shuffling</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
-                                            <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The average accuracy is &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score_with_shuffling</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score_with_shuffling</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">test_score_with_shuffling</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;The average accuracy is &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score_with_shuffling</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score_with_shuffling</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average accuracy is 0.967 ± 0.009
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average accuracy is 0.967 ± 0.010
 </pre></div>
 </div>
 </div>
 </div>
-<p>We observe that shuffling the data improves the mean accuracy.
-We could go a little further and plot the distribution of the testing
-score. We can first concatenate the test scores.</p>
+<p>We observe that shuffling the data improves the mean accuracy. We could go a
+little further and plot the distribution of the testing score. We can first
+concatenate the test scores.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -777,7 +781,7 @@ score. We can first concatenate the test scores.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b4b24bb757d5f3aaa0bab98f4386de682c55de8cc0fe61101e7a2292980673bf.png" src="../_images/b4b24bb757d5f3aaa0bab98f4386de682c55de8cc0fe61101e7a2292980673bf.png" />
+<img alt="../_images/7e1b66de8aed18b08eb13af8bfa164aed3ca9b878cefad9744efc16c46f872f8.png" src="../_images/7e1b66de8aed18b08eb13af8bfa164aed3ca9b878cefad9744efc16c46f872f8.png" />
 </div>
 </div>
 <p>The cross-validation testing error that uses the shuffling has less variance
@@ -906,8 +910,23 @@ group.</p>
 
 <span class="c1"># defines the lower and upper bounds of sample indices</span>
 <span class="c1"># for each writer</span>
-<span class="n">writer_boundaries</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">386</span><span class="p">,</span> <span class="mi">516</span><span class="p">,</span> <span class="mi">646</span><span class="p">,</span> <span class="mi">776</span><span class="p">,</span> <span class="mi">915</span><span class="p">,</span> <span class="mi">1029</span><span class="p">,</span>
-                     <span class="mi">1157</span><span class="p">,</span> <span class="mi">1287</span><span class="p">,</span> <span class="mi">1415</span><span class="p">,</span> <span class="mi">1545</span><span class="p">,</span> <span class="mi">1667</span><span class="p">,</span> <span class="mi">1797</span><span class="p">]</span>
+<span class="n">writer_boundaries</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="mi">130</span><span class="p">,</span>
+    <span class="mi">256</span><span class="p">,</span>
+    <span class="mi">386</span><span class="p">,</span>
+    <span class="mi">516</span><span class="p">,</span>
+    <span class="mi">646</span><span class="p">,</span>
+    <span class="mi">776</span><span class="p">,</span>
+    <span class="mi">915</span><span class="p">,</span>
+    <span class="mi">1029</span><span class="p">,</span>
+    <span class="mi">1157</span><span class="p">,</span>
+    <span class="mi">1287</span><span class="p">,</span>
+    <span class="mi">1415</span><span class="p">,</span>
+    <span class="mi">1545</span><span class="p">,</span>
+    <span class="mi">1667</span><span class="p">,</span>
+    <span class="mi">1797</span><span class="p">,</span>
+<span class="p">]</span>
 <span class="n">groups</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
 <span class="n">lower_bounds</span> <span class="o">=</span> <span class="n">writer_boundaries</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">upper_bounds</span> <span class="o">=</span> <span class="n">writer_boundaries</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
@@ -931,7 +950,7 @@ group.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8bedf2c291a927ead1d033b9af9ca54f2aa87e3df74d86fef2ccd68c7783befd.png" src="../_images/8bedf2c291a927ead1d033b9af9ca54f2aa87e3df74d86fef2ccd68c7783befd.png" />
+<img alt="../_images/6a43e70f54b4dee7f5233f7794a0144e227a27ad681cf1eba6fce5fa28f11fd7.png" src="../_images/6a43e70f54b4dee7f5233f7794a0144e227a27ad681cf1eba6fce5fa28f11fd7.png" />
 </div>
 </div>
 <p>Once we group the digits by writer, we can use cross-validation to take this
@@ -941,30 +960,34 @@ information into account: the class containing <code class="docutils literal not
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GroupKFold</span>
 
 <span class="n">cv</span> <span class="o">=</span> <span class="n">GroupKFold</span><span class="p">()</span>
-<span class="n">test_score</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
-                             <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The average accuracy is &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">test_score</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;The average accuracy is </span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average accuracy is 0.920 ± 0.021
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average accuracy is 0.928 ± 0.014
 </pre></div>
 </div>
 </div>
 </div>
-<p>We see that this strategy is less optimistic regarding the model generalization
-performance. However, this is the most reliable if our goal is to make
-handwritten digits recognition writers independent. Besides, we can as well
-see that the standard deviation was reduced.</p>
+<p>We see that this strategy is less optimistic regarding the model
+generalization performance. However, this is the most reliable if our goal is
+to make handwritten digits recognition writers independent. Besides, we can as
+well see that the standard deviation was reduced.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">[</span><span class="n">test_score_no_shuffling</span><span class="p">,</span> <span class="n">test_score_with_shuffling</span><span class="p">,</span> <span class="n">test_score</span><span class="p">],</span>
-    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;KFold without shuffling&quot;</span><span class="p">,</span> <span class="s2">&quot;KFold with shuffling&quot;</span><span class="p">,</span>
-           <span class="s2">&quot;KFold with groups&quot;</span><span class="p">],</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;KFold without shuffling&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;KFold with shuffling&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;KFold with groups&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
 <span class="p">)</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
@@ -981,7 +1004,7 @@ see that the standard deviation was reduced.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5452e4d6889cdd1082c0b21f578e47aeb153a4670b6d3c1b2e6ed2bd39cec2f3.png" src="../_images/5452e4d6889cdd1082c0b21f578e47aeb153a4670b6d3c1b2e6ed2bd39cec2f3.png" />
+<img alt="../_images/76ff8cc6be6eb8b445347a7ea6138fdc0f643fe837f6440717aa504e3f01a7e5.png" src="../_images/76ff8cc6be6eb8b445347a7ea6138fdc0f643fe837f6440717aa504e3f01a7e5.png" />
 </div>
 </div>
 <p>As a conclusion, it is really important to take any sample grouping pattern

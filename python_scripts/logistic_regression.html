@@ -686,8 +686,8 @@ document.write(`
 variable. In classification, this target will be discrete (e.g. categorical).</p>
 <p>We will go back to our penguin dataset. However, this time we will try to
 predict the penguin species using the culmen information. We will also
-simplify our classification problem by selecting only 2 of the penguin
-species to solve a binary classification problem.</p>
+simplify our classification problem by selecting only 2 of the penguin species
+to solve a binary classification problem.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you want a deeper overview regarding this dataset, you can refer to the
@@ -700,8 +700,9 @@ Appendix - Datasets description section at the end of this MOOC.</p>
 <span class="n">penguins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../datasets/penguins_classification.csv&quot;</span><span class="p">)</span>
 
 <span class="c1"># only keep the Adelie and Chinstrap classes</span>
-<span class="n">penguins</span> <span class="o">=</span> <span class="n">penguins</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Species&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-    <span class="p">[</span><span class="s2">&quot;Adelie&quot;</span><span class="p">,</span> <span class="s2">&quot;Chinstrap&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">penguins</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">penguins</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Species&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;Adelie&quot;</span><span class="p">,</span> <span class="s2">&quot;Chinstrap&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
 <span class="n">culmen_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Culmen Length (mm)&quot;</span><span class="p">,</span> <span class="s2">&quot;Culmen Depth (mm)&quot;</span><span class="p">]</span>
 <span class="n">target_column</span> <span class="o">=</span> <span class="s2">&quot;Species&quot;</span>
 </pre></div>
@@ -722,16 +723,15 @@ Appendix - Datasets description section at the end of this MOOC.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7344869f202467c4b9a6a68a1b2117ced331ff3e39038ee39cdc9f50ac7bf893.png" src="../_images/7344869f202467c4b9a6a68a1b2117ced331ff3e39038ee39cdc9f50ac7bf893.png" />
-<img alt="../_images/9277c62360c8e300e90be889277fed86c701bc53f554c4c9c60d5b8925c2e99f.png" src="../_images/9277c62360c8e300e90be889277fed86c701bc53f554c4c9c60d5b8925c2e99f.png" />
+<img alt="../_images/9ea2ed9193b2cae7ef72f48c12a0b0fd598ffe47501b2cdf757d52aeba54fa77.png" src="../_images/9ea2ed9193b2cae7ef72f48c12a0b0fd598ffe47501b2cdf757d52aeba54fa77.png" />
+<img alt="../_images/af8e44f1556c9e52f115b06ab53603046cccabb0e1b15c53e34c6c380772a50d.png" src="../_images/af8e44f1556c9e52f115b06ab53603046cccabb0e1b15c53e34c6c380772a50d.png" />
 </div>
 </div>
-<p>We can observe that we have quite a simple problem. When the culmen
-length increases, the probability that the penguin is a Chinstrap is closer
-to 1. However, the culmen depth is not helpful for predicting the penguin
-species.</p>
-<p>For model fitting, we will separate the target from the data and
-we will create a training and a testing set.</p>
+<p>We can observe that we have quite a simple problem. When the culmen length
+increases, the probability that the penguin is a Chinstrap is closer to 1.
+However, the culmen depth is not helpful for predicting the penguin species.</p>
+<p>For model fitting, we will separate the target from the data and we will
+create a training and a testing set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -747,10 +747,9 @@ we will create a training and a testing set.</p>
 </div>
 </div>
 </div>
-<p>The linear regression that we previously saw will predict a continuous
-output. When the target is a binary outcome, one can use the logistic
-function to model the probability. This model is known as logistic
-regression.</p>
+<p>The linear regression that we previously saw will predict a continuous output.
+When the target is a binary outcome, one can use the logistic function to
+model the probability. This model is known as logistic regression.</p>
 <p>Scikit-learn provides the class <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> which implements this
 algorithm.</p>
 <div class="cell docutils container">
@@ -774,10 +773,10 @@ algorithm.</p>
 </div>
 </div>
 </div>
-<p>Since we are dealing with a classification problem containing only 2
-features, it is then possible to observe the decision function boundary.
-The boundary is the rule used by our predictive model to affect a class label
-given the feature values of the sample.</p>
+<p>Since we are dealing with a classification problem containing only 2 features,
+it is then possible to observe the decision function boundary. The boundary is
+the rule used by our predictive model to affect a class label given the
+feature values of the sample.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Here, we will use the class <code class="docutils literal notranslate"><span class="pre">DecisionBoundaryDisplay</span></code>. This educational tool
@@ -794,17 +793,25 @@ general.</p>
 <span class="kn">from</span> <span class="nn">sklearn.inspection</span> <span class="kn">import</span> <span class="n">DecisionBoundaryDisplay</span>
 
 <span class="n">DecisionBoundaryDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span>
-    <span class="n">logistic_regression</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">response_method</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+    <span class="n">logistic_regression</span><span class="p">,</span>
+    <span class="n">data_test</span><span class="p">,</span>
+    <span class="n">response_method</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">penguins_test</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">culmen_columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">culmen_columns</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-    <span class="n">hue</span><span class="o">=</span><span class="n">target_column</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tab:red&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:blue&quot;</span><span class="p">])</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">penguins_test</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">culmen_columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">culmen_columns</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">hue</span><span class="o">=</span><span class="n">target_column</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tab:red&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:blue&quot;</span><span class="p">],</span>
+<span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Decision boundary of the trained</span><span class="se">\n</span><span class="s2"> LogisticRegression&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e2a5df6f35756688fd415e24822a15bba2e595de1ffead6d4be25cf398ce6506.png" src="../_images/e2a5df6f35756688fd415e24822a15bba2e595de1ffead6d4be25cf398ce6506.png" />
+<img alt="../_images/8c34c8c6a10f9dba07ff6399d462fc16fcf74a2e09b7e2880d34ed951cb7e5db.png" src="../_images/8c34c8c6a10f9dba07ff6399d462fc16fcf74a2e09b7e2880d34ed951cb7e5db.png" />
 </div>
 </div>
 <p>Thus, we see that our decision function is represented by a line separating
@@ -828,7 +835,7 @@ features:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f0c4749816222ed114c213a0dc496d801716d1e8f39c7a3806103b2a6a6b52f9.png" src="../_images/f0c4749816222ed114c213a0dc496d801716d1e8f39c7a3806103b2a6a6b52f9.png" />
+<img alt="../_images/5e87ed12d41bd11652e972f36d0fefe6c206f8e67d999fad5c5b55489ec19072.png" src="../_images/5e87ed12d41bd11652e972f36d0fefe6c206f8e67d999fad5c5b55489ec19072.png" />
 </div>
 </div>
 <p>Indeed, both coefficients are non-null. If one of them had been zero, the

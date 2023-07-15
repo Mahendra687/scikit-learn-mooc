@@ -769,10 +769,11 @@ figure below illustrates this K-fold strategy.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This figure shows the particular case of <strong>K-fold</strong> cross-validation strategy.
-For each cross-validation split, the procedure trains a clone of model on all the red
-samples and evaluate the score of the model on the blue samples.
-As mentioned earlier, there is a variety of different cross-validation
-strategies. Some of these aspects will be covered in more detail in future notebooks.</p>
+For each cross-validation split, the procedure trains a clone of model on all
+the red samples and evaluate the score of the model on the blue samples. As
+mentioned earlier, there is a variety of different cross-validation
+strategies. Some of these aspects will be covered in more detail in future
+notebooks.</p>
 </div>
 <p>Cross-validation is therefore computationally intensive because it requires
 training several models instead of one.</p>
@@ -792,12 +793,12 @@ exists several cross-validation strategies, <code class="docutils literal notran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 867 ms, sys: 210 ms, total: 1.08 s
-Wall time: 615 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 678 ms, sys: 186 ms, total: 864 ms
+Wall time: 493 ms
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.09081817, 0.08921742, 0.08908033, 0.08828783, 0.08782029]),
- &#39;score_time&#39;: array([0.01950216, 0.01973557, 0.01975799, 0.01939964, 0.01945257]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.07257724, 0.07045388, 0.07574201, 0.06935072, 0.06906343]),
+ &#39;score_time&#39;: array([0.01563644, 0.01551962, 0.01522017, 0.01479602, 0.01487184]),
  &#39;test_score&#39;: array([0.79557785, 0.80049135, 0.79965192, 0.79873055, 0.80436118])}
 </pre></div>
 </div>
@@ -806,8 +807,10 @@ Wall time: 615 ms
 <p>The output of <code class="docutils literal notranslate"><span class="pre">cross_validate</span></code> is a Python dictionary, which by default
 contains three entries:</p>
 <ul class="simple">
-<li><p>(i) the time to train the model on the training data for each fold, <code class="docutils literal notranslate"><span class="pre">fit_time</span></code></p></li>
-<li><p>(ii) the time to predict with the model on the testing data for each fold, <code class="docutils literal notranslate"><span class="pre">score_time</span></code></p></li>
+<li><p>(i) the time to train the model on the training data for each fold,
+<code class="docutils literal notranslate"><span class="pre">fit_time</span></code></p></li>
+<li><p>(ii) the time to predict with the model on the testing data for each fold,
+<code class="docutils literal notranslate"><span class="pre">score_time</span></code></p></li>
 <li><p>(iii) the default score on the testing data for each fold, <code class="docutils literal notranslate"><span class="pre">test_score</span></code>.</p></li>
 </ul>
 <p>Setting <code class="docutils literal notranslate"><span class="pre">cv=5</span></code> created 5 distinct splits to get 5 variations for the training
@@ -850,8 +853,8 @@ variation of the accuracy across folds.</p>
 we can estimate the uncertainty of our model generalization performance. This
 is the main advantage of cross-validation and can be crucial in practice, for
 example when comparing different models to figure out whether one is better
-than the other or whether our measures of the generalization performance of each
-model are within the error bars of one-another.</p>
+than the other or whether our measures of the generalization performance of
+each model are within the error bars of one-another.</p>
 <p>In this particular case, only the first 2 decimals seem to be trustworthy. If
 you go up in this notebook, you can check that the performance we get with
 cross-validation is compatible with the one from a single train-test split.</p>

@@ -685,10 +685,10 @@ document.write(`
 <p>In this notebook, we will present the gradient boosting decision tree
 algorithm and contrast it with AdaBoost.</p>
 <p>Gradient-boosting differs from AdaBoost due to the following reason: instead
-of assigning weights to specific samples, GBDT will fit a decision tree on
-the residuals error (hence the name “gradient”) of the previous tree.
-Therefore, each new tree in the ensemble predicts the error made by the
-previous learner instead of predicting the target directly.</p>
+of assigning weights to specific samples, GBDT will fit a decision tree on the
+residuals error (hence the name “gradient”) of the previous tree. Therefore,
+each new tree in the ensemble predicts the error made by the previous learner
+instead of predicting the target directly.</p>
 <p>In this section, we will provide some intuition about the way learners are
 combined to give the final prediction. In this regard, let’s go back to our
 regression problem which is more intuitive for demonstrating the underlying
@@ -709,11 +709,12 @@ machinery.</p>
     <span class="n">len_x</span> <span class="o">=</span> <span class="n">x_max</span> <span class="o">-</span> <span class="n">x_min</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span> <span class="o">*</span> <span class="n">len_x</span> <span class="o">-</span> <span class="n">len_x</span> <span class="o">/</span> <span class="mi">2</span>
     <span class="n">noise</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.3</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">noise</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">noise</span>
 
     <span class="n">data_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">])</span>
-    <span class="n">data_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_max</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">300</span><span class="p">),</span>
-                             <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">])</span>
+    <span class="n">data_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_max</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">300</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
     <span class="n">target_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">target_train</span>
@@ -729,19 +730,20 @@ machinery.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Synthetic regression dataset&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01d8b1ff43e939531b7776523674a1a145d56f5398b939e7b983e719fef3451a.png" src="../_images/01d8b1ff43e939531b7776523674a1a145d56f5398b939e7b983e719fef3451a.png" />
+<img alt="../_images/f53c083f3617fa9aaf813f6466673dca0d0260ec92919898e6ccfc81b5898ef2.png" src="../_images/f53c083f3617fa9aaf813f6466673dca0d0260ec92919898e6ccfc81b5898ef2.png" />
 </div>
 </div>
-<p>As we previously discussed, boosting will be based on assembling a sequence
-of learners. We will start by creating a decision tree regressor. We will set
-the depth of the tree so that the resulting learner will underfit the data.</p>
+<p>As we previously discussed, boosting will be based on assembling a sequence of
+learners. We will start by creating a decision tree regressor. We will set the
+depth of the tree so that the resulting learner will underfit the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
@@ -755,32 +757,34 @@ the depth of the tree so that the resulting learner will underfit the data.</p>
 </div>
 </div>
 </div>
-<p>Using the term “test” here refers to data that was not used for training.
-It should not be confused with data coming from a train-test split, as it
-was generated in equally-spaced intervals for the visual evaluation of the
+<p>Using the term “test” here refers to data that was not used for training. It
+should not be confused with data coming from a train-test split, as it was
+generated in equally-spaced intervals for the visual evaluation of the
 predictions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the data</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 <span class="c1"># plot the predictions</span>
 <span class="n">line_predictions</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">target_test_predicted</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
 
 <span class="c1"># plot the residuals</span>
-<span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">predicted</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span>
-                                  <span class="n">target_train</span><span class="p">,</span>
-                                  <span class="n">target_train_predicted</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">predicted</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+    <span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">target_train</span><span class="p">,</span> <span class="n">target_train_predicted</span>
+<span class="p">):</span>
     <span class="n">lines_residuals</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">value</span><span class="p">,</span> <span class="n">value</span><span class="p">],</span> <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">predicted</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">line_predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lines_residuals</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
-           <span class="p">[</span><span class="s2">&quot;Fitted tree&quot;</span><span class="p">,</span> <span class="s2">&quot;Residuals&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">line_predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lines_residuals</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="s2">&quot;Fitted tree&quot;</span><span class="p">,</span> <span class="s2">&quot;Residuals&quot;</span><span class="p">]</span>
+<span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Prediction function together </span><span class="se">\n</span><span class="s2">with errors on the training set&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/902c7a5b8506f06c73eaa1ddfa3a9abd9b03b1a539f581d13b4716724935d3af.png" src="../_images/902c7a5b8506f06c73eaa1ddfa3a9abd9b03b1a539f581d13b4716724935d3af.png" />
+<img alt="../_images/61856a5038680bc3c1bef5be2809ce0567c38b69481ac92d07473c4880ab21a1.png" src="../_images/61856a5038680bc3c1bef5be2809ce0567c38b69481ac92d07473c4880ab21a1.png" />
 </div>
 </div>
 <div class="admonition tip">
@@ -792,11 +796,11 @@ for all the residual lines.</p>
 training data. We can observe this in the figure by looking at the difference
 between the predictions and the ground-truth data. We represent these errors,
 called “Residuals”, by unbroken red lines.</p>
-<p>Indeed, our initial tree was not expressive enough to handle the complexity
-of the data, as shown by the residuals. In a gradient-boosting algorithm, the
-idea is to create a second tree which, given the same data <code class="docutils literal notranslate"><span class="pre">data</span></code>, will try
-to predict the residuals instead of the vector <code class="docutils literal notranslate"><span class="pre">target</span></code>. We would therefore
-have a tree that is able to predict the errors made by the initial tree.</p>
+<p>Indeed, our initial tree was not expressive enough to handle the complexity of
+the data, as shown by the residuals. In a gradient-boosting algorithm, the
+idea is to create a second tree which, given the same data <code class="docutils literal notranslate"><span class="pre">data</span></code>, will try to
+predict the residuals instead of the vector <code class="docutils literal notranslate"><span class="pre">target</span></code>. We would therefore have
+a tree that is able to predict the errors made by the initial tree.</p>
 <p>Let’s train such a tree.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -815,34 +819,38 @@ have a tree that is able to predict the errors made by the initial tree.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">residuals</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">line_predictions</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-    <span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">target_test_predicted_residuals</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+    <span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">target_test_predicted_residuals</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span>
+<span class="p">)</span>
 
 <span class="c1"># plot the residuals of the predicted residuals</span>
-<span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">predicted</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span>
-                                  <span class="n">residuals</span><span class="p">,</span>
-                                  <span class="n">target_train_predicted_residuals</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">predicted</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+    <span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">residuals</span><span class="p">,</span> <span class="n">target_train_predicted_residuals</span>
+<span class="p">):</span>
     <span class="n">lines_residuals</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">value</span><span class="p">,</span> <span class="n">value</span><span class="p">],</span> <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">predicted</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">line_predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lines_residuals</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
-           <span class="p">[</span><span class="s2">&quot;Fitted tree&quot;</span><span class="p">,</span> <span class="s2">&quot;Residuals&quot;</span><span class="p">],</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span>
-           <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">line_predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lines_residuals</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+    <span class="p">[</span><span class="s2">&quot;Fitted tree&quot;</span><span class="p">,</span> <span class="s2">&quot;Residuals&quot;</span><span class="p">],</span>
+    <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Prediction of the previous residuals&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fe66dccb24c98a6beb9a477ccd204662eeca85d4c5e44a4594d7c556f8aa26f0.png" src="../_images/fe66dccb24c98a6beb9a477ccd204662eeca85d4c5e44a4594d7c556f8aa26f0.png" />
+<img alt="../_images/011d0613b1daaffd5c01af2b7e23f0cc8e73f1c32c539dd5de2245dd783f150c.png" src="../_images/011d0613b1daaffd5c01af2b7e23f0cc8e73f1c32c539dd5de2245dd783f150c.png" />
 </div>
 </div>
 <p>We see that this new tree only manages to fit some of the residuals. We will
-focus on a specific sample from the training set (i.e. we know that the
-sample will be well predicted using two successive trees). We will use this
-sample to explain how the predictions of both trees are combined. Let’s first
-select this sample in <code class="docutils literal notranslate"><span class="pre">data_train</span></code>.</p>
+focus on a specific sample from the training set (i.e. we know that the sample
+will be well predicted using two successive trees). We will use this sample to
+explain how the predictions of both trees are combined. Let’s first select
+this sample in <code class="docutils literal notranslate"><span class="pre">data_train</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">data_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="o">-</span><span class="mi">2</span><span class="p">]]</span>
-<span class="n">x_sample</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;Feature&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">x_sample</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">target_true</span> <span class="o">=</span> <span class="n">target_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">target_true_residual</span> <span class="o">=</span> <span class="n">residuals</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
@@ -859,17 +867,19 @@ decision tree.</p>
 <span class="c1">#   * the predictions</span>
 <span class="c1">#   * the residuals</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">target_test_predicted</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">predicted</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span>
-                                  <span class="n">target_train</span><span class="p">,</span>
-                                  <span class="n">target_train_predicted</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">predicted</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+    <span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">target_train</span><span class="p">,</span> <span class="n">target_train_predicted</span>
+<span class="p">):</span>
     <span class="n">lines_residuals</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">value</span><span class="p">,</span> <span class="n">value</span><span class="p">],</span> <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">predicted</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 
 <span class="c1"># Highlight the sample of interest</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">target_true</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sample of interest&quot;</span><span class="p">,</span>
-            <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">sample</span><span class="p">,</span> <span class="n">target_true</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sample of interest&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span>
+<span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Tree predictions&quot;</span><span class="p">)</span>
@@ -877,11 +887,11 @@ decision tree.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/507f912ebf2b5b64173c8f5ed529fb4cf977e26b32085b8accd33ed7e741fb0c.png" src="../_images/507f912ebf2b5b64173c8f5ed529fb4cf977e26b32085b8accd33ed7e741fb0c.png" />
+<img alt="../_images/ebe0a94514f1bdf5a40e8edd1ddba58bc6cebdaec1ee331c22e4546ef109f81e.png" src="../_images/ebe0a94514f1bdf5a40e8edd1ddba58bc6cebdaec1ee331c22e4546ef109f81e.png" />
 </div>
 </div>
-<p>Now, let’s plot the residuals information. We will plot the residuals
-computed from the first decision tree and show the residual predictions.</p>
+<p>Now, let’s plot the residuals information. We will plot the residuals computed
+from the first decision tree and show the residual predictions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the previous information:</span>
@@ -889,17 +899,21 @@ computed from the first decision tree and show the residual predictions.</p>
 <span class="c1">#   * the residual predictions</span>
 <span class="c1">#   * the residuals of the residual predictions</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">residuals</span><span class="p">,</span>
-                <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">residuals</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">target_test_predicted_residuals</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">predicted</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span>
-                                  <span class="n">residuals</span><span class="p">,</span>
-                                  <span class="n">target_train_predicted_residuals</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">true</span><span class="p">,</span> <span class="n">predicted</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+    <span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">residuals</span><span class="p">,</span> <span class="n">target_train_predicted_residuals</span>
+<span class="p">):</span>
     <span class="n">lines_residuals</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">value</span><span class="p">,</span> <span class="n">value</span><span class="p">],</span> <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">predicted</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 
 <span class="c1"># Highlight the sample of interest</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">target_true_residual</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sample of interest&quot;</span><span class="p">,</span>
-            <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">sample</span><span class="p">,</span>
+    <span class="n">target_true_residual</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sample of interest&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Prediction of the residuals&quot;</span><span class="p">)</span>
@@ -907,7 +921,7 @@ computed from the first decision tree and show the residual predictions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8df00e5b632d75440e7740d3af10a7f18a6870c30b4d4ce44a70c7e9e342d6a3.png" src="../_images/8df00e5b632d75440e7740d3af10a7f18a6870c30b4d4ce44a70c7e9e342d6a3.png" />
+<img alt="../_images/140885df4cfbbb36c0bb0f5d092054cc95c738239d758c155dc299aa83c8798a.png" src="../_images/140885df4cfbbb36c0bb0f5d092054cc95c738239d758c155dc299aa83c8798a.png" />
 </div>
 </div>
 <p>For our sample of interest, our initial tree is making an error (small
@@ -917,12 +931,13 @@ using the fitted tree. First, let’s check the prediction of the initial tree
 and compare it with the true value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;True value to predict for &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;f(x=</span><span class="si">{</span><span class="n">x_sample</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">target_true</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;True value to predict for f(x=</span><span class="si">{</span><span class="n">x_sample</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">target_true</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">y_pred_first_tree</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sample</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prediction of the first decision tree for x=</span><span class="si">{</span><span class="n">x_sample</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;y=</span><span class="si">{</span><span class="n">y_pred_first_tree</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Prediction of the first decision tree for x=</span><span class="si">{</span><span class="n">x_sample</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">: &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;y=</span><span class="si">{</span><span class="n">y_pred_first_tree</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error of the tree: </span><span class="si">{</span><span class="n">target_true</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y_pred_first_tree</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -939,8 +954,10 @@ Error of the tree: -0.248
 tree to try to predict this residual.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prediction of the residual for x=</span><span class="si">{</span><span class="n">x_sample</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tree_residuals</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sample</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Prediction of the residual for x=</span><span class="si">{</span><span class="n">x_sample</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">: &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tree_residuals</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sample</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -958,8 +975,10 @@ summing the prediction of all the trees in the ensemble.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred_first_and_second_tree</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">y_pred_first_tree</span> <span class="o">+</span> <span class="n">tree_residuals</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sample</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prediction of the first and second decision trees combined for &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;x=</span><span class="si">{</span><span class="n">x_sample</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">: y=</span><span class="si">{</span><span class="n">y_pred_first_and_second_tree</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;Prediction of the first and second decision trees combined for &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;x=</span><span class="si">{</span><span class="n">x_sample</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">: y=</span><span class="si">{</span><span class="n">y_pred_first_and_second_tree</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error of the tree: </span><span class="si">{</span><span class="n">target_true</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y_pred_first_and_second_tree</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -973,10 +992,10 @@ Error of the tree: 0.000
 </div>
 <p>We chose a sample for which only two trees were enough to make the perfect
 prediction. However, we saw in the previous plot that two trees were not
-enough to correct the residuals of all samples. Therefore, one needs to
-add several trees to the ensemble to successfully correct the error
-(i.e. the second tree corrects the first tree’s error, while the third tree
-corrects the second tree’s error and so on).</p>
+enough to correct the residuals of all samples. Therefore, one needs to add
+several trees to the ensemble to successfully correct the error (i.e. the
+second tree corrects the first tree’s error, while the third tree corrects the
+second tree’s error and so on).</p>
 <p>We will compare the generalization performance of random-forest and gradient
 boosting on the California housing dataset.</p>
 <div class="cell docutils container">
@@ -996,7 +1015,10 @@ boosting on the California housing dataset.</p>
 
 <span class="n">gradient_boosting</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 <span class="n">cv_results_gbdt</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
-    <span class="n">gradient_boosting</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span>
+    <span class="n">gradient_boosting</span><span class="p">,</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span>
     <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -1006,21 +1028,23 @@ boosting on the California housing dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gradient Boosting Decision Tree&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean absolute error via cross-validation: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="o">-</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> k$&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average fit time: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;fit_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average score time: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;score_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;Mean absolute error via cross-validation: &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="o">-</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> k$&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average fit time: </span><span class="si">{</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;fit_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Average score time: </span><span class="si">{</span><span class="n">cv_results_gbdt</span><span class="p">[</span><span class="s1">&#39;score_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient Boosting Decision Tree
-Mean absolute error via cross-validation: 46.388 ± 2.913 k$
-Average fit time: 8.547 seconds
-Average score time: 0.011 seconds
+Mean absolute error via cross-validation: 46.417 ± 2.912 k$
+Average fit time: 9.265 seconds
+Average score time: 0.010 seconds
 </pre></div>
 </div>
 </div>
@@ -1031,7 +1055,10 @@ Average score time: 0.011 seconds
 
 <span class="n">random_forest</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">cv_results_rf</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
-    <span class="n">random_forest</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span>
+    <span class="n">random_forest</span><span class="p">,</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span>
     <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -1041,32 +1068,32 @@ Average score time: 0.011 seconds
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Forest&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean absolute error via cross-validation: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="o">-</span><span class="n">cv_results_rf</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_rf</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> k$&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average fit time: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_rf</span><span class="p">[</span><span class="s1">&#39;fit_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average score time: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_rf</span><span class="p">[</span><span class="s1">&#39;score_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;Mean absolute error via cross-validation: &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="o">-</span><span class="n">cv_results_rf</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ± &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results_rf</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> k$&quot;</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average fit time: </span><span class="si">{</span><span class="n">cv_results_rf</span><span class="p">[</span><span class="s1">&#39;fit_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average score time: </span><span class="si">{</span><span class="n">cv_results_rf</span><span class="p">[</span><span class="s1">&#39;score_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random Forest
-Mean absolute error via cross-validation: 46.394 ± 4.491 k$
-Average fit time: 23.981 seconds
-Average score time: 0.193 seconds
+Mean absolute error via cross-validation: 46.427 ± 4.516 k$
+Average fit time: 28.535 seconds
+Average score time: 0.207 seconds
 </pre></div>
 </div>
 </div>
 </div>
 <p>In term of computation performance, the forest can be parallelized and will
-benefit from using multiple cores of the CPU. In terms of scoring
-performance, both algorithms lead to very close results.</p>
-<p>However, we see that the gradient boosting is a very fast algorithm to
-predict compared to random forest. This is due to the fact that gradient
-boosting uses shallow trees. We will go into details in the next notebook
-about the hyperparameters to consider when optimizing ensemble methods.</p>
+benefit from using multiple cores of the CPU. In terms of scoring performance,
+both algorithms lead to very close results.</p>
+<p>However, we see that the gradient boosting is a very fast algorithm to predict
+compared to random forest. This is due to the fact that gradient boosting uses
+shallow trees. We will go into details in the next notebook about the
+hyperparameters to consider when optimizing ensemble methods.</p>
 </section>
 
     <script type="text/x-thebe-config">

@@ -693,11 +693,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-penguins-datasets">
 <h1>The penguins datasets<a class="headerlink" href="#the-penguins-datasets" title="Permalink to this heading">#</a></h1>
-<p>In this notebook, we make a quick presentation of the
-<a class="reference external" href="https://allisonhorst.github.io/palmerpenguins/">Palmer penguins dataset</a>
-dataset. We use this dataset for both classification and regression
-problems by selecting a subset of the features to make our explanations
-intuitive.</p>
+<p>In this notebook, we make a quick presentation of the <a class="reference external" href="https://allisonhorst.github.io/palmerpenguins/">Palmer penguins
+dataset</a> dataset. We use this
+dataset for both classification and regression problems by selecting a subset
+of the features to make our explanations intuitive.</p>
 <section id="classification-dataset">
 <h2>Classification dataset<a class="headerlink" href="#classification-dataset" title="Permalink to this heading">#</a></h2>
 <p>We will use this dataset in classification setting to predict the penguins’
@@ -705,13 +704,13 @@ species from anatomical information.</p>
 <p>Each penguin is from one of the three following species: Adelie, Gentoo, and
 Chinstrap. See the illustration below depicting the three different penguin
 species:</p>
-<p><img alt="Image of penguins" src="https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png" /></p>
-<p>This problem is a classification problem since the target is categorical.
-We will limit our input data to a subset of the original features
-to simplify our explanations when presenting the decision tree algorithm.
-Indeed, we will use features based on penguins’ culmen measurement. You can
-learn more about the penguins’ culmen with the illustration below:</p>
-<p><img alt="Image of culmen" src="https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/culmen_depth.png" /></p>
+<p><img alt="Image ofpenguins" src="https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png" /></p>
+<p>This problem is a classification problem since the target is categorical. We
+will limit our input data to a subset of the original features to simplify our
+explanations when presenting the decision tree algorithm. Indeed, we will use
+features based on penguins’ culmen measurement. You can learn more about the
+penguins’ culmen with the illustration below:</p>
+<p><img alt="Image ofculmen" src="https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/culmen_depth.png" /></p>
 <p>We will start by loading this subset of the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -803,7 +802,11 @@ samples distribution.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1e6588588f419bbb606c2d58e2de798f348e8338e6a217c968a1257abdee9800.png" src="../_images/1e6588588f419bbb606c2d58e2de798f348e8338e6a217c968a1257abdee9800.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)
+</pre></div>
+</div>
+<img alt="../_images/bead65163d36bbe1adbb6009c92b398a6b2200efe7905fdfb6a588d164c6e4e4.png" src="../_images/bead65163d36bbe1adbb6009c92b398a6b2200efe7905fdfb6a588d164c6e4e4.png" />
 </div>
 </div>
 <p>First let’s check the feature distributions by looking at the diagonal plots
@@ -840,14 +843,13 @@ length and the body mass of penguins.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a25e145f7952a893a1ca58b650e8efec353f09e587ced398f2b6cb361343624a.png" src="../_images/a25e145f7952a893a1ca58b650e8efec353f09e587ced398f2b6cb361343624a.png" />
+<img alt="../_images/27c95d5ff45056dc2adc83aadb00a2d955e4cb1959ba201a000d492ba511970a.png" src="../_images/27c95d5ff45056dc2adc83aadb00a2d955e4cb1959ba201a000d492ba511970a.png" />
 </div>
 </div>
 <p>Here, we deal with a regression problem because our target is a continuous
 variable ranging from 2.7 kg to 6.3 kg. From the scatter plot above, we
-observe that we have a linear relationship between the flipper length
-and the body mass. The longer the flipper of a penguin, the heavier the
-penguin.</p>
+observe that we have a linear relationship between the flipper length and the
+body mass. The longer the flipper of a penguin, the heavier the penguin.</p>
 </section>
 </section>
 

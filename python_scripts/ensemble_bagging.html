@@ -695,8 +695,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="bagging">
 <h1>Bagging<a class="headerlink" href="#bagging" title="Permalink to this heading">#</a></h1>
-<p>This notebook introduces a very natural strategy to build ensembles of
-machine learning models named “bagging”.</p>
+<p>This notebook introduces a very natural strategy to build ensembles of machine
+learning models named “bagging”.</p>
 <p>“Bagging” stands for Bootstrap AGGregatING. It uses bootstrap resampling
 (random sampling with replacement) to learn several models on random
 variations of the training set. At predict time, the predictions of each
@@ -718,12 +718,13 @@ bootstraping.</p>
     <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_samples</span><span class="p">)</span>
     <span class="n">noise</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">noise</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">noise</span>
     <span class="n">y</span> <span class="o">/=</span> <span class="n">y</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 
     <span class="n">data_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">])</span>
     <span class="n">data_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_max</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">300</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">])</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_max</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">300</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
     <span class="n">target_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">target_train</span>
@@ -737,14 +738,15 @@ bootstraping.</p>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">target_train</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Synthetic regression dataset&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/acfa26a08aed0252a97102e380676dbc6845cd9b7aa3d1419cf29574504b9cc4.png" src="../_images/acfa26a08aed0252a97102e380676dbc6845cd9b7aa3d1419cf29574504b9cc4.png" />
+<img alt="../_images/a9bed0f77e8ccc5a258e37e267ef46b85dafd4e2b73c30aff5bef1b0608b291b.png" src="../_images/a9bed0f77e8ccc5a258e37e267ef46b85dafd4e2b73c30aff5bef1b0608b291b.png" />
 </div>
 </div>
 <p>The relationship between our feature and the target to predict is non-linear.
@@ -762,12 +764,13 @@ dependency:</p>
 </div>
 </div>
 <p>Remember that the term “test” here refers to data that was not used for
-training and computing an evaluation metric on such a synthetic test set
-would be meaningless.</p>
+training and computing an evaluation metric on such a synthetic test set would
+be meaningless.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Fitted tree&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Predictions by a single decision tree&quot;</span><span class="p">)</span>
@@ -775,7 +778,7 @@ would be meaningless.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/15970e85dac992bb2b5c69cccae9aad7ed1d130a4b1e1e0ee1c105ad12768846.png" src="../_images/15970e85dac992bb2b5c69cccae9aad7ed1d130a4b1e1e0ee1c105ad12768846.png" />
+<img alt="../_images/e611e7740c85edd68c15e4943ba5b575fb7c65817d45753b06edb49f6375107a.png" src="../_images/e611e7740c85edd68c15e4943ba5b575fb7c65817d45753b06edb49f6375107a.png" />
 </div>
 </div>
 <p>Let’s see how we can use bootstraping to learn several trees.</p>
@@ -783,9 +786,9 @@ would be meaningless.</p>
 <h2>Bootstrap resampling<a class="headerlink" href="#bootstrap-resampling" title="Permalink to this heading">#</a></h2>
 <p>Given a dataset with <code class="docutils literal notranslate"><span class="pre">n</span></code> data points, bootstrapping corresponds to resampling
 with replacement  <code class="docutils literal notranslate"><span class="pre">n</span></code> out of such <code class="docutils literal notranslate"><span class="pre">n</span></code> data points uniformly at random.</p>
-<p>As a result, the output of the bootstrap sampling procedure is another
-dataset with also n data points, but likely with duplicates. As a consequence,
-there are also data points from the original dataset that are never selected to
+<p>As a result, the output of the bootstrap sampling procedure is another dataset
+with also n data points, but likely with duplicates. As a consequence, there
+are also data points from the original dataset that are never selected to
 appear in a bootstrap sample (by chance). Those data points that are left away
 are often referred to as the out-of-bag sample.</p>
 <p>We will create a function that given <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> will return a
@@ -796,7 +799,9 @@ resampled variation <code class="docutils literal notranslate"><span class="pre"
     <span class="c1"># Indices corresponding to a sampling with replacement of the same sample</span>
     <span class="c1"># size than the original data</span>
     <span class="n">bootstrap_indices</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">size</span><span class="o">=</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="n">size</span><span class="o">=</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="c1"># In pandas, we need to use `.iloc` to extract rows using an integer</span>
     <span class="c1"># position index:</span>
@@ -815,43 +820,59 @@ with the original dataset.</p>
 <span class="k">for</span> <span class="n">bootstrap_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_bootstraps</span><span class="p">):</span>
     <span class="c1"># draw a bootstrap from the original data</span>
     <span class="n">data_bootstrap</span><span class="p">,</span> <span class="n">target_bootstrap</span> <span class="o">=</span> <span class="n">bootstrap_sample</span><span class="p">(</span>
-        <span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span>
+        <span class="n">data_train</span><span class="p">,</span>
+        <span class="n">target_train</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data_bootstrap</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">target_bootstrap</span><span class="p">,</span>
-                <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Resampled data&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">target_train</span><span class="p">,</span>
-                <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Original data&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">data_bootstrap</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span>
+        <span class="n">target_bootstrap</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span>
+        <span class="n">facecolors</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Resampled data&quot;</span><span class="p">,</span>
+        <span class="n">s</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span>
+        <span class="n">target_train</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Original data&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resampled data #</span><span class="si">{</span><span class="n">bootstrap_idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/64bcfcc0f5d049682d10319bc5c92dbc3b66ee088266f9d090ab04c4dae3d3f4.png" src="../_images/64bcfcc0f5d049682d10319bc5c92dbc3b66ee088266f9d090ab04c4dae3d3f4.png" />
-<img alt="../_images/cf8f0c9a945637aa3b866328019b6aa46e67a2df9130fc45e63515368bb50a8f.png" src="../_images/cf8f0c9a945637aa3b866328019b6aa46e67a2df9130fc45e63515368bb50a8f.png" />
-<img alt="../_images/4194aac68cabd5bca493061c62be0412ce5e6dae4ddd93b61c7c46cc24a5d6bf.png" src="../_images/4194aac68cabd5bca493061c62be0412ce5e6dae4ddd93b61c7c46cc24a5d6bf.png" />
+<img alt="../_images/caffe0c2329958b1e82ed569944ea06775304810003a11cc161c54b56e28a4d5.png" src="../_images/caffe0c2329958b1e82ed569944ea06775304810003a11cc161c54b56e28a4d5.png" />
+<img alt="../_images/00b28e9e493734682272d297c602dc8e67758ea92cb05fe7be1f73465c2b48f3.png" src="../_images/00b28e9e493734682272d297c602dc8e67758ea92cb05fe7be1f73465c2b48f3.png" />
+<img alt="../_images/a1312820e24aba448505f117533e05c1aed21b4d096dc64b61fd41a03789fd92.png" src="../_images/a1312820e24aba448505f117533e05c1aed21b4d096dc64b61fd41a03789fd92.png" />
 </div>
 </div>
 <p>Observe that the 3 variations all share common points with the original
-dataset. Some of the points are randomly resampled several times and appear
-as darker blue circles.</p>
+dataset. Some of the points are randomly resampled several times and appear as
+darker blue circles.</p>
 <p>The 3 generated bootstrap samples are all different from the original dataset
 and from each other. To confirm this intuition, we can check the number of
 unique samples in the bootstrap samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_train_huge</span><span class="p">,</span> <span class="n">data_test_huge</span><span class="p">,</span> <span class="n">target_train_huge</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span>
-    <span class="n">n_samples</span><span class="o">=</span><span class="mi">100_000</span><span class="p">)</span>
+    <span class="n">n_samples</span><span class="o">=</span><span class="mi">100_000</span>
+<span class="p">)</span>
 <span class="n">data_bootstrap_sample</span><span class="p">,</span> <span class="n">target_bootstrap_sample</span> <span class="o">=</span> <span class="n">bootstrap_sample</span><span class="p">(</span>
-    <span class="n">data_train_huge</span><span class="p">,</span> <span class="n">target_train_huge</span><span class="p">)</span>
+    <span class="n">data_train_huge</span><span class="p">,</span> <span class="n">target_train_huge</span>
+<span class="p">)</span>
 
-<span class="n">ratio_unique_sample</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">data_bootstrap_sample</span><span class="p">)</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span>
-                       <span class="n">data_bootstrap_sample</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="n">ratio_unique_sample</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">data_bootstrap_sample</span><span class="p">)</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span> <span class="n">data_bootstrap_sample</span><span class="o">.</span><span class="n">size</span>
+<span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Percentage of samples present in the original dataset: &quot;</span>
+    <span class="s2">&quot;Percentage of samples present in the original dataset: &quot;</span>
     <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ratio_unique_sample</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span>
 <span class="p">)</span>
 </pre></div>
@@ -867,9 +888,9 @@ unique samples in the bootstrap samples.</p>
 will be present in a given bootstrap sample. Since the bootstrap sample has
 the same size as the original dataset, there will be many samples that are in
 the bootstrap sample multiple times.</p>
-<p>Using bootstrap we are able to generate many datasets, all slightly
-different. We can fit a decision tree for each of these datasets and they all
-shall be slightly different as well.</p>
+<p>Using bootstrap we are able to generate many datasets, all slightly different.
+We can fit a decision tree for each of these datasets and they all shall be
+slightly different as well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bag_of_trees</span> <span class="o">=</span> <span class="p">[]</span>
@@ -877,7 +898,8 @@ shall be slightly different as well.</p>
     <span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="n">data_bootstrap_sample</span><span class="p">,</span> <span class="n">target_bootstrap_sample</span> <span class="o">=</span> <span class="n">bootstrap_sample</span><span class="p">(</span>
-        <span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
+        <span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span>
+    <span class="p">)</span>
     <span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_bootstrap_sample</span><span class="p">,</span> <span class="n">target_bootstrap_sample</span><span class="p">)</span>
     <span class="n">bag_of_trees</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
 </pre></div>
@@ -889,12 +911,18 @@ predict the samples within the range of data. They shall give slightly
 different predictions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 <span class="k">for</span> <span class="n">tree_idx</span><span class="p">,</span> <span class="n">tree</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bag_of_trees</span><span class="p">):</span>
     <span class="n">tree_predictions</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">tree_predictions</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-             <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Tree #</span><span class="si">{</span><span class="n">tree_idx</span><span class="si">}</span><span class="s2"> predictions&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span>
+        <span class="n">tree_predictions</span><span class="p">,</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Tree #</span><span class="si">{</span><span class="n">tree_idx</span><span class="si">}</span><span class="s2"> predictions&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Predictions of trees trained on different bootstraps&quot;</span><span class="p">)</span>
@@ -902,49 +930,58 @@ different predictions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/574d13319704ec2c021edddbcc3f79a6918a8c59751b517ec4d44af4fc6daf65.png" src="../_images/574d13319704ec2c021edddbcc3f79a6918a8c59751b517ec4d44af4fc6daf65.png" />
+<img alt="../_images/42ae51742e88fa7a2c77fdefba9e5de3d8b0cff19f6b465a6be2a9b369464df3.png" src="../_images/42ae51742e88fa7a2c77fdefba9e5de3d8b0cff19f6b465a6be2a9b369464df3.png" />
 </div>
 </div>
 </section>
 <section id="aggregating">
 <h2>Aggregating<a class="headerlink" href="#aggregating" title="Permalink to this heading">#</a></h2>
-<p>Once our trees are fitted, we are able to get predictions for each of
-them. In regression, the most straightforward way to combine those
-predictions is just to average them: for a given test data point, we feed the
-input feature values to each of the <code class="docutils literal notranslate"><span class="pre">n</span></code> trained models in the ensemble and as
-a result compute <code class="docutils literal notranslate"><span class="pre">n</span></code> predicted values for the target variable. The final
-prediction of the ensemble for the test data point is the average of those
-<code class="docutils literal notranslate"><span class="pre">n</span></code> values.</p>
+<p>Once our trees are fitted, we are able to get predictions for each of them. In
+regression, the most straightforward way to combine those predictions is just
+to average them: for a given test data point, we feed the input feature values
+to each of the <code class="docutils literal notranslate"><span class="pre">n</span></code> trained models in the ensemble and as a result compute <code class="docutils literal notranslate"><span class="pre">n</span></code>
+predicted values for the target variable. The final prediction of the ensemble
+for the test data point is the average of those <code class="docutils literal notranslate"><span class="pre">n</span></code> values.</p>
 <p>We can plot the averaged predictions from the previous example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 
 <span class="n">bag_predictions</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">tree_idx</span><span class="p">,</span> <span class="n">tree</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bag_of_trees</span><span class="p">):</span>
     <span class="n">tree_predictions</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">tree_predictions</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-             <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Tree #</span><span class="si">{</span><span class="n">tree_idx</span><span class="si">}</span><span class="s2"> predictions&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span>
+        <span class="n">tree_predictions</span><span class="p">,</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Tree #</span><span class="si">{</span><span class="n">tree_idx</span><span class="si">}</span><span class="s2"> predictions&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
     <span class="n">bag_predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tree_predictions</span><span class="p">)</span>
 
 <span class="n">bag_predictions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">bag_predictions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">bag_predictions</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Averaged predictions&quot;</span><span class="p">,</span>
-         <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span>
+    <span class="n">bag_predictions</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Averaged predictions&quot;</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Predictions of bagged trees&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/37cd64c8c4f7aa2e9f8de0b2292c07606682e052b165e8b3beb384773053dd94.png" src="../_images/37cd64c8c4f7aa2e9f8de0b2292c07606682e052b165e8b3beb384773053dd94.png" />
+<img alt="../_images/0f634df8097d2be7dc126794a3b56e885b8d89c77435fe0de6358aacf8975fcb.png" src="../_images/0f634df8097d2be7dc126794a3b56e885b8d89c77435fe0de6358aacf8975fcb.png" />
 </div>
 </div>
-<p>The unbroken red line shows the averaged predictions, which would be the
-final predictions given by our ‘bag’ of decision tree regressors. Note that
-the predictions of the ensemble is more stable because of the averaging
-operation. As a result, the bag of trees as a whole is less likely to overfit
-than the individual trees.</p>
+<p>The unbroken red line shows the averaged predictions, which would be the final
+predictions given by our ‘bag’ of decision tree regressors. Note that the
+predictions of the ensemble is more stable because of the averaging operation.
+As a result, the bag of trees as a whole is less likely to overfit than the
+individual trees.</p>
 </section>
 <section id="bagging-in-scikit-learn">
 <h2>Bagging in scikit-learn<a class="headerlink" href="#bagging-in-scikit-learn" title="Permalink to this heading">#</a></h2>
@@ -970,8 +1007,9 @@ above to get a stronger smoothing effect.</p>
 <p>Let us visualize the predictions of the ensemble on the same interval of data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 
 <span class="n">bagged_trees_predictions</span> <span class="o">=</span> <span class="n">bagged_trees</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">bagged_trees_predictions</span><span class="p">)</span>
@@ -981,7 +1019,7 @@ above to get a stronger smoothing effect.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4fccd9a915cb5a87f19bc9bfa53466d14e65a7be78b3914de542e982e33cd112.png" src="../_images/4fccd9a915cb5a87f19bc9bfa53466d14e65a7be78b3914de542e982e33cd112.png" />
+<img alt="../_images/c714a6e9bf52b9c802df970380e3c7cc8e2aedb1a99b65b92f6a7e70ceb4d6c4.png" src="../_images/c714a6e9bf52b9c802df970380e3c7cc8e2aedb1a99b65b92f6a7e70ceb4d6c4.png" />
 </div>
 </div>
 <p>Because we use 100 trees in the ensemble, the average prediction is indeed
@@ -995,21 +1033,32 @@ Python list in the <code class="docutils literal notranslate"><span class="pre">
     <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Predictions of individual trees&quot;</span> <span class="k">if</span> <span class="n">tree_idx</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
     <span class="c1"># we convert `data_test` into a NumPy array to avoid a warning raised in scikit-learn</span>
     <span class="n">tree_predictions</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">tree_predictions</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-             <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span>
+        <span class="n">tree_predictions</span><span class="p">,</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+    <span class="p">)</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 
 <span class="n">bagged_trees_predictions</span> <span class="o">=</span> <span class="n">bagged_trees</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">bagged_trees_predictions</span><span class="p">,</span>
-         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Predictions of ensemble&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span>
+    <span class="n">bagged_trees_predictions</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Predictions of ensemble&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/22518a1c2b5b1f2df4af9c5111ce01d6b3b2be706f0f0047b953f776e52abd3b.png" src="../_images/22518a1c2b5b1f2df4af9c5111ce01d6b3b2be706f0f0047b953f776e52abd3b.png" />
+<img alt="../_images/f442e3ba155317036f3248dc2f04a1fbea55d7828af1ed097511952925741542.png" src="../_images/f442e3ba155317036f3248dc2f04a1fbea55d7828af1ed097511952925741542.png" />
 </div>
 </div>
 <p>We used a low value of the opacity parameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code> to better appreciate the
@@ -1041,10 +1090,10 @@ regression pipeline on this dataset:</p>
 </div>
 </div>
 </div>
-<p>This pipeline first scales the data to the 0-1 range with <code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code>.
-Then it extracts degree-4 polynomial features. The resulting features will
-all stay in the 0-1 range by construction: if <code class="docutils literal notranslate"><span class="pre">x</span></code> lies in the 0-1 range then
-<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">**</span> <span class="pre">n</span></code> also lies in the 0-1 range for any value of <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p>
+<p>This pipeline first scales the data to the 0-1 range with <code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code>. Then
+it extracts degree-4 polynomial features. The resulting features will all stay
+in the 0-1 range by construction: if <code class="docutils literal notranslate"><span class="pre">x</span></code> lies in the 0-1 range then <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">**</span> <span class="pre">n</span></code>
+also lies in the 0-1 range for any value of <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p>
 <p>Then the pipeline feeds the resulting non-linear features to a regularized
 linear regression model for the final prediction of the target variable.</p>
 <p>Note that we intentionally use a small value for the regularization parameter
@@ -1070,16 +1119,24 @@ base models.</p>
     <span class="c1"># we convert `data_test` into a NumPy array to avoid a warning raised in scikit-learn</span>
     <span class="n">regressor_predictions</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
     <span class="n">base_model_line</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-        <span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">regressor_predictions</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span>
+        <span class="n">regressor_predictions</span><span class="p">,</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Predictions of base models&quot;</span> <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 <span class="n">bagging_predictions</span> <span class="o">=</span> <span class="n">bagging</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">bagging_predictions</span><span class="p">,</span>
-         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Predictions of ensemble&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span>
+    <span class="n">bagging_predictions</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Predictions of ensemble&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">target_train</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">target_train</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bagged polynomial regression&quot;</span><span class="p">)</span>
@@ -1087,13 +1144,12 @@ base models.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/92b20d965dfbd318e96c2a44f59a2b7793db29a0b84559e9b1016a35e967253d.png" src="../_images/92b20d965dfbd318e96c2a44f59a2b7793db29a0b84559e9b1016a35e967253d.png" />
+<img alt="../_images/93ddc0e594b9f4ecff5546f519f476e4a866e000cf98b7b5308933c58beee64a.png" src="../_images/93ddc0e594b9f4ecff5546f519f476e4a866e000cf98b7b5308933c58beee64a.png" />
 </div>
 </div>
-<p>The predictions of this bagged polynomial regression model looks
-qualitatively better than the bagged trees. This is somewhat expected since
-the base model better reflects our knowledge of the true data generating
-process.</p>
+<p>The predictions of this bagged polynomial regression model looks qualitatively
+better than the bagged trees. This is somewhat expected since the base model
+better reflects our knowledge of the true data generating process.</p>
 <p>Again the different shades induced by the overlapping blue lines let us
 appreciate the uncertainty in the prediction of the bagged ensemble.</p>
 <p>To conclude this notebook, we note that the bootstrapping procedure is a

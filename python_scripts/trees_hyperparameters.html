@@ -695,8 +695,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="importance-of-decision-tree-hyperparameters-on-generalization">
 <h1>Importance of decision tree hyperparameters on generalization<a class="headerlink" href="#importance-of-decision-tree-hyperparameters-on-generalization" title="Permalink to this heading">#</a></h1>
 <p>In this notebook, we will illustrate the importance of some key
-hyperparameters on the decision tree; we will demonstrate their effects on
-the classification and regression problems we saw previously.</p>
+hyperparameters on the decision tree; we will demonstrate their effects on the
+classification and regression problems we saw previously.</p>
 <p>First, we will load the classification and regression datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -742,12 +742,20 @@ decision boundary for classification and the regression line for regression.</p>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">palette</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;tab:red&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">]</span>
     <span class="n">DecisionBoundaryDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span>
-        <span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">feature_names</span><span class="p">],</span> <span class="n">response_method</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">,</span>
-        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">feature_names</span><span class="p">],</span>
+        <span class="n">response_method</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">feature_names</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">feature_names</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                    <span class="n">hue</span><span class="o">=</span><span class="n">target_names</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">feature_names</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">feature_names</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">hue</span><span class="o">=</span><span class="n">target_names</span><span class="p">,</span>
+        <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">fit_and_plot_regression</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">,</span> <span class="n">target_names</span><span class="p">):</span>
@@ -759,7 +767,8 @@ decision boundary for classification and the regression line for regression.</p>
     <span class="n">target_predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
 
     <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
-        <span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">target_names</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">target_names</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+    <span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">target_predicted</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -788,29 +797,31 @@ parameter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fit_and_plot_classification</span><span class="p">(</span>
-    <span class="n">tree_clf</span><span class="p">,</span> <span class="n">data_clf</span><span class="p">,</span> <span class="n">data_clf_columns</span><span class="p">,</span> <span class="n">target_clf_column</span><span class="p">)</span>
+    <span class="n">tree_clf</span><span class="p">,</span> <span class="n">data_clf</span><span class="p">,</span> <span class="n">data_clf_columns</span><span class="p">,</span> <span class="n">target_clf_column</span>
+<span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shallow classification tree with max-depth of </span><span class="si">{</span><span class="n">max_depth</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4a88d67da9030b1ebcc438ee6e70744b0efd5d9fa71cb095325a4618eb7bb05d.png" src="../_images/4a88d67da9030b1ebcc438ee6e70744b0efd5d9fa71cb095325a4618eb7bb05d.png" />
+<img alt="../_images/f7aedbe983dc048c356931f99b68a4c831592c9457d4f217c494c415c37fae7b.png" src="../_images/f7aedbe983dc048c356931f99b68a4c831592c9457d4f217c494c415c37fae7b.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fit_and_plot_regression</span><span class="p">(</span>
-    <span class="n">tree_reg</span><span class="p">,</span> <span class="n">data_reg</span><span class="p">,</span> <span class="n">data_reg_columns</span><span class="p">,</span> <span class="n">target_reg_column</span><span class="p">)</span>
+    <span class="n">tree_reg</span><span class="p">,</span> <span class="n">data_reg</span><span class="p">,</span> <span class="n">data_reg_columns</span><span class="p">,</span> <span class="n">target_reg_column</span>
+<span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shallow regression tree with max-depth of </span><span class="si">{</span><span class="n">max_depth</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e765db8b7089760c0e086b6a16c027cf05701e24af74dce61602528d36aa7b78.png" src="../_images/e765db8b7089760c0e086b6a16c027cf05701e24af74dce61602528d36aa7b78.png" />
+<img alt="../_images/6b5cdddce61ccbc1ecf77b31d66684aab902102ad13be74247a8c4e8831b1196.png" src="../_images/6b5cdddce61ccbc1ecf77b31d66684aab902102ad13be74247a8c4e8831b1196.png" />
 </div>
 </div>
-<p>Now, let’s increase the <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> parameter value to check the difference
-by observing the decision function.</p>
+<p>Now, let’s increase the <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> parameter value to check the difference by
+observing the decision function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_depth</span> <span class="o">=</span> <span class="mi">30</span>
@@ -823,33 +834,34 @@ by observing the decision function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fit_and_plot_classification</span><span class="p">(</span>
-    <span class="n">tree_clf</span><span class="p">,</span> <span class="n">data_clf</span><span class="p">,</span> <span class="n">data_clf_columns</span><span class="p">,</span> <span class="n">target_clf_column</span><span class="p">)</span>
+    <span class="n">tree_clf</span><span class="p">,</span> <span class="n">data_clf</span><span class="p">,</span> <span class="n">data_clf_columns</span><span class="p">,</span> <span class="n">target_clf_column</span>
+<span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deep classification tree with max-depth of </span><span class="si">{</span><span class="n">max_depth</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/feb0d0dddd9ff3a84ded898ebd28c0ce8a7bc5e42be5d3fe1843fb59b9540113.png" src="../_images/feb0d0dddd9ff3a84ded898ebd28c0ce8a7bc5e42be5d3fe1843fb59b9540113.png" />
+<img alt="../_images/e82f393af4c986eaecf912e478ef780eae6ea864442379a7f7edc26045498b4d.png" src="../_images/e82f393af4c986eaecf912e478ef780eae6ea864442379a7f7edc26045498b4d.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fit_and_plot_regression</span><span class="p">(</span>
-    <span class="n">tree_reg</span><span class="p">,</span> <span class="n">data_reg</span><span class="p">,</span> <span class="n">data_reg_columns</span><span class="p">,</span> <span class="n">target_reg_column</span><span class="p">)</span>
+    <span class="n">tree_reg</span><span class="p">,</span> <span class="n">data_reg</span><span class="p">,</span> <span class="n">data_reg_columns</span><span class="p">,</span> <span class="n">target_reg_column</span>
+<span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deep regression tree with max-depth of </span><span class="si">{</span><span class="n">max_depth</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6fff78acfdd7606e54594997e70287a411c7e5d58a4f2b74dde5b300dcf07a71.png" src="../_images/6fff78acfdd7606e54594997e70287a411c7e5d58a4f2b74dde5b300dcf07a71.png" />
+<img alt="../_images/d82333923b3970d857b58f6ab7570b4c5b8746325eb9df48792f20cec55e3244.png" src="../_images/d82333923b3970d857b58f6ab7570b4c5b8746325eb9df48792f20cec55e3244.png" />
 </div>
 </div>
-<p>For both classification and regression setting, we observe that
-increasing the depth will make the tree model more expressive. However, a
-tree that is too deep will overfit the training data, creating partitions
-which are only correct for “outliers” (noisy samples). The <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> is one
-of the hyperparameters that one should optimize via cross-validation and
-grid-search.</p>
+<p>For both classification and regression setting, we observe that increasing the
+depth will make the tree model more expressive. However, a tree that is too
+deep will overfit the training data, creating partitions which are only
+correct for “outliers” (noisy samples). The <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> is one of the
+hyperparameters that one should optimize via cross-validation and grid-search.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
@@ -864,31 +876,35 @@ grid-search.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fit_and_plot_classification</span><span class="p">(</span>
-    <span class="n">tree_clf</span><span class="p">,</span> <span class="n">data_clf</span><span class="p">,</span> <span class="n">data_clf_columns</span><span class="p">,</span> <span class="n">target_clf_column</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Optimal depth found via CV: &quot;</span>
-              <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tree_clf</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s1">&#39;max_depth&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">tree_clf</span><span class="p">,</span> <span class="n">data_clf</span><span class="p">,</span> <span class="n">data_clf_columns</span><span class="p">,</span> <span class="n">target_clf_column</span>
+<span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Optimal depth found via CV: </span><span class="si">{</span><span class="n">tree_clf</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s1">&#39;max_depth&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b8aa7e7f38e42ef1e7a076e919cc043e9f95e442e3012b5a7376068577ebb26f.png" src="../_images/b8aa7e7f38e42ef1e7a076e919cc043e9f95e442e3012b5a7376068577ebb26f.png" />
+<img alt="../_images/d37ff1fa614684393495e77a4fb18f308979047cb470effdb9a30b63665111e7.png" src="../_images/d37ff1fa614684393495e77a4fb18f308979047cb470effdb9a30b63665111e7.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fit_and_plot_regression</span><span class="p">(</span>
-    <span class="n">tree_reg</span><span class="p">,</span> <span class="n">data_reg</span><span class="p">,</span> <span class="n">data_reg_columns</span><span class="p">,</span> <span class="n">target_reg_column</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Optimal depth found via CV: &quot;</span>
-              <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tree_reg</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s1">&#39;max_depth&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">tree_reg</span><span class="p">,</span> <span class="n">data_reg</span><span class="p">,</span> <span class="n">data_reg_columns</span><span class="p">,</span> <span class="n">target_reg_column</span>
+<span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Optimal depth found via CV: </span><span class="si">{</span><span class="n">tree_reg</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s1">&#39;max_depth&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/86e9be66b48264668d0716116ecac56bc984d8a2b9cc2f0e77595fb4f3b68c0c.png" src="../_images/86e9be66b48264668d0716116ecac56bc984d8a2b9cc2f0e77595fb4f3b68c0c.png" />
+<img alt="../_images/f7418c9f5991df0f72d29ae41b732b6202851601c5d568b2cadd3e3942b26409.png" src="../_images/f7418c9f5991df0f72d29ae41b732b6202851601c5d568b2cadd3e3942b26409.png" />
 </div>
 </div>
-<p>With this example, we see that there is not a single value that is optimal
-for any dataset. Thus, this parameter is required to be optimized for each
+<p>With this example, we see that there is not a single value that is optimal for
+any dataset. Thus, this parameter is required to be optimized for each
 application.</p>
 </section>
 <section id="other-hyperparameters-in-decision-trees">
@@ -900,10 +916,9 @@ Indeed, optimal generalization performance could be reached by growing some of
 the branches deeper than some others.</p>
 <p>We will build a dataset where we will illustrate this asymmetry. We will
 generate a dataset composed of 2 subsets: one subset where a clear separation
-should be found by the tree and another subset where samples from both
-classes will be mixed. It implies that a decision tree will need more splits
-to classify properly samples from the second subset than from the first
-subset.</p>
+should be found by the tree and another subset where samples from both classes
+will be mixed. It implies that a decision tree will need more splits to
+classify properly samples from the second subset than from the first subset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
@@ -913,16 +928,17 @@ subset.</p>
 
 <span class="c1"># Blobs that will be interlaced</span>
 <span class="n">X_1</span><span class="p">,</span> <span class="n">y_1</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span>
-    <span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
 <span class="c1"># Blobs that will be easily separated</span>
-<span class="n">X_2</span><span class="p">,</span> <span class="n">y_2</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span>
-    <span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X_2</span><span class="p">,</span> <span class="n">y_2</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">X_1</span><span class="p">,</span> <span class="n">X_2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">y_1</span><span class="p">,</span> <span class="n">y_2</span><span class="p">])</span>
 <span class="n">data_clf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">data_clf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">data_clf</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">data_clf_columns</span> <span class="o">+</span> <span class="p">[</span><span class="n">target_clf_column</span><span class="p">])</span>
+    <span class="n">data_clf</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">data_clf_columns</span> <span class="o">+</span> <span class="p">[</span><span class="n">target_clf_column</span><span class="p">]</span>
+<span class="p">)</span>
 <span class="n">data_clf</span><span class="p">[</span><span class="n">target_clf_column</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_clf</span><span class="p">[</span><span class="n">target_clf_column</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -930,14 +946,19 @@ subset.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_clf</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">data_clf_columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">data_clf_columns</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                <span class="n">hue</span><span class="o">=</span><span class="n">target_clf_column</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tab:red&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:blue&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">data_clf</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">data_clf_columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">data_clf_columns</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">hue</span><span class="o">=</span><span class="n">target_clf_column</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tab:red&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:blue&quot;</span><span class="p">],</span>
+<span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Synthetic dataset&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8c559a7a04fa55a147df495fb079312325d866483efeb1f9ed52eeccd904afa9.png" src="../_images/8c559a7a04fa55a147df495fb079312325d866483efeb1f9ed52eeccd904afa9.png" />
+<img alt="../_images/a70af3fe83319b590c888ef32d65dfcb2524e4b019e23ed77a881c683b6da787.png" src="../_images/a70af3fe83319b590c888ef32d65dfcb2524e4b019e23ed77a881c683b6da787.png" />
 </div>
 </div>
 <p>We will first train a shallow decision tree with <code class="docutils literal notranslate"><span class="pre">max_depth=2</span></code>. We would
@@ -948,21 +969,22 @@ separate.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_depth</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">tree_clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">)</span>
 <span class="n">fit_and_plot_classification</span><span class="p">(</span>
-    <span class="n">tree_clf</span><span class="p">,</span> <span class="n">data_clf</span><span class="p">,</span> <span class="n">data_clf_columns</span><span class="p">,</span> <span class="n">target_clf_column</span><span class="p">)</span>
+    <span class="n">tree_clf</span><span class="p">,</span> <span class="n">data_clf</span><span class="p">,</span> <span class="n">data_clf_columns</span><span class="p">,</span> <span class="n">target_clf_column</span>
+<span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Decision tree with max-depth of </span><span class="si">{</span><span class="n">max_depth</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/40f33f467a14dad562e26087d2f30f43818c069a06788cbf8c83256f07ffd445.png" src="../_images/40f33f467a14dad562e26087d2f30f43818c069a06788cbf8c83256f07ffd445.png" />
+<img alt="../_images/ab19afefba3e446c4cdff82ecc3bd7cb5111def6c9f411869ea9155aeaf587a5.png" src="../_images/ab19afefba3e446c4cdff82ecc3bd7cb5111def6c9f411869ea9155aeaf587a5.png" />
 </div>
 </div>
 <p>As expected, we see that the blue blob on the right and the red blob on the
 top are easily separated. However, more splits will be required to better
 split the blob were both blue and red data points are mixed.</p>
-<p>Indeed, we see that red blob on the top and the blue blob on the right of
-the plot are perfectly separated. However, the tree is still making mistakes
-in the area where the blobs are mixed together. Let’s check the tree
+<p>Indeed, we see that red blob on the top and the blue blob on the right of the
+plot are perfectly separated. However, the tree is still making mistakes in
+the area where the blobs are mixed together. Let’s check the tree
 representation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -974,23 +996,24 @@ representation.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/30e474bf2a621a59f92098635d73a6d3c3f448a2b73ac0f8ac0859c425a9ec2a.png" src="../_images/30e474bf2a621a59f92098635d73a6d3c3f448a2b73ac0f8ac0859c425a9ec2a.png" />
+<img alt="../_images/7923955958c5411d51d58accaaad873b9442acb99be154845988365449dd447f.png" src="../_images/7923955958c5411d51d58accaaad873b9442acb99be154845988365449dd447f.png" />
 </div>
 </div>
-<p>We see that the right branch achieves perfect classification. Now, we
-increase the depth to check how the tree will grow.</p>
+<p>We see that the right branch achieves perfect classification. Now, we increase
+the depth to check how the tree will grow.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_depth</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="n">tree_clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">)</span>
 <span class="n">fit_and_plot_classification</span><span class="p">(</span>
-    <span class="n">tree_clf</span><span class="p">,</span> <span class="n">data_clf</span><span class="p">,</span> <span class="n">data_clf_columns</span><span class="p">,</span> <span class="n">target_clf_column</span><span class="p">)</span>
+    <span class="n">tree_clf</span><span class="p">,</span> <span class="n">data_clf</span><span class="p">,</span> <span class="n">data_clf_columns</span><span class="p">,</span> <span class="n">target_clf_column</span>
+<span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Decision tree with max-depth of </span><span class="si">{</span><span class="n">max_depth</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4ed539da7445a7bddcab2443e22918031a70ec8aa9ce91f4b8da824e7da6ac24.png" src="../_images/4ed539da7445a7bddcab2443e22918031a70ec8aa9ce91f4b8da824e7da6ac24.png" />
+<img alt="../_images/7f0d45181da32208cb0ec767969aab1deee6295ed92e32990c2b7bc785391454.png" src="../_images/7f0d45181da32208cb0ec767969aab1deee6295ed92e32990c2b7bc785391454.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1001,30 +1024,32 @@ increase the depth to check how the tree will grow.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0b0dd3aac8e0eaa56ef849da540f08c2141d00cc1631a92de526b70fe006b8b4.png" src="../_images/0b0dd3aac8e0eaa56ef849da540f08c2141d00cc1631a92de526b70fe006b8b4.png" />
+<img alt="../_images/01f5af73720540201c0eb8575fd905d96e4b346b18c05673cd945678125899b8.png" src="../_images/01f5af73720540201c0eb8575fd905d96e4b346b18c05673cd945678125899b8.png" />
 </div>
 </div>
 <p>As expected, the left branch of the tree continue to grow while no further
 splits were done on the right branch. Fixing the <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> parameter would
-cut the tree horizontally at a specific level, whether or not it would
-be more beneficial that a branch continue growing.</p>
-<p>The hyperparameters <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code>, <code class="docutils literal notranslate"><span class="pre">min_samples_split</span></code>,
-<code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code>, or <code class="docutils literal notranslate"><span class="pre">min_impurity_decrease</span></code> allows growing asymmetric trees
-and apply a constraint at the leaves or nodes level. We will check the effect
-of <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code>.</p>
+cut the tree horizontally at a specific level, whether or not it would be more
+beneficial that a branch continue growing.</p>
+<p>The hyperparameters <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code>, <code class="docutils literal notranslate"><span class="pre">min_samples_split</span></code>, <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">min_impurity_decrease</span></code> allows growing asymmetric trees and apply a
+constraint at the leaves or nodes level. We will check the effect of
+<code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="mi">60</span>
 <span class="n">tree_clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">min_samples_leaf</span><span class="o">=</span><span class="n">min_samples_leaf</span><span class="p">)</span>
 <span class="n">fit_and_plot_classification</span><span class="p">(</span>
-    <span class="n">tree_clf</span><span class="p">,</span> <span class="n">data_clf</span><span class="p">,</span> <span class="n">data_clf_columns</span><span class="p">,</span> <span class="n">target_clf_column</span><span class="p">)</span>
+    <span class="n">tree_clf</span><span class="p">,</span> <span class="n">data_clf</span><span class="p">,</span> <span class="n">data_clf_columns</span><span class="p">,</span> <span class="n">target_clf_column</span>
+<span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Decision tree with leaf having at least </span><span class="si">{</span><span class="n">min_samples_leaf</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
+    <span class="sa">f</span><span class="s2">&quot;Decision tree with leaf having at least </span><span class="si">{</span><span class="n">min_samples_leaf</span><span class="si">}</span><span class="s2"> samples&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/eaed73c4277a753818fd3406c461066fbd06f85bc0a266901daa88c4ac7368f9.png" src="../_images/eaed73c4277a753818fd3406c461066fbd06f85bc0a266901daa88c4ac7368f9.png" />
+<img alt="../_images/7ef3e91c67b8985f1fe16d730c688c3c22427026f83284217d5fb4bdc1091c16.png" src="../_images/7ef3e91c67b8985f1fe16d730c688c3c22427026f83284217d5fb4bdc1091c16.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1035,13 +1060,12 @@ of <code class="docutils literal notranslate"><span class="pre">min_samples_leaf
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/116169bfae0568108f62e8c6a1fb6156343640b80127067f49d50c38c02e856f.png" src="../_images/116169bfae0568108f62e8c6a1fb6156343640b80127067f49d50c38c02e856f.png" />
+<img alt="../_images/28b586ccb5126926075a485cb24cd942989e61f7caad2c9f399a4b88ae22d0fd.png" src="../_images/28b586ccb5126926075a485cb24cd942989e61f7caad2c9f399a4b88ae22d0fd.png" />
 </div>
 </div>
-<p>This hyperparameter allows to have leaves with a minimum number of samples
-and no further splits will be searched otherwise. Therefore, these
-hyperparameters could be an alternative to fix the <code class="docutils literal notranslate"><span class="pre">max_depth</span></code>
-hyperparameter.</p>
+<p>This hyperparameter allows to have leaves with a minimum number of samples and
+no further splits will be searched otherwise. Therefore, these hyperparameters
+could be an alternative to fix the <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> hyperparameter.</p>
 </section>
 </section>
 

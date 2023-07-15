@@ -106,7 +106,7 @@ from sklearn.preprocessing import OrdinalEncoder
 
 education_column = data_categorical[["education"]]
 
-encoder = OrdinalEncoder()
+encoder = OrdinalEncoder().set_output(transform="pandas")
 education_encoded = encoder.fit_transform(education_column)
 education_encoded
 
@@ -126,8 +126,7 @@ data_encoded = encoder.fit_transform(data_categorical)
 data_encoded[:5]
 
 # %%
-print(
-    f"The dataset encoded contains {data_encoded.shape[1]} features")
+print(f"The dataset encoded contains {data_encoded.shape[1]} features")
 
 # %% [markdown]
 # We see that the categories have been encoded for each feature (column)
@@ -172,14 +171,14 @@ print(
 # %%
 from sklearn.preprocessing import OneHotEncoder
 
-encoder = OneHotEncoder(sparse_output=False)
+encoder = OneHotEncoder(sparse_output=False).set_output(transform="pandas")
 education_encoded = encoder.fit_transform(education_column)
 education_encoded
 
 # %% [markdown]
 # ```{note}
-# `sparse_output=False` is used in the `OneHotEncoder` for didactic purposes, namely
-# easier visualization of the data.
+# `sparse_output=False` is used in the `OneHotEncoder` for didactic purposes,
+# namely easier visualization of the data.
 #
 # Sparse matrices are efficient data structures when most of your matrix
 # elements are zero. They won't be covered in detail in this course. If you
@@ -188,24 +187,14 @@ education_encoded
 # ```
 
 # %% [markdown]
-# We see that encoding a single feature will give a NumPy array full of zeros
-# and ones. We can get a better understanding using the associated feature
-# names resulting from the transformation.
-
-# %%
-feature_names = encoder.get_feature_names_out(input_features=["education"])
-education_encoded = pd.DataFrame(education_encoded, columns=feature_names)
-education_encoded
-
-# %% [markdown]
-# As we can see, each category (unique value) became a column; the encoding
+# We see that encoding a single feature will give a dataframe full of zeros
+# and ones. Each category (unique value) became a column; the encoding
 # returned, for each sample, a 1 to specify which category it belongs to.
 #
 # Let's apply this encoding on the full dataset.
 
 # %%
-print(
-    f"The dataset is composed of {data_categorical.shape[1]} features")
+print(f"The dataset is composed of {data_categorical.shape[1]} features")
 data_categorical.head()
 
 # %%
@@ -213,20 +202,11 @@ data_encoded = encoder.fit_transform(data_categorical)
 data_encoded[:5]
 
 # %%
-print(
-    f"The encoded dataset contains {data_encoded.shape[1]} features")
+print(f"The encoded dataset contains {data_encoded.shape[1]} features")
 
 # %% [markdown]
-# Let's wrap this NumPy array in a dataframe with informative column names as
-# provided by the encoder object:
-
-# %%
-columns_encoded = encoder.get_feature_names_out(data_categorical.columns)
-pd.DataFrame(data_encoded, columns=columns_encoded).head()
-
-# %% [markdown]
-# Look at how the `"workclass"` variable of the 3 first records has been
-# encoded and compare this to the original string representation.
+# Look at how the `"workclass"` variable of the 3 first records has been encoded
+# and compare this to the original string representation.
 #
 # The number of features after the encoding is more than 10 times larger than
 # in the original data because some variables such as `occupation` and
@@ -258,14 +238,14 @@ pd.DataFrame(data_encoded, columns=columns_encoded).head()
 # - the original categories (before encoding) have an ordering;
 # - the encoded categories follow the same ordering than the original
 #   categories.
+# The **next exercise** highlights the issue of misusing `OrdinalEncoder` with
+# a linear model.
 #
-# The **next exercise** shows what can happen when using an `OrdinalEncoder`
-# with a liner model and the conditions above are not met.
-#
-# One-hot encoding categorical variables with high cardinality can cause 
-# computational inefficiency in tree-based models. Because of this, it is not recommended
-# to use `OneHotEncoder` in such cases even if the original categories do not 
-# have a given order. We will show this in the **final exercise** of this sequence.
+# One-hot encoding categorical variables with high cardinality can cause
+# computational inefficiency in tree-based models. Because of this, it is not
+# recommended to use `OneHotEncoder` in such cases even if the original
+# categories do not have a given order. We will show this in the **final
+# exercise** of this sequence.
 
 # %% [markdown]
 # ## Evaluate our predictive pipeline
@@ -282,31 +262,38 @@ pd.DataFrame(data_encoded, columns=columns_encoded).head()
 data["native-country"].value_counts()
 
 # %% [markdown]
-# We see that the `Holand-Netherlands` category is occurring rarely. This will
+# We see that the `"Holand-Netherlands"` category is occurring rarely. This will
 # be a problem during cross-validation: if the sample ends up in the test set
 # during splitting then the classifier would not have seen the category during
 # training and will not be able to encode it.
 #
-# In scikit-learn, there are two solutions to bypass this issue:
+# In scikit-learn, there are some possible solutions to bypass this issue:
 #
-# * list all the possible categories and provide it to the encoder via the
-#   keyword argument `categories`;
-# * use the parameter `handle_unknown`, i.e. if an unknown category is encountered
-#   during transform, the resulting one-hot encoded columns for this feature will
-#   be all zeros. 
+# * list all the possible categories and provide them to the encoder via the
+#   keyword argument `categories` instead of letting the estimator automatically
+#   determine them from the training data when calling fit;
+# * set the parameter `handle_unknown="ignore"`, i.e. if an unknown category is
+#   encountered during transform, the resulting one-hot encoded columns for this
+#   feature will be all zeros;
+# * adjust the `min_frequency` parameter to collapse the rarest categories
+#   observed in the training data into a single one-hot encoded feature. If you
+#   enable this option, you can also set `handle_unknown="infrequent_if_exist"`
+#   to encode the unknown categories (categories only observed at predict time)
+#   as ones in that last column.
 #
-# Here, we will use the latter solution for simplicity.
+# In this notebook we only explore the second option, namely
+# `OneHotEncoder(handle_unknown="ignore")`. Feel free to evaluate the
+# alternatives on your own, for instance using a sandbox notebook.
 
 # %% [markdown]
 # ```{tip}
-# Be aware the `OrdinalEncoder` exposes as well a parameter
-# `handle_unknown`. It can be set to `use_encoded_value`. If that option is chosen,
-# you can define a fixed value to which all unknowns will be set to during
-# `transform`. For example,
-# `OrdinalEncoder(handle_unknown='use_encoded_value', unknown_value=42)`
-# will set all values encountered during `transform` to `42` which are not part of
-# the data encountered during the `fit` call.
-# You are going to use these parameters in the next exercise.
+# Be aware the `OrdinalEncoder` exposes a parameter also named `handle_unknown`.
+# It can be set to `use_encoded_value`. If that option is chosen, you can define
+# a fixed value to which all unknowns will be set to during `transform`. For
+# example, `OrdinalEncoder(handle_unknown='use_encoded_value',
+# unknown_value=42)` will set all values encountered during `transform` to `42`
+# which are not part of the data encountered during the `fit` call. You are
+# going to use these parameters in the next exercise.
 # ```
 
 # %% [markdown]
@@ -335,6 +322,7 @@ model = make_pipeline(
 
 # %%
 from sklearn.model_selection import cross_validate
+
 cv_results = cross_validate(model, data_categorical, target)
 cv_results
 

@@ -682,8 +682,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-california-housing-dataset">
 <h1>The California housing dataset<a class="headerlink" href="#the-california-housing-dataset" title="Permalink to this heading">#</a></h1>
-<p>In this notebook, we will quickly present the dataset known as the
-“California housing dataset”. This dataset can be fetched from internet using
+<p>In this notebook, we will quickly present the dataset known as the “California
+housing dataset”. This dataset can be fetched from internet using
 scikit-learn.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -955,8 +955,8 @@ be used by a predictive model.</p>
 <p>In this dataset, we have information regarding the demography (income,
 population, house occupancy) in the districts, the location of the districts
 (latitude, longitude), and general information regarding the house in the
-districts (number of rooms, number of bedrooms, age of the house). Since
-these statistics are at the granularity of the district, they corresponds to
+districts (number of rooms, number of bedrooms, age of the house). Since these
+statistics are at the granularity of the district, they corresponds to
 averages or medians.</p>
 <p>Now, let’s have a look to the target to be predicted.</p>
 <div class="cell docutils container">
@@ -1025,14 +1025,14 @@ their histograms.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fce8a20f1cddc2aec2986eb6fc2d5830d139496cc419d3ce727900498aac31a4.png" src="../_images/fce8a20f1cddc2aec2986eb6fc2d5830d139496cc419d3ce727900498aac31a4.png" />
+<img alt="../_images/02ea9590ace02db0c5af0058dfa9a57b85d93b9ea8651ffaf66f8ba58c4bcc57.png" src="../_images/02ea9590ace02db0c5af0058dfa9a57b85d93b9ea8651ffaf66f8ba58c4bcc57.png" />
 </div>
 </div>
 <p>We can first focus on features for which their distributions would be more or
 less expected.</p>
-<p>The median income is a distribution with a long tail. It means that the
-salary of people is more or less normally distributed but there is some
-people getting a high salary.</p>
+<p>The median income is a distribution with a long tail. It means that the salary
+of people is more or less normally distributed but there is some people
+getting a high salary.</p>
 <p>Regarding the average house age, the distribution is more or less uniform.</p>
 <p>The target distribution has a long tail as well. In addition, we have a
 threshold-effect for high-valued houses: all houses with a price above 5 are
@@ -1135,64 +1135,74 @@ statistics for these features:</p>
 </table>
 </div></div></div>
 </div>
-<p>For each of these features, comparing the <code class="docutils literal notranslate"><span class="pre">max</span></code> and <code class="docutils literal notranslate"><span class="pre">75%</span></code> values, we can see
-a huge difference. It confirms the intuitions that there are a couple of
-extreme values.</p>
+<p>For each of these features, comparing the <code class="docutils literal notranslate"><span class="pre">max</span></code> and <code class="docutils literal notranslate"><span class="pre">75%</span></code> values, we can see a
+huge difference. It confirms the intuitions that there are a couple of extreme
+values.</p>
 <p>Up to know, we discarded the longitude and latitude that carry geographical
-information. In short, the combination of this feature could help us to
-decide if there are locations associated with high-valued houses. Indeed,
-we could make a scatter plot where the x- and y-axis would be the latitude
-and longitude and the circle size and color would be linked with the house
-value in the district.</p>
+information. In short, the combination of this feature could help us to decide
+if there are locations associated with high-valued houses. Indeed, we could
+make a scatter plot where the x- and y-axis would be the latitude and
+longitude and the circle size and color would be linked with the house value
+in the district.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">california_housing</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Latitude&quot;</span><span class="p">,</span>
-                <span class="n">size</span><span class="o">=</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">,</span>
-                <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">),</span>
-           <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">california_housing</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Longitude&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Latitude&quot;</span><span class="p">,</span>
+    <span class="n">size</span><span class="o">=</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Median house value depending of</span><span class="se">\n</span><span class="s2"> their spatial location&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a84580fc990eec4dd1ac8ddf4028448030a31ed5e7ce56bcdbd8672f7e2e0f1d.png" src="../_images/a84580fc990eec4dd1ac8ddf4028448030a31ed5e7ce56bcdbd8672f7e2e0f1d.png" />
+<img alt="../_images/baf318a8f10ca10ba025d92f636ca8e0e45130fa5de04ab5847329c21d762422.png" src="../_images/baf318a8f10ca10ba025d92f636ca8e0e45130fa5de04ab5847329c21d762422.png" />
 </div>
 </div>
 <p>If you are not familiar with the state of California, it is interesting to
-notice that all datapoints show a graphical representation of this state.
-We note that the high-valued houses will be located on the coast, where the
-big cities from California are located: San Diego, Los Angeles, San Jose, or
-San Francisco.</p>
-<p>We can do a random subsampling to have less data points to plot but that
-could still allow us to see these specificities.</p>
+notice that all datapoints show a graphical representation of this state. We
+note that the high-valued houses will be located on the coast, where the big
+cities from California are located: San Diego, Los Angeles, San Jose, or San
+Francisco.</p>
+<p>We can do a random subsampling to have less data points to plot but that could
+still allow us to see these specificities.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">indices</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">california_housing</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
-                     <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">california_housing</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">california_housing</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span>
-                <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Latitude&quot;</span><span class="p">,</span>
-                <span class="n">size</span><span class="o">=</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">,</span>
-                <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-           <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">california_housing</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Longitude&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Latitude&quot;</span><span class="p">,</span>
+    <span class="n">size</span><span class="o">=</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Median house value depending of</span><span class="se">\n</span><span class="s2"> their spatial location&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a75b55b4cdfe060086067f145c97c30c90f5bda9dd01b7ffbd8c88c3a847ce36.png" src="../_images/a75b55b4cdfe060086067f145c97c30c90f5bda9dd01b7ffbd8c88c3a847ce36.png" />
+<img alt="../_images/115f9ad4c108802585236b9c7f7dfe49392b9306d8c514f9cc24f43eb1c4c183.png" src="../_images/115f9ad4c108802585236b9c7f7dfe49392b9306d8c514f9cc24f43eb1c4c183.png" />
 </div>
 </div>
 <p>We can make a final analysis by making a pair plot of all features and the
@@ -1219,18 +1229,22 @@ such that we can create proper histogram.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/938d57bddc50bfc2d94f1e445802256fc92a13cb9d53743787e2e75b2748bbae.png" src="../_images/938d57bddc50bfc2d94f1e445802256fc92a13cb9d53743787e2e75b2748bbae.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)
+</pre></div>
+</div>
+<img alt="../_images/7a053612b00fa3ee0e0a20860ed2ad4058cef871d06103559cb243e2595a16d3.png" src="../_images/7a053612b00fa3ee0e0a20860ed2ad4058cef871d06103559cb243e2595a16d3.png" />
 </div>
 </div>
-<p>While it is always complicated to interpret a pairplot since there is a lot
-of data, here we can get a couple of intuitions. We can confirm that some
+<p>While it is always complicated to interpret a pairplot since there is a lot of
+data, here we can get a couple of intuitions. We can confirm that some
 features have extreme values (outliers?). We can as well see that the median
 income is helpful to distinguish high-valued from low-valued houses.</p>
 <p>Thus, creating a predictive model, we could expect the longitude, latitude,
 and the median income to be useful features to help at predicting the median
 house values.</p>
 <p>If you are curious, we created a linear predictive model below and show the
-values of the coefficients obtained via cross-validation</p>
+values of the coefficients obtained via cross-validation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
@@ -1241,8 +1255,12 @@ values of the coefficients obtained via cross-validation</p>
 <span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">alphas</span><span class="p">))</span>
 <span class="n">cv_results</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
-    <span class="n">model</span><span class="p">,</span> <span class="n">california_housing</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">california_housing</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
-    <span class="n">return_estimator</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">california_housing</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+    <span class="n">california_housing</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+    <span class="n">return_estimator</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1266,7 +1284,7 @@ values of the coefficients obtained via cross-validation</p>
 
 <span class="n">coefs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">[</span><span class="n">est</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span> <span class="k">for</span> <span class="n">est</span> <span class="ow">in</span> <span class="n">cv_results</span><span class="p">[</span><span class="s2">&quot;estimator&quot;</span><span class="p">]],</span>
-    <span class="n">columns</span><span class="o">=</span><span class="n">california_housing</span><span class="o">.</span><span class="n">feature_names</span>
+    <span class="n">columns</span><span class="o">=</span><span class="n">california_housing</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1282,12 +1300,12 @@ values of the coefficients obtained via cross-validation</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/31e14386255248230252ac8da66dc3f9ce3819dae2b7f8e8bc47fcd867fbc1de.png" src="../_images/31e14386255248230252ac8da66dc3f9ce3819dae2b7f8e8bc47fcd867fbc1de.png" />
+<img alt="../_images/771e4539220d867d59b15191ab85a4e76bf303b026de8f9052c1ef01b2d8a7ff.png" src="../_images/771e4539220d867d59b15191ab85a4e76bf303b026de8f9052c1ef01b2d8a7ff.png" />
 </div>
 </div>
 <p>It seems that the three features that we earlier spotted are found important
-by this model. But be careful regarding interpreting these coefficients.
-We let you go into the module “Interpretation” to go in depth regarding such
+by this model. But be careful regarding interpreting these coefficients. We
+let you go into the module “Interpretation” to go in depth regarding such
 experiment.</p>
 </section>
 

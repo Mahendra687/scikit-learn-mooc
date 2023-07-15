@@ -682,11 +682,11 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="linear-regression-for-a-non-linear-features-target-relationship">
 <h1>Linear regression for a non-linear features-target relationship<a class="headerlink" href="#linear-regression-for-a-non-linear-features-target-relationship" title="Permalink to this heading">#</a></h1>
-<p>In the previous exercise, you were asked to train a linear regression model
-on a dataset where the matrix <code class="docutils literal notranslate"><span class="pre">data</span></code> and the vector <code class="docutils literal notranslate"><span class="pre">target</span></code> do not have a
-linear link.</p>
-<p>In this notebook, we show that even if the parametrization of linear models
-is not natively adapted to the problem at hand, it is still possible to make
+<p>In the previous exercise, you were asked to train a linear regression model on
+a dataset where the matrix <code class="docutils literal notranslate"><span class="pre">data</span></code> and the vector <code class="docutils literal notranslate"><span class="pre">target</span></code> do not have a linear
+link.</p>
+<p>In this notebook, we show that even if the parametrization of linear models is
+not natively adapted to the problem at hand, it is still possible to make
 linear models more expressive by engineering additional features.</p>
 <p>A machine learning pipeline that combines a non-linear feature engineering
 step followed by a linear regression step can therefore be considered
@@ -701,11 +701,11 @@ previous exercise.</p>
 
 <span class="n">n_sample</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">data_max</span><span class="p">,</span> <span class="n">data_min</span> <span class="o">=</span> <span class="mf">1.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.4</span>
-<span class="n">len_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_max</span> <span class="o">-</span> <span class="n">data_min</span><span class="p">)</span>
+<span class="n">len_data</span> <span class="o">=</span> <span class="n">data_max</span> <span class="o">-</span> <span class="n">data_min</span>
 <span class="c1"># sort the data to make plotting easier later</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_sample</span><span class="p">)</span> <span class="o">*</span> <span class="n">len_data</span> <span class="o">-</span> <span class="n">len_data</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">noise</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_sample</span><span class="p">)</span> <span class="o">*</span> <span class="mf">.3</span>
-<span class="n">target</span> <span class="o">=</span> <span class="n">data</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">data</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">noise</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_sample</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.3</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">data</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">data</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">noise</span>
 </pre></div>
 </div>
 </div>
@@ -728,17 +728,18 @@ and target:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-<span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span>
-                    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/daf18ea076ec80c594f146f8483aa09cb40c7ca45abb33950122fd208dbf96c2.png" src="../_images/daf18ea076ec80c594f146f8483aa09cb40c7ca45abb33950122fd208dbf96c2.png" />
+<img alt="../_images/1bdc362e3890e313327ad7216749fdf433b2b159892175ec4a6a46676cbf2c41.png" src="../_images/1bdc362e3890e313327ad7216749fdf433b2b159892175ec4a6a46676cbf2c41.png" />
 </div>
 </div>
-<p>We will highlight the limitations of fitting a linear regression model as
-done in the previous exercise.</p>
+<p>We will highlight the limitations of fitting a linear regression model as done
+in the previous exercise.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>In scikit-learn, by convention <code class="docutils literal notranslate"><span class="pre">data</span></code> (also called <code class="docutils literal notranslate"><span class="pre">X</span></code> in the scikit-learn
@@ -782,24 +783,27 @@ vector represents a sample.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span>
-                     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean squared error = </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7760424c6c5eaae664a6fcacdc98a3de02655759c3c7d8abbcb87cb5d5e1b2a2.png" src="../_images/7760424c6c5eaae664a6fcacdc98a3de02655759c3c7d8abbcb87cb5d5e1b2a2.png" />
+<img alt="../_images/97ab37e02ace2bbe9f960768290783782c453af0e3e7e50ee5e6c80f535d056e.png" src="../_images/97ab37e02ace2bbe9f960768290783782c453af0e3e7e50ee5e6c80f535d056e.png" />
 </div>
 </div>
 <p>Here the coefficient and intercept learnt by <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> define the
-best “straight line” that fits the data. We can inspect the coefficients
-using the attributes of the model learnt as follows:</p>
+best “straight line” that fits the data. We can inspect the coefficients using
+the attributes of the model learnt as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;weight: </span><span class="si">{</span><span class="n">linear_regression</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;intercept: </span><span class="si">{</span><span class="n">linear_regression</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;weight: </span><span class="si">{</span><span class="n">linear_regression</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;intercept: </span><span class="si">{</span><span class="n">linear_regression</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -810,8 +814,8 @@ using the attributes of the model learnt as follows:</p>
 </div>
 </div>
 <p>It is important to note that the learnt model will not be able to handle the
-non-linear relationship between <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> since linear models
-assume the relationship between <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> to be linear.</p>
+non-linear relationship between <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> since linear models assume
+the relationship between <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> to be linear.</p>
 <p>Indeed, there are 3 possibilities to solve this issue:</p>
 <ol class="arabic simple">
 <li><p>choose a model that can natively deal with non-linearity,</p></li>
@@ -835,22 +839,23 @@ which can natively handle non-linearity.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span>
-                     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean squared error = </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/45b4845f116e22626cc86459e3eef35d5452f9239793438692abb658dce0edfb.png" src="../_images/45b4845f116e22626cc86459e3eef35d5452f9239793438692abb658dce0edfb.png" />
+<img alt="../_images/16597b87a05cec0d3c956bab30c8cab9a774035a270f3ec864093ea834ce1e12.png" src="../_images/16597b87a05cec0d3c956bab30c8cab9a774035a270f3ec864093ea834ce1e12.png" />
 </div>
 </div>
-<p>Instead of having a model which can natively deal with non-linearity, we
-could also modify our data: we could create new features, derived from the
-original features, using some expert knowledge. In this example, we know that
-we have a cubic and squared relationship between <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> (because
-we generated the data).</p>
+<p>Instead of having a model which can natively deal with non-linearity, we could
+also modify our data: we could create new features, derived from the original
+features, using some expert knowledge. In this example, we know that we have a
+cubic and squared relationship between <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> (because we
+generated the data).</p>
 <p>Indeed, we could create two new features (<code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">**</span> <span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">**</span> <span class="pre">3</span></code>) using
 this information as follows. This kind of transformation is called a
 polynomial feature expansion:</p>
@@ -868,7 +873,7 @@ polynomial feature expansion:</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_expanded</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">data</span><span class="p">,</span> <span class="n">data</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">data</span> <span class="o">**</span> <span class="mi">3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_expanded</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">data</span><span class="p">,</span> <span class="n">data</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">data</span><span class="o">**</span><span class="mi">3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">data_expanded</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
@@ -890,15 +895,16 @@ polynomial feature expansion:</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span>
-                     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean squared error = </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/87c1288d37b3e4822aafb4d5c1c5b85341b4f45527a55b8decc948245c19e892.png" src="../_images/87c1288d37b3e4822aafb4d5c1c5b85341b4f45527a55b8decc948245c19e892.png" />
+<img alt="../_images/6929e1563d7fb60255ddb2f4ea1f7fdb646041527ceb8d6f665fc374d8efb961.png" src="../_images/6929e1563d7fb60255ddb2f4ea1f7fdb646041527ceb8d6f665fc374d8efb961.png" />
 </div>
 </div>
 <p>We can see that even with a linear model, we can overcome the linearity
@@ -928,8 +934,8 @@ regression model.</p>
 </div>
 <p>In the previous cell we had to set <code class="docutils literal notranslate"><span class="pre">include_bias=False</span></code> as otherwise we would
 create a column perfectly correlated to the <code class="docutils literal notranslate"><span class="pre">intercept_</span></code> introduced by the
-<code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code>. We can verify that this procedure is equivalent to creating
-the features by hand up to numerical error by computing the maximum
+<code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code>. We can verify that this procedure is equivalent to
+creating the features by hand up to numerical error by computing the maximum
 of the absolute values of the differences between the features generated by
 both methods and checking that it is close to zero:</p>
 <div class="cell docutils container">
@@ -949,29 +955,29 @@ both methods and checking that it is close to zero:</p>
 manually engineered features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span>
-                     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean squared error = </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/87c1288d37b3e4822aafb4d5c1c5b85341b4f45527a55b8decc948245c19e892.png" src="../_images/87c1288d37b3e4822aafb4d5c1c5b85341b4f45527a55b8decc948245c19e892.png" />
+<img alt="../_images/6929e1563d7fb60255ddb2f4ea1f7fdb646041527ceb8d6f665fc374d8efb961.png" src="../_images/6929e1563d7fb60255ddb2f4ea1f7fdb646041527ceb8d6f665fc374d8efb961.png" />
 </div>
 </div>
 <p>The last possibility is to make a linear model more expressive is to use a
 “kernel”. Instead of learning a weight per feature as we previously
-emphasized, a weight will be assigned to each sample. However, not all
-samples will be used. This is the base of the support vector machine
-algorithm.</p>
+emphasized, a weight will be assigned to each sample. However, not all samples
+will be used. This is the base of the support vector machine algorithm.</p>
 <p>The mathematical definition of “kernels” and “support vector machines” is
 beyond the scope of this course. We encourage interested readers with a
 mathematical training to have a look at the scikit-learn <a class="reference external" href="https://scikit-learn.org/stable/modules/svm.html">documentation on
 SVMs</a> for more details.</p>
 <p>For the rest of us, let us just develop some intuitions on the relative
-expressive power of support vector machines with linear and non-linear
-kernels by fitting them on the same dataset.</p>
+expressive power of support vector machines with linear and non-linear kernels
+by fitting them on the same dataset.</p>
 <p>First, consider a support vector machine with a linear kernel:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -987,15 +993,16 @@ kernels by fitting them on the same dataset.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span>
-                     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean squared error = </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/672a254b10f00fff290d21caf057527a16da63fab1b96109a913bc8618c99523.png" src="../_images/672a254b10f00fff290d21caf057527a16da63fab1b96109a913bc8618c99523.png" />
+<img alt="../_images/d3b58c62636802a92cc592936a18b2b5295244df56201ff1e6ca839cd9849fcc.png" src="../_images/d3b58c62636802a92cc592936a18b2b5295244df56201ff1e6ca839cd9849fcc.png" />
 </div>
 </div>
 <p>The predictions of our SVR with a linear kernel are all aligned on a straight
@@ -1018,15 +1025,16 @@ expressivity as our previous polynomial regression pipeline:</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span>
-                     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean squared error = </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bcd915c03dae669e077be4c5d485fcfa6f443610ab2ad72eb7dbb225cb026ef5.png" src="../_images/bcd915c03dae669e077be4c5d485fcfa6f443610ab2ad72eb7dbb225cb026ef5.png" />
+<img alt="../_images/7aede16253abe1f03186e6d43e6b1652acb4ed652da290b9f0cd36d8dfcb3e23.png" src="../_images/7aede16253abe1f03186e6d43e6b1652acb4ed652da290b9f0cd36d8dfcb3e23.png" />
 </div>
 </div>
 <p>Kernel methods such as SVR are very efficient for small to medium datasets.</p>
@@ -1037,29 +1045,31 @@ as
 <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.KBinsDiscretizer.html">KBinsDiscretizer</a>
 or
 <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.kernel_approximation.Nystroem.html">Nystroem</a>.</p>
-<p>Here again we refer the interested reader to the documentation to get a
-proper definition of those methods. The following just gives an intuitive
-overview of the predictions we would get using those on our toy dataset:</p>
+<p>Here again we refer the interested reader to the documentation to get a proper
+definition of those methods. The following just gives an intuitive overview of
+the predictions we would get using those on our toy dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">KBinsDiscretizer</span>
 
 <span class="n">binned_regression</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
-    <span class="n">KBinsDiscretizer</span><span class="p">(</span><span class="n">n_bins</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span> <span class="n">LinearRegression</span><span class="p">(),</span>
+    <span class="n">KBinsDiscretizer</span><span class="p">(</span><span class="n">n_bins</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+    <span class="n">LinearRegression</span><span class="p">(),</span>
 <span class="p">)</span>
 <span class="n">binned_regression</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
 <span class="n">target_predicted</span> <span class="o">=</span> <span class="n">binned_regression</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span>
-                     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean squared error = </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b55b39b4645bbb6cb82eda90892e1261956a8ca82439e32a7a0793ca56a813e5.png" src="../_images/b55b39b4645bbb6cb82eda90892e1261956a8ca82439e32a7a0793ca56a813e5.png" />
+<img alt="../_images/5bbadd285cb529eba2ce032b9c187c23152e2d7eed123b492c8466af002783dd.png" src="../_images/5bbadd285cb529eba2ce032b9c187c23152e2d7eed123b492c8466af002783dd.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1067,21 +1077,23 @@ overview of the predictions we would get using those on our toy dataset:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.kernel_approximation</span> <span class="kn">import</span> <span class="n">Nystroem</span>
 
 <span class="n">nystroem_regression</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
-    <span class="n">Nystroem</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span> <span class="n">LinearRegression</span><span class="p">(),</span>
+    <span class="n">Nystroem</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+    <span class="n">LinearRegression</span><span class="p">(),</span>
 <span class="p">)</span>
 <span class="n">nystroem_regression</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
 <span class="n">target_predicted</span> <span class="o">=</span> <span class="n">nystroem_regression</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span>
-                     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">full_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;input_feature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean squared error = </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/25e90085d8bf7fdf1a199fd8991b43f7ff9c53fbfc765f5121e46123f14ca2b0.png" src="../_images/25e90085d8bf7fdf1a199fd8991b43f7ff9c53fbfc765f5121e46123f14ca2b0.png" />
+<img alt="../_images/a4145910607df84937d24ff5ed10c59b028dcaadb16b93db5424233fa838f799.png" src="../_images/a4145910607df84937d24ff5ed10c59b028dcaadb16b93db5424233fa838f799.png" />
 </div>
 </div>
 </section>

@@ -701,9 +701,14 @@ quotations from some energy companies.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">symbols</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;TOT&quot;</span><span class="p">:</span> <span class="s2">&quot;Total&quot;</span><span class="p">,</span> <span class="s2">&quot;XOM&quot;</span><span class="p">:</span> <span class="s2">&quot;Exxon&quot;</span><span class="p">,</span> <span class="s2">&quot;CVX&quot;</span><span class="p">:</span> <span class="s2">&quot;Chevron&quot;</span><span class="p">,</span>
-           <span class="s2">&quot;COP&quot;</span><span class="p">:</span> <span class="s2">&quot;ConocoPhillips&quot;</span><span class="p">,</span> <span class="s2">&quot;VLO&quot;</span><span class="p">:</span> <span class="s2">&quot;Valero Energy&quot;</span><span class="p">}</span>
-<span class="n">template_name</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;../datasets/financial-data/</span><span class="si">{}</span><span class="s2">.csv&quot;</span><span class="p">)</span>
+<span class="n">symbols</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;TOT&quot;</span><span class="p">:</span> <span class="s2">&quot;Total&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;XOM&quot;</span><span class="p">:</span> <span class="s2">&quot;Exxon&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CVX&quot;</span><span class="p">:</span> <span class="s2">&quot;Chevron&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;COP&quot;</span><span class="p">:</span> <span class="s2">&quot;ConocoPhillips&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;VLO&quot;</span><span class="p">:</span> <span class="s2">&quot;Valero Energy&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">template_name</span> <span class="o">=</span> <span class="s2">&quot;../datasets/financial-data/</span><span class="si">{}</span><span class="s2">.csv&quot;</span>
 
 <span class="n">quotes</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">:</span>
@@ -729,7 +734,7 @@ quotations from some energy companies.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9cd7fcb1ef5893997f3c3c8df4994130d7ace13f2199a8647647fc9998e78cd4.png" src="../_images/9cd7fcb1ef5893997f3c3c8df4994130d7ace13f2199a8647647fc9998e78cd4.png" />
+<img alt="../_images/fff215b62e72bbb091ab176db98454ac3af2a0717248960f15a3fa9a1ca404ce.png" src="../_images/fff215b62e72bbb091ab176db98454ac3af2a0717248960f15a3fa9a1ca404ce.png" />
 </div>
 </div>
 <p>Here, we want to predict the quotation of Chevron using all other energy
@@ -741,7 +746,8 @@ and then we evaluate other cross-validation methods.</p>
 
 <span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">quotes</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Chevron&quot;</span><span class="p">]),</span> <span class="n">quotes</span><span class="p">[</span><span class="s2">&quot;Chevron&quot;</span><span class="p">]</span>
 <span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span> <span class="n">target_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -774,15 +780,15 @@ check the generalization performance of our model.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
 
-<span class="n">test_score</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
-                             <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The mean R2 is: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">test_score</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span>
+    <span class="n">regressor</span><span class="p">,</span> <span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The mean R2 is: </span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean R2 is: 0.94 ± 0.07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean R2 is: 0.95 ± 0.07
 </pre></div>
 </div>
 </div>
@@ -819,8 +825,8 @@ procedure with a single split and plot the prediction. We can use
 </div>
 </div>
 </div>
-<p>Similarly, we obtain good results in terms of <span class="math notranslate nohighlight">\(R^2\)</span>.
-We will plot the training, testing and prediction samples.</p>
+<p>Similarly, we obtain good results in terms of <span class="math notranslate nohighlight">\(R^2\)</span>. We will plot the
+training, testing and prediction samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_train</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Training&quot;</span><span class="p">)</span>
@@ -834,7 +840,7 @@ We will plot the training, testing and prediction samples.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8286d42934857235b7195a50a2b524adc674e1948d2fc0efc20d6bf5d1991049.png" src="../_images/8286d42934857235b7195a50a2b524adc674e1948d2fc0efc20d6bf5d1991049.png" />
+<img alt="../_images/a8bcec434060549f7ef381e25b395da80af8662f4a4f3edf40d71c78e670b581.png" src="../_images/a8bcec434060549f7ef381e25b395da80af8662f4a4f3edf40d71c78e670b581.png" />
 </div>
 </div>
 <p>So in this context, it seems that the model predictions are following the
@@ -851,7 +857,10 @@ the remaining data to test.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span> <span class="n">target_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">,</span>
+    <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
 <span class="n">target_predicted</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
@@ -868,7 +877,7 @@ the remaining data to test.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The R2 on this single split is: -2.41
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The R2 on this single split is: -2.42
 </pre></div>
 </div>
 </div>
@@ -889,7 +898,7 @@ check what we are predicting.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a7423267b2b361b6a9b86ff63ab91a17287c23f3c5630cd4a915ebc23b455222.png" src="../_images/a7423267b2b361b6a9b86ff63ab91a17287c23f3c5630cd4a915ebc23b455222.png" />
+<img alt="../_images/8df665ba82cfc84f95ea03320a4b4e6cf69370cbe4f4f2b65c9b24f1cb866398.png" src="../_images/8df665ba82cfc84f95ea03320a4b4e6cf69370cbe4f4f2b65c9b24f1cb866398.png" />
 </div>
 </div>
 <p>We see that our model cannot predict anything because it doesn’t have samples
@@ -905,15 +914,15 @@ groups. We can use the <code class="docutils literal notranslate"><span class="p
 
 <span class="n">groups</span> <span class="o">=</span> <span class="n">quotes</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;Q&quot;</span><span class="p">)</span>
 <span class="n">cv</span> <span class="o">=</span> <span class="n">LeaveOneGroupOut</span><span class="p">()</span>
-<span class="n">test_score</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
-                             <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The mean R2 is: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">test_score</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span>
+    <span class="n">regressor</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The mean R2 is: </span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean R2 is: -0.85 ± 1.65
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean R2 is: -1.02 ± 1.68
 </pre></div>
 </div>
 </div>
@@ -930,15 +939,15 @@ behaviour.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">TimeSeriesSplit</span>
 
 <span class="n">cv</span> <span class="o">=</span> <span class="n">TimeSeriesSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="n">groups</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
-<span class="n">test_score</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
-                             <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The mean R2 is: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">test_score</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span>
+    <span class="n">regressor</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The mean R2 is: </span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">test_score</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean R2 is: -122.43 ± 510.99
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean R2 is: -1.50 ± 1.95
 </pre></div>
 </div>
 </div>

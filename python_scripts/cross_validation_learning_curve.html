@@ -743,6 +743,7 @@ proportion of the training set from 10% to 100%.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
 <span class="n">train_sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">train_sizes</span>
 </pre></div>
@@ -767,38 +768,32 @@ proportion of the training set from 10% to 100%.</p>
 <p>Now, we are all set to carry out the experiment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">learning_curve</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">LearningCurveDisplay</span>
 
-<span class="n">results</span> <span class="o">=</span> <span class="n">learning_curve</span><span class="p">(</span>
-    <span class="n">regressor</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">train_sizes</span><span class="o">=</span><span class="n">train_sizes</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
-    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">train_size</span><span class="p">,</span> <span class="n">train_scores</span><span class="p">,</span> <span class="n">test_scores</span> <span class="o">=</span> <span class="n">results</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
-<span class="c1"># Convert the scores into errors</span>
-<span class="n">train_errors</span><span class="p">,</span> <span class="n">test_errors</span> <span class="o">=</span> <span class="o">-</span><span class="n">train_scores</span><span class="p">,</span> <span class="o">-</span><span class="n">test_scores</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now, we can plot the curve.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">train_size</span><span class="p">,</span> <span class="n">train_errors</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-             <span class="n">yerr</span><span class="o">=</span><span class="n">train_errors</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Training error&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">train_size</span><span class="p">,</span> <span class="n">test_errors</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-             <span class="n">yerr</span><span class="o">=</span><span class="n">test_errors</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Testing error&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of samples in the training set&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean absolute error (k$)&quot;</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Learning curve for decision tree&quot;</span><span class="p">)</span>
+<span class="n">display</span> <span class="o">=</span> <span class="n">LearningCurveDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span>
+    <span class="n">regressor</span><span class="p">,</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">,</span>
+    <span class="n">train_sizes</span><span class="o">=</span><span class="n">train_sizes</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
+    <span class="n">score_type</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span>  <span class="c1"># both train and test errors</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span>
+    <span class="n">negate_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># to use when metric starts with &quot;neg_&quot;</span>
+    <span class="n">log_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># sets log scale for the x-axis</span>
+    <span class="n">score_name</span><span class="o">=</span><span class="s2">&quot;Mean absolute error (k$)&quot;</span><span class="p">,</span>
+    <span class="n">std_display_style</span><span class="o">=</span><span class="s2">&quot;errorbar&quot;</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">display</span><span class="o">.</span><span class="n">ax_</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Learning curve for decision tree&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9e04bdb90fdccc327f4424effc99f5b46a7fe13fc40916e503e83694e351a238.png" src="../_images/9e04bdb90fdccc327f4424effc99f5b46a7fe13fc40916e503e83694e351a238.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/model_selection/_plot.py:113: FutureWarning: The `log_scale` parameter is deprecated as of version 1.3 and will be removed in 1.5. You can use display.ax_.set_xscale and display.ax_.set_yscale instead.
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="../_images/812ff7f1820e6f8ee2ce8694a73e25dfb289270cb4dc6e6cb9f33e2dea845eb0.png" src="../_images/812ff7f1820e6f8ee2ce8694a73e25dfb289270cb4dc6e6cb9f33e2dea845eb0.png" />
 </div>
 </div>
 <p>Looking at the training error alone, we see that we get an error of 0 k$. It

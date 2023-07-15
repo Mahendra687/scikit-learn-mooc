@@ -718,22 +718,23 @@ features.</p>
 </div>
 </div>
 </div>
-<p>We will evaluate this model by a k-fold cross validation and store the
-results in a pandas dataframe.</p>
+<p>We will evaluate this model by a k-fold cross validation and store the results
+in a pandas dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
 
 <span class="n">cv_results_without_selection</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
-    <span class="n">model_without_selection</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">model_without_selection</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span>
+<span class="p">)</span>
 <span class="n">cv_results_without_selection</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cv_results_without_selection</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Then, we will build another model which will include a feature selection
-step based on a random forest and evaluate it as well with cross-validation.</p>
+<p>Then, we will build another model which will include a feature selection step
+based on a random forest and evaluate it as well with cross-validation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
@@ -741,22 +742,24 @@ step based on a random forest and evaluate it as well with cross-validation.</p>
 
 <span class="n">feature_selector</span> <span class="o">=</span> <span class="n">SelectFromModel</span><span class="p">(</span><span class="n">RandomForestClassifier</span><span class="p">())</span>
 <span class="n">model_with_selection</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
-    <span class="n">feature_selector</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">())</span>
+    <span class="n">feature_selector</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_results_with_selection</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">model_with_selection</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span>
-                                           <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_results_with_selection</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
+    <span class="n">model_with_selection</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span>
+<span class="p">)</span>
 <span class="n">cv_results_with_selection</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cv_results_with_selection</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can compare the testing score of the two models. For this matter,
-we are combining results in a single dataframe.</p>
+<p>We can compare the testing score of the two models. For this matter, we are
+combining results in a single dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
@@ -781,11 +784,11 @@ we are combining results in a single dataframe.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f8a018b92a34c82f31591edd1eb2f927bcd5735bda80f7ae2220920f409b6b2e.png" src="../_images/f8a018b92a34c82f31591edd1eb2f927bcd5735bda80f7ae2220920f409b6b2e.png" />
+<img alt="../_images/b01dab7934baeb8b238c0f206fe3c9b19555aedfee191bfafe7bff3b4ffdd7d6.png" src="../_images/b01dab7934baeb8b238c0f206fe3c9b19555aedfee191bfafe7bff3b4ffdd7d6.png" />
 </div>
 </div>
-<p>The model that selected a subset of feature is less performant than a
-random forest fitted on the full dataset.</p>
+<p>The model that selected a subset of feature is less performant than a random
+forest fitted on the full dataset.</p>
 <p>We can rely on some aspects tackled in the notebook presenting the model
 inspection to explain this behaviour. The decision tree’s relative feature
 importance will overestimate the importance of random feature when the

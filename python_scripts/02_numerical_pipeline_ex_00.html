@@ -689,6 +689,7 @@ particular the <code class="docutils literal notranslate"><span class="pre">.fit
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
 <span class="n">adult_census</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../datasets/adult-census-numeric.csv&quot;</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">adult_census</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">)</span>
 <span class="n">target</span> <span class="o">=</span> <span class="n">adult_census</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span>
@@ -698,11 +699,11 @@ particular the <code class="docutils literal notranslate"><span class="pre">.fit
 </div>
 <p>In the previous notebook we used <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">KNeighborsClassifier()</span></code>. All
 scikit-learn models can be created without arguments. This is convenient
-because it means that you don’t need to understand the full details of a
-model before starting to use it.</p>
-<p>One of the <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code> parameters is <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code>. It controls
-the number of neighbors we are going to use to make a prediction for a new
-data point.</p>
+because it means that you don’t need to understand the full details of a model
+before starting to use it.</p>
+<p>One of the <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code> parameters is <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code>. It controls the
+number of neighbors we are going to use to make a prediction for a new data
+point.</p>
 <p>What is the default value of the <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> parameter? Hint: Look at the
 documentation on the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html">scikit-learn
 website</a>
