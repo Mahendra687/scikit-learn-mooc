@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -56,8 +57,8 @@
     <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/sklearn_mooc.js"></script>
     <script src="../_static/matomo.js"></script>
+    <script src="../_static/sklearn_mooc.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -81,7 +82,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -115,12 +125,18 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -135,9 +151,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../toc.html">
+  
   
   
   
@@ -147,12 +165,12 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/scikit-learn-logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/scikit-learn-logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/scikit-learn-logo.png" class="logo__image only-light" alt="Scikit-learn course - Home"/>
+    <script>document.write(`<img src="../_static/scikit-learn-logo.png" class="logo__image only-dark" alt="Scikit-learn course - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
@@ -255,40 +273,30 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../linear_models/linear_models_module_intro.html">Module overview</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../linear_models/linear_models_intuitions_index.html">Intuitions on linear models</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../linear_models/linear_models_slides.html">🎥 Intuitions on linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linear_models/linear_models_quiz_m4_01.html">✅ Quiz M4.01</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_models/linear_models_regression_index.html">Linear regression</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="linear_regression_without_sklearn.html">Linear regression without scikit-learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_models_ex_01.html">📝 Exercise M4.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_models_sol_01.html">📃 Solution for Exercise M4.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_regression_in_sklearn.html">Linear regression using scikit-learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logistic_regression.html">Linear models for classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear_models/linear_models_quiz_m4_01.html">✅ Quiz M4.01</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_models/linear_models_non_linear_index.html">Non-linear feature engineering for linear models</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="linear_regression_non_linear_link.html">Non-linear feature engineering for Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_models_ex_02.html">📝 Exercise M4.02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_models_sol_02.html">📃 Solution for Exercise M4.02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_models_feature_engineering_classification.html">Non-linear feature engineering for Logistic Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_models_ex_03.html">📝 Exercise M4.03</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_models_sol_03.html">📃 Solution for Exercise M4.03</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_models/linear_models_quiz_m4_02.html">✅ Quiz M4.02</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_models/linear_models_non_linear_index.html">Modelling non-linear features-target relationships</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="linear_models_ex_02.html">📝 Exercise M4.02</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_models_sol_02.html">📃 Solution for Exercise M4.02</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_regression_non_linear_link.html">Linear regression for a non-linear features-target relationship</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_models_ex_03.html">📝 Exercise M4.03</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_models_sol_03.html">📃 Solution for Exercise M4.03</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linear_models/linear_models_quiz_m4_03.html">✅ Quiz M4.03</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_models/linear_models_regularization_index.html">Regularization in linear model</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_models/linear_models_regularization_index.html">Regularization in linear model</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../linear_models/regularized_linear_models_slides.html">🎥 Intuitions on regularized linear models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_models_regularization.html">Regularization of linear regression model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_models_ex_04.html">📝 Exercise M4.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_models_sol_04.html">📃 Solution for Exercise M4.04</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linear_models/linear_models_quiz_m4_04.html">✅ Quiz M4.04</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_models/linear_models_classification_index.html">Linear model for classification</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="logistic_regression.html">Linear model for classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_models_ex_05.html">📝 Exercise M4.05</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_models_sol_05.html">📃 Solution for Exercise M4.05</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logistic_regression_non_linear.html">Beyond linear separation in classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linear_models/linear_models_quiz_m4_05.html">✅ Quiz M4.05</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linear_models/linear_models_quiz_m4_03.html">✅ Quiz M4.03</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../linear_models/linear_models_wrap_up_quiz.html">🏁 Wrap-up quiz 4</a></li>
@@ -297,26 +305,26 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Decision tree models</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../trees/trees_module_intro.html">Module overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_intuitions_index.html">Intuitions on tree-based models</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_intuitions_index.html">Intuitions on tree-based models</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../trees/slides.html">🎥 Intuitions on tree-based models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trees/trees_quiz_m5_01.html">✅ Quiz M5.01</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_classification_index.html">Decision tree in classification</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_classification_index.html">Decision tree in classification</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="trees_classification.html">Build a classification decision tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trees_ex_01.html">📝 Exercise M5.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trees_sol_01.html">📃 Solution for Exercise M5.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trees/trees_quiz_m5_02.html">✅ Quiz M5.02</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_regression_index.html">Decision tree in regression</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_regression_index.html">Decision tree in regression</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="trees_regression.html">Decision tree for regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trees_ex_02.html">📝 Exercise M5.02</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trees_sol_02.html">📃 Solution for Exercise M5.02</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trees/trees_quiz_m5_03.html">✅ Quiz M5.03</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_hyperparameters_index.html">Hyperparameters of decision tree</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_hyperparameters_index.html">Hyperparameters of decision tree</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="trees_hyperparameters.html">Importance of decision tree hyperparameters on generalization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trees/trees_quiz_m5_04.html">✅ Quiz M5.04</a></li>
 </ul>
@@ -327,7 +335,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Ensemble of models</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ensemble/ensemble_module_intro.html">Module overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble/ensemble_bootstrap_index.html">Ensemble method using bootstrapping</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble/ensemble_bootstrap_index.html">Ensemble method using bootstrapping</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ensemble/bagging_slides.html">🎥 Intuitions on ensemble models: bagging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_introduction.html">Introductory example to ensemble models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_bagging.html">Bagging</a></li>
@@ -339,7 +347,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ensemble/ensemble_quiz_m6_01.html">✅ Quiz M6.01</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble/ensemble_boosting_index.html">Ensemble based on boosting</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble/ensemble_boosting_index.html">Ensemble based on boosting</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ensemble/boosting_slides.html">🎥 Intuitions on ensemble models: boosting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_adaboost.html">Adaptive Boosting (AdaBoost)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_gradient_boosting.html">Gradient-boosting decision tree (GBDT)</a></li>
@@ -349,7 +357,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ensemble/ensemble_quiz_m6_02.html">✅ Quiz M6.02</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble/ensemble_hyperparameters_index.html">Hyperparameter tuning with ensemble methods</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble/ensemble_hyperparameters_index.html">Hyperparameter tuning with ensemble methods</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_hyperparameters.html">Hyperparameter tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_ex_04.html">📝 Exercise M6.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_sol_04.html">📃 Solution for Exercise M6.04</a></li>
@@ -362,33 +370,33 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Evaluating model performance</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../evaluation/evaluation_module_intro.html">Module overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/cross_validation_baseline_index.html">Comparing a model with simple baselines</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/cross_validation_baseline_index.html">Comparing a model with simple baselines</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_baseline.html">Comparing model performance with a simple baseline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_ex_02.html">📝 Exercise M7.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_sol_02.html">📃 Solution for Exercise M7.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../evaluation/evaluation_quiz_m7_01.html">✅ Quiz M7.01</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/cross_validation_choices_index.html">Choice of cross-validation</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/cross_validation_choices_index.html">Choice of cross-validation</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_stratification.html">Stratification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_grouping.html">Sample grouping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_time.html">Non i.i.d. data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../evaluation/evaluation_quiz_m7_02.html">✅ Quiz M7.02</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/cross_validation_nested_index.html">Nested cross-validation</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/cross_validation_nested_index.html">Nested cross-validation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_nested.html">Nested cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../evaluation/evaluation_quiz_m7_03.html">✅ Quiz M7.03</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../evaluation/metrics_classification_index.html">Classification metrics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../evaluation/metrics_classification_index.html">Classification metrics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="metrics_classification.html">Classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metrics_ex_01.html">📝 Exercise M7.02</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">📃 Solution for Exercise M7.02</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../evaluation/evaluation_quiz_m7_04.html">✅ Quiz M7.04</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/metrics_regression_index.html">Regression metrics</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/metrics_regression_index.html">Regression metrics</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="metrics_regression.html">Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metrics_ex_02.html">📝 Exercise M7.03</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metrics_sol_02.html">📃 Solution for Exercise M7.03</a></li>
@@ -406,9 +414,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../appendix/glossary.html">Glossary</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/datasets_intro.html">Datasets description</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/datasets_intro.html">Datasets description</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="trees_dataset.html">The penguins datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../appendix/adult_census_description.html">The adult census dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets_adult_census.html">The adult census dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datasets_california_housing.html">The California housing dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datasets_ames_housing.html">The Ames housing dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datasets_blood_transfusion.html">The blood transfusion dataset</a></li>
@@ -423,7 +431,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../feature_selection/feature_selection_module_intro.html">Module overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="feature_selection_introduction.html">Benefits of using feature selection</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selection/feature_selection_limitation_index.html">Caveats of feature selection</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selection/feature_selection_limitation_index.html">Caveats of feature selection</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="feature_selection_ex_01.html">📝 Exercise 01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature_selection_sol_01.html">📃 Solution for Exercise 01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature_selection_limitation_model.html">Limitation of selecting feature using a model</a></li>
@@ -638,20 +646,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -678,7 +688,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="solution-for-exercise-m7-02">
 <h1>📃 Solution for Exercise M7.02<a class="headerlink" href="#solution-for-exercise-m7-02" title="Permalink to this heading">#</a></h1>
@@ -730,7 +740,7 @@ Check its documentation to learn how to do that.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy score: 0.629 ± 0.143
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy score: 0.618 ± 0.145
 </pre></div>
 </div>
 </div>
@@ -747,7 +757,7 @@ Check its documentation to learn how to do that.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Balanced accuracy score: 0.499 ± 0.110
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Balanced accuracy score: 0.513 ± 0.105
 </pre></div>
 </div>
 </div>
@@ -771,192 +781,192 @@ will not be supported by scikit-learn because it is indeed ambiguous.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:842: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:839: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
 Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
     score = scorer._score(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
     return self._sign * self._score_func(y_true, y_pred, **scoring_kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 211, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 214, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2127, in precision_score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2131, in precision_score
     p, _, _, _ = precision_recall_fscore_support(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 184, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 187, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1721, in precision_recall_fscore_support
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1724, in precision_recall_fscore_support
     labels = _check_set_wise_labels(y_true, y_pred, average, labels, pos_label)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1507, in _check_set_wise_labels
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1509, in _check_set_wise_labels
     raise ValueError(
 ValueError: pos_label=1 is not a valid label. It should be one of [&#39;donated&#39;, &#39;not donated&#39;]
 
   warnings.warn(
-/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:842: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:839: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
 Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
     score = scorer._score(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
     return self._sign * self._score_func(y_true, y_pred, **scoring_kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 211, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 214, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2127, in precision_score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2131, in precision_score
     p, _, _, _ = precision_recall_fscore_support(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 184, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 187, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1721, in precision_recall_fscore_support
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1724, in precision_recall_fscore_support
     labels = _check_set_wise_labels(y_true, y_pred, average, labels, pos_label)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1507, in _check_set_wise_labels
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1509, in _check_set_wise_labels
     raise ValueError(
 ValueError: pos_label=1 is not a valid label. It should be one of [&#39;donated&#39;, &#39;not donated&#39;]
 
   warnings.warn(
-/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:842: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:839: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
 Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
     score = scorer._score(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
     return self._sign * self._score_func(y_true, y_pred, **scoring_kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 211, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 214, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2127, in precision_score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2131, in precision_score
     p, _, _, _ = precision_recall_fscore_support(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 184, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 187, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1721, in precision_recall_fscore_support
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1724, in precision_recall_fscore_support
     labels = _check_set_wise_labels(y_true, y_pred, average, labels, pos_label)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1507, in _check_set_wise_labels
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1509, in _check_set_wise_labels
     raise ValueError(
 ValueError: pos_label=1 is not a valid label. It should be one of [&#39;donated&#39;, &#39;not donated&#39;]
 
   warnings.warn(
-/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:842: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:839: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
 Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
     score = scorer._score(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
     return self._sign * self._score_func(y_true, y_pred, **scoring_kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 211, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 214, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2127, in precision_score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2131, in precision_score
     p, _, _, _ = precision_recall_fscore_support(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 184, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 187, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1721, in precision_recall_fscore_support
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1724, in precision_recall_fscore_support
     labels = _check_set_wise_labels(y_true, y_pred, average, labels, pos_label)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1507, in _check_set_wise_labels
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1509, in _check_set_wise_labels
     raise ValueError(
 ValueError: pos_label=1 is not a valid label. It should be one of [&#39;donated&#39;, &#39;not donated&#39;]
 
   warnings.warn(
-/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:842: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:839: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
 Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
     score = scorer._score(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
     return self._sign * self._score_func(y_true, y_pred, **scoring_kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 211, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 214, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2127, in precision_score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2131, in precision_score
     p, _, _, _ = precision_recall_fscore_support(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 184, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 187, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1721, in precision_recall_fscore_support
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1724, in precision_recall_fscore_support
     labels = _check_set_wise_labels(y_true, y_pred, average, labels, pos_label)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1507, in _check_set_wise_labels
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1509, in _check_set_wise_labels
     raise ValueError(
 ValueError: pos_label=1 is not a valid label. It should be one of [&#39;donated&#39;, &#39;not donated&#39;]
 
   warnings.warn(
-/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:842: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:839: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
 Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
     score = scorer._score(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
     return self._sign * self._score_func(y_true, y_pred, **scoring_kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 211, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 214, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2127, in precision_score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2131, in precision_score
     p, _, _, _ = precision_recall_fscore_support(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 184, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 187, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1721, in precision_recall_fscore_support
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1724, in precision_recall_fscore_support
     labels = _check_set_wise_labels(y_true, y_pred, average, labels, pos_label)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1507, in _check_set_wise_labels
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1509, in _check_set_wise_labels
     raise ValueError(
 ValueError: pos_label=1 is not a valid label. It should be one of [&#39;donated&#39;, &#39;not donated&#39;]
 
   warnings.warn(
-/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:842: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:839: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
 Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
     score = scorer._score(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
     return self._sign * self._score_func(y_true, y_pred, **scoring_kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 211, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 214, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2127, in precision_score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2131, in precision_score
     p, _, _, _ = precision_recall_fscore_support(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 184, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 187, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1721, in precision_recall_fscore_support
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1724, in precision_recall_fscore_support
     labels = _check_set_wise_labels(y_true, y_pred, average, labels, pos_label)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1507, in _check_set_wise_labels
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1509, in _check_set_wise_labels
     raise ValueError(
 ValueError: pos_label=1 is not a valid label. It should be one of [&#39;donated&#39;, &#39;not donated&#39;]
 
   warnings.warn(
-/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:842: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:839: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
 Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
     score = scorer._score(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
     return self._sign * self._score_func(y_true, y_pred, **scoring_kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 211, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 214, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2127, in precision_score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2131, in precision_score
     p, _, _, _ = precision_recall_fscore_support(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 184, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 187, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1721, in precision_recall_fscore_support
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1724, in precision_recall_fscore_support
     labels = _check_set_wise_labels(y_true, y_pred, average, labels, pos_label)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1507, in _check_set_wise_labels
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1509, in _check_set_wise_labels
     raise ValueError(
 ValueError: pos_label=1 is not a valid label. It should be one of [&#39;donated&#39;, &#39;not donated&#39;]
 
   warnings.warn(
-/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:842: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:839: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
 Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
     score = scorer._score(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
     return self._sign * self._score_func(y_true, y_pred, **scoring_kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 211, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 214, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2127, in precision_score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2131, in precision_score
     p, _, _, _ = precision_recall_fscore_support(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 184, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 187, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1721, in precision_recall_fscore_support
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1724, in precision_recall_fscore_support
     labels = _check_set_wise_labels(y_true, y_pred, average, labels, pos_label)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1507, in _check_set_wise_labels
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1509, in _check_set_wise_labels
     raise ValueError(
 ValueError: pos_label=1 is not a valid label. It should be one of [&#39;donated&#39;, &#39;not donated&#39;]
 
   warnings.warn(
-/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:842: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/model_selection/_validation.py:839: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
 Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 136, in __call__
     score = scorer._score(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_scorer.py&quot;, line 355, in _score
     return self._sign * self._score_func(y_true, y_pred, **scoring_kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 211, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 214, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2127, in precision_score
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 2131, in precision_score
     p, _, _, _ = precision_recall_fscore_support(
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 184, in wrapper
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py&quot;, line 187, in wrapper
     return func(*args, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1721, in precision_recall_fscore_support
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1724, in precision_recall_fscore_support
     labels = _check_set_wise_labels(y_true, y_pred, average, labels, pos_label)
-  File &quot;/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1507, in _check_set_wise_labels
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/_classification.py&quot;, line 1509, in _check_set_wise_labels
     raise ValueError(
 ValueError: pos_label=1 is not a valid label. It should be one of [&#39;donated&#39;, &#39;not donated&#39;]
 
@@ -998,7 +1008,7 @@ in the <code class="docutils literal notranslate"><span class="pre">cross_val_sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precision score: 0.239 ± 0.175
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precision score: 0.247 ± 0.166
 </pre></div>
 </div>
 </div>
@@ -1022,14 +1032,14 @@ for both metrics using a box plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.00348425, 0.00317979, 0.0032959 , 0.00317287, 0.00316143,
-        0.00319195, 0.00296593, 0.00322104, 0.00316787, 0.00320792]),
- &#39;score_time&#39;: array([0.00271297, 0.00259352, 0.00255084, 0.00255704, 0.00255895,
-        0.00256062, 0.00254011, 0.00256348, 0.00255632, 0.00257587]),
- &#39;test_accuracy&#39;: array([0.26666667, 0.50666667, 0.76      , 0.57333333, 0.56      ,
-        0.68      , 0.73333333, 0.76      , 0.66216216, 0.75675676]),
- &#39;test_balanced_accuracy&#39;: array([0.38450292, 0.46637427, 0.63304094, 0.41520468, 0.3874269 ,
-        0.44736842, 0.59649123, 0.72807018, 0.47110423, 0.51186791])}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.0028348 , 0.00247526, 0.00258279, 0.00244474, 0.00244713,
+        0.00258279, 0.00238013, 0.00247455, 0.00247049, 0.00246596]),
+ &#39;score_time&#39;: array([0.00225306, 0.00210953, 0.00222397, 0.00209284, 0.00211668,
+        0.00212359, 0.00212526, 0.00210309, 0.00209951, 0.00207543]),
+ &#39;test_accuracy&#39;: array([0.29333333, 0.53333333, 0.76      , 0.57333333, 0.56      ,
+        0.68      , 0.72      , 0.77333333, 0.66216216, 0.75675676]),
+ &#39;test_balanced_accuracy&#39;: array([0.42105263, 0.48391813, 0.63304094, 0.41520468, 0.3874269 ,
+        0.44736842, 0.56871345, 0.73684211, 0.5123839 , 0.51186791])}
 </pre></div>
 </div>
 </div>
@@ -1058,7 +1068,7 @@ for both metrics using a box plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/56ad3e2ff2923328bb59a82563270e0fea8b7c30813f3d1afd44604ee71a7073.png" src="../_images/56ad3e2ff2923328bb59a82563270e0fea8b7c30813f3d1afd44604ee71a7073.png" />
+<img alt="../_images/69dd34471741916989940da4b883d7a8eeb575e0a1b809c98a8ab056c5533c7e.png" src="../_images/69dd34471741916989940da4b883d7a8eeb575e0a1b809c98a8ab056c5533c7e.png" />
 </div>
 </div>
 </section>
@@ -1088,11 +1098,10 @@ for both metrics using a box plot.</p>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="metrics_ex_01.html"
@@ -1112,15 +1121,14 @@ for both metrics using a box plot.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
@@ -1138,6 +1146,7 @@ By scikit-learn developers
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -1177,8 +1186,8 @@ By scikit-learn developers
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>

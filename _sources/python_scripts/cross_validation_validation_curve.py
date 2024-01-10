@@ -12,8 +12,8 @@
 # and how it helps us quantify the training and testing errors as well as their
 # fluctuations.
 #
-# In this notebook, we will put these two errors into perspective and show how
-# they can help us know if our model generalizes, overfits, or underfits.
+# In this notebook, we put these two errors into perspective and show how they
+# can help us know if our model generalizes, overfits, or underfits.
 #
 # Let's first load the data and create the same model as in the previous
 # notebook.
@@ -40,7 +40,7 @@ regressor = DecisionTreeRegressor()
 # ## Overfitting vs. underfitting
 #
 # To better understand the generalization performance of our model and maybe
-# find insights on how to improve it, we will compare the testing error with the
+# find insights on how to improve it, we compare the testing error with the
 # training error. Thus, we need to compute the error on the training set, which
 # is possible using the `cross_validate` function.
 
@@ -48,7 +48,7 @@ regressor = DecisionTreeRegressor()
 import pandas as pd
 from sklearn.model_selection import cross_validate, ShuffleSplit
 
-cv = ShuffleSplit(n_splits=30, test_size=0.2)
+cv = ShuffleSplit(n_splits=30, test_size=0.2, random_state=0)
 cv_results = cross_validate(
     regressor,
     data,
@@ -93,21 +93,29 @@ _ = plt.title("Train and test errors distribution via cross-validation")
 #
 # ## Validation curve
 #
+# We call **hyperparameters** those parameters that potentially impact the
+# result of the learning and subsequent predictions of a predictor. For example:
+#
+# - the number of neighbors in a k-nearest neighbor model;
+#
+# - the degree of the polynomial.
+#
 # Some model hyperparameters are usually the key to go from a model that
 # underfits to a model that overfits, hopefully going through a region were we
 # can get a good balance between the two. We can acquire knowledge by plotting a
 # curve called the validation curve. This curve can also be applied to the above
 # experiment and varies the value of a hyperparameter.
 #
-# For the decision tree, the `max_depth` parameter is used to control the
+# For the decision tree, the `max_depth` hyperparameter is used to control the
 # tradeoff between under-fitting and over-fitting.
 
 # %%
 # %%time
-from sklearn.model_selection import validation_curve
+import numpy as np
+from sklearn.model_selection import ValidationCurveDisplay
 
-max_depth = [1, 5, 10, 15, 20, 25]
-train_scores, test_scores = validation_curve(
+max_depth = np.array([1, 5, 10, 15, 20, 25])
+disp = ValidationCurveDisplay.from_estimator(
     regressor,
     data,
     target,
@@ -115,22 +123,15 @@ train_scores, test_scores = validation_curve(
     param_range=max_depth,
     cv=cv,
     scoring="neg_mean_absolute_error",
+    negate_score=True,
+    std_display_style="errorbar",
     n_jobs=2,
 )
-train_errors, test_errors = -train_scores, -test_scores
-
-# %% [markdown]
-# Now that we collected the results, we will show the validation curve by
-# plotting the training and testing errors (as well as their deviations).
-
-# %%
-plt.plot(max_depth, train_errors.mean(axis=1), label="Training error")
-plt.plot(max_depth, test_errors.mean(axis=1), label="Testing error")
-plt.legend()
-
-plt.xlabel("Maximum depth of decision tree")
-plt.ylabel("Mean absolute error (k$)")
-_ = plt.title("Validation curve for decision tree")
+_ = disp.ax_.set(
+    xlabel="Maximum depth of decision tree",
+    ylabel="Mean absolute error (k$)",
+    title="Validate curve for decision tree",
+)
 
 # %% [markdown]
 # The validation curve can be divided into three areas:
@@ -158,33 +159,11 @@ _ = plt.title("Validation curve for decision tree")
 # could reach by just tuning this parameter.
 #
 # Be aware that looking at the mean errors is quite limiting. We should also
-# look at the standard deviation to assess the dispersion of the score. We can
-# repeat the same plot as before but this time, we will add some information to
-# show the standard deviation of the errors as well.
-
-# %%
-plt.errorbar(
-    max_depth,
-    train_errors.mean(axis=1),
-    yerr=train_errors.std(axis=1),
-    label="Training error",
-)
-plt.errorbar(
-    max_depth,
-    test_errors.mean(axis=1),
-    yerr=test_errors.std(axis=1),
-    label="Testing error",
-)
-plt.legend()
-
-plt.xlabel("Maximum depth of decision tree")
-plt.ylabel("Mean absolute error (k$)")
-_ = plt.title("Validation curve for decision tree")
-
-# %% [markdown]
-# We were lucky that the variance of the errors was small compared to their
-# respective values, and therefore the conclusions above are quite clear. This
-# is not necessarily always the case.
+# look at the standard deviation to assess the dispersion of the score. For such
+# purpose, we can use the parameter `std_display_style` to show the standard
+# deviation of the errors as well. In this case, the variance of the errors is
+# small compared to their respective values, and therefore the conclusions above
+# are quite clear. This is not necessarily always the case.
 
 # %% [markdown]
 # ## Summary:
@@ -193,4 +172,4 @@ _ = plt.title("Validation curve for decision tree")
 #
 # * how to identify whether a model is generalizing, overfitting, or
 #   underfitting;
-# * how to check influence of a hyperparameter on the tradeoff underfit/overfit.
+# * how to check influence of a hyperparameter on the underfit/overfit tradeoff.
