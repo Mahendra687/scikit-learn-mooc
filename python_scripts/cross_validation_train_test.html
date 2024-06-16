@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -82,28 +82,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -126,12 +121,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
 
-  <header>
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
-  </header>
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
@@ -183,14 +180,14 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">The predictive modeling pipeline</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../predictive_modeling_pipeline/predictive_modeling_module_intro.html">Module overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../predictive_modeling_pipeline/01_tabular_data_exploration_index.html">Tabular data exploration</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../predictive_modeling_pipeline/01_tabular_data_exploration_index.html">Tabular data exploration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="01_tabular_data_exploration.html">First look at our dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="01_tabular_data_exploration_ex_01.html">📝 Exercise M1.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="01_tabular_data_exploration_sol_01.html">📃 Solution for Exercise M1.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../predictive_modeling_pipeline/01_tabular_data_exploration_quiz_m1_01.html">✅ Quiz M1.01</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../predictive_modeling_pipeline/02_numerical_pipeline_index.html">Fitting a scikit-learn model on numerical data</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../predictive_modeling_pipeline/02_numerical_pipeline_index.html">Fitting a scikit-learn model on numerical data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="02_numerical_pipeline_introduction.html">First model with scikit-learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02_numerical_pipeline_ex_00.html">📝 Exercise M1.02</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02_numerical_pipeline_sol_00.html">📃 Solution for Exercise M1.02</a></li>
@@ -202,8 +199,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="02_numerical_pipeline_cross_validation.html">Model evaluation using cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../predictive_modeling_pipeline/02_numerical_pipeline_quiz_m1_02.html">✅ Quiz M1.02</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_index.html">Handling categorical data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_index.html">Handling categorical data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="03_categorical_pipeline.html">Encoding of categorical variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03_categorical_pipeline_ex_01.html">📝 Exercise M1.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03_categorical_pipeline_sol_01.html">📃 Solution for Exercise M1.04</a></li>
@@ -214,20 +211,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="03_categorical_pipeline_visualization.html">Visualizing scikit-learn pipelines in Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_quiz_m1_03.html">✅ Quiz M1.03</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../predictive_modeling_pipeline/wrap_up_quiz.html">🏁 Wrap-up quiz 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../predictive_modeling_pipeline/predictive_modeling_module_take_away.html">Main take-away</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Selecting the best model</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../overfit/overfit_module_intro.html">Module overview</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../overfit/overfit_overfitting_underfitting_index.html">Overfitting and underfitting</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../overfit/overfit_overfitting_underfitting_index.html">Overfitting and underfitting</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../overfit/overfitting_vs_under_fitting_slides.html">🎥 Overfitting and Underfitting</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Cross-validation framework</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overfit/overfitting_vs_under_fitting_quiz_m2_01.html">✅ Quiz M2.01</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../overfit/overfit_validation_learning_curves_index.html">Validation and learning curves</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../overfit/overfit_validation_learning_curves_index.html">Validation and learning curves</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overfit/learning_validation_curves_slides.html">🎥 Comparing train and test errors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_validation_curve.html">Overfit-generalization-underfit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_learning_curve.html">Effect of the sample size in cross-validation</a></li>
@@ -235,26 +232,26 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_sol_01.html">📃 Solution for Exercise M2.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overfit/learning_validation_curves_quiz_m2_02.html">✅ Quiz M2.02</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../overfit/overfit_bias_variance_index.html">Bias versus variance trade-off</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../overfit/overfit_bias_variance_index.html">Bias versus variance trade-off</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overfit/bias_vs_variance_slides.html">🎥 Bias versus Variance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overfit/bias_vs_variance_quiz_m2_03.html">✅ Quiz M2.03</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../overfit/overfit_wrap_up_quiz.html">🏁 Wrap-up quiz 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overfit/overfit_take_away.html">Main take-away</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Hyperparameter tuning</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../tuning/parameter_tuning_module_intro.html">Module overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../tuning/parameter_tuning_manual_index.html">Manual tuning</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tuning/parameter_tuning_manual_index.html">Manual tuning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="parameter_tuning_manual.html">Set and get hyperparameters in scikit-learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parameter_tuning_ex_02.html">📝 Exercise M3.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parameter_tuning_sol_02.html">📃 Solution for Exercise M3.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tuning/parameter_tuning_manual_quiz_m3_01.html">✅ Quiz M3.01</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../tuning/parameter_tuning_automated_index.html">Automated tuning</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tuning/parameter_tuning_automated_index.html">Automated tuning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="parameter_tuning_grid_search.html">Hyperparameter tuning by grid-search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parameter_tuning_randomized_search.html">Hyperparameter tuning by randomized-search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tuning/parameter_tuning_parallel_plot_video.html">🎥 Analysis of hyperparameter search results</a></li>
@@ -264,14 +261,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="parameter_tuning_sol_03.html">📃 Solution for Exercise M3.02</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tuning/parameter_tuning_automated_quiz_m3_02.html">✅ Quiz M3.02</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../tuning/parameter_tuning_wrap_up_quiz.html">🏁 Wrap-up quiz 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tuning/parameter_tuning_module_take_away.html">Main take-away</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear models</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../linear_models/linear_models_module_intro.html">Module overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_models/linear_models_intuitions_index.html">Intuitions on linear models</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_models/linear_models_intuitions_index.html">Intuitions on linear models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../linear_models/linear_models_slides.html">🎥 Intuitions on linear models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_regression_without_sklearn.html">Linear regression without scikit-learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_models_ex_01.html">📝 Exercise M4.01</a></li>
@@ -280,8 +277,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="logistic_regression.html">Linear models for classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_models/linear_models_quiz_m4_01.html">✅ Quiz M4.01</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_models/linear_models_non_linear_index.html">Non-linear feature engineering for linear models</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_models/linear_models_non_linear_index.html">Non-linear feature engineering for linear models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="linear_regression_non_linear_link.html">Non-linear feature engineering for Linear Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_models_ex_02.html">📝 Exercise M4.02</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_models_sol_02.html">📃 Solution for Exercise M4.02</a></li>
@@ -290,52 +287,52 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="linear_models_sol_03.html">📃 Solution for Exercise M4.03</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_models/linear_models_quiz_m4_02.html">✅ Quiz M4.02</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_models/linear_models_regularization_index.html">Regularization in linear model</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../linear_models/linear_models_regularization_index.html">Regularization in linear model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../linear_models/regularized_linear_models_slides.html">🎥 Intuitions on regularized linear models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_models_regularization.html">Regularization of linear regression model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_models_ex_04.html">📝 Exercise M4.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear_models_sol_04.html">📃 Solution for Exercise M4.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linear_models/linear_models_quiz_m4_03.html">✅ Quiz M4.03</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../linear_models/linear_models_wrap_up_quiz.html">🏁 Wrap-up quiz 4</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../linear_models/linear_models_module_take_away.html">Main take-away</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Decision tree models</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../trees/trees_module_intro.html">Module overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_intuitions_index.html">Intuitions on tree-based models</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_intuitions_index.html">Intuitions on tree-based models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../trees/slides.html">🎥 Intuitions on tree-based models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trees/trees_quiz_m5_01.html">✅ Quiz M5.01</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_classification_index.html">Decision tree in classification</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_classification_index.html">Decision tree in classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="trees_classification.html">Build a classification decision tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trees_ex_01.html">📝 Exercise M5.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trees_sol_01.html">📃 Solution for Exercise M5.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trees/trees_quiz_m5_02.html">✅ Quiz M5.02</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_regression_index.html">Decision tree in regression</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_regression_index.html">Decision tree in regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="trees_regression.html">Decision tree for regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trees_ex_02.html">📝 Exercise M5.02</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trees_sol_02.html">📃 Solution for Exercise M5.02</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trees/trees_quiz_m5_03.html">✅ Quiz M5.03</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_hyperparameters_index.html">Hyperparameters of decision tree</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../trees/trees_hyperparameters_index.html">Hyperparameters of decision tree</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="trees_hyperparameters.html">Importance of decision tree hyperparameters on generalization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trees/trees_quiz_m5_04.html">✅ Quiz M5.04</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../trees/trees_wrap_up_quiz.html">🏁 Wrap-up quiz 5</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../trees/trees_module_take_away.html">Main take-away</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Ensemble of models</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ensemble/ensemble_module_intro.html">Module overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble/ensemble_bootstrap_index.html">Ensemble method using bootstrapping</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble/ensemble_bootstrap_index.html">Ensemble method using bootstrapping</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ensemble/bagging_slides.html">🎥 Intuitions on ensemble models: bagging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_introduction.html">Introductory example to ensemble models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_bagging.html">Bagging</a></li>
@@ -346,63 +343,63 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="ensemble_sol_02.html">📃 Solution for Exercise M6.02</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ensemble/ensemble_quiz_m6_01.html">✅ Quiz M6.01</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble/ensemble_boosting_index.html">Ensemble based on boosting</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble/ensemble_boosting_index.html">Ensemble based on boosting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ensemble/boosting_slides.html">🎥 Intuitions on ensemble models: boosting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_adaboost.html">Adaptive Boosting (AdaBoost)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ensemble_gradient_boosting.html">Gradient-boosting decision tree (GBDT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ensemble_gradient_boosting.html">Gradient-boosting decision tree</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_ex_03.html">📝 Exercise M6.03</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_sol_03.html">📃 Solution for Exercise M6.03</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_hist_gradient_boosting.html">Speeding-up gradient-boosting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ensemble/ensemble_quiz_m6_02.html">✅ Quiz M6.02</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble/ensemble_hyperparameters_index.html">Hyperparameter tuning with ensemble methods</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ensemble/ensemble_hyperparameters_index.html">Hyperparameter tuning with ensemble methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_hyperparameters.html">Hyperparameter tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_ex_04.html">📝 Exercise M6.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ensemble_sol_04.html">📃 Solution for Exercise M6.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ensemble/ensemble_quiz_m6_03.html">✅ Quiz M6.03</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../ensemble/ensemble_wrap_up_quiz.html">🏁 Wrap-up quiz 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ensemble/ensemble_module_take_away.html">Main take-away</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Evaluating model performance</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../evaluation/evaluation_module_intro.html">Module overview</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/cross_validation_baseline_index.html">Comparing a model with simple baselines</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/cross_validation_baseline_index.html">Comparing a model with simple baselines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_baseline.html">Comparing model performance with a simple baseline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_ex_02.html">📝 Exercise M7.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_sol_02.html">📃 Solution for Exercise M7.01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../evaluation/evaluation_quiz_m7_01.html">✅ Quiz M7.01</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/cross_validation_choices_index.html">Choice of cross-validation</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/cross_validation_choices_index.html">Choice of cross-validation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_stratification.html">Stratification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_grouping.html">Sample grouping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_time.html">Non i.i.d. data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../evaluation/evaluation_quiz_m7_02.html">✅ Quiz M7.02</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/cross_validation_nested_index.html">Nested cross-validation</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/cross_validation_nested_index.html">Nested cross-validation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="cross_validation_nested.html">Nested cross-validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../evaluation/evaluation_quiz_m7_03.html">✅ Quiz M7.03</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/metrics_classification_index.html">Classification metrics</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/metrics_classification_index.html">Classification metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="metrics_classification.html">Classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metrics_ex_01.html">📝 Exercise M7.02</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metrics_sol_01.html">📃 Solution for Exercise M7.02</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../evaluation/evaluation_quiz_m7_04.html">✅ Quiz M7.04</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/metrics_regression_index.html">Regression metrics</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../evaluation/metrics_regression_index.html">Regression metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="metrics_regression.html">Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metrics_ex_02.html">📝 Exercise M7.03</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metrics_sol_02.html">📃 Solution for Exercise M7.03</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../evaluation/evaluation_quiz_m7_05.html">✅ Quiz M7.05</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../evaluation/evaluation_wrap_up_quiz.html">🏁 Wrap-up quiz 7</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../evaluation/evaluation_module_take_away.html">Main take-away</a></li>
 </ul>
@@ -414,7 +411,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../appendix/glossary.html">Glossary</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/datasets_intro.html">Datasets description</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/datasets_intro.html">Datasets description</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="trees_dataset.html">The penguins datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datasets_adult_census.html">The adult census dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datasets_california_housing.html">The California housing dataset</a></li>
@@ -422,7 +419,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="datasets_blood_transfusion.html">The blood transfusion dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datasets_bike_rides.html">The bike rides dataset</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/acknowledgement.html">Acknowledgement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/notebook_timings.html">Notebook timings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/toc_redirect.html">Table of contents</a></li>
@@ -431,12 +428,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../feature_selection/feature_selection_module_intro.html">Module overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="feature_selection_introduction.html">Benefits of using feature selection</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selection/feature_selection_limitation_index.html">Caveats of feature selection</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../feature_selection/feature_selection_limitation_index.html">Caveats of feature selection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="feature_selection_ex_01.html">📝 Exercise 01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature_selection_sol_01.html">📃 Solution for Exercise 01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature_selection_limitation_model.html">Limitation of selecting feature using a model</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../feature_selection/feature_selection_module_take_away.html">Main take-away</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../feature_selection/feature_selection_quiz.html">✅ Quiz</a></li>
 </ul>
@@ -460,7 +457,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -469,7 +466,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -708,7 +705,7 @@ document.write(`
 <p>In the previous notebooks, we introduce some concepts regarding the evaluation
 of predictive models. While this section could be slightly redundant, we
 intend to go into details into the cross-validation framework.</p>
-<p>Before we dive in, let’s linger on the reasons for always having training and
+<p>Before we dive in, let’s focus on the reasons for always having training and
 testing sets. Let’s first look at the limitation of using a dataset without
 keeping any samples out.</p>
 <p>To illustrate the different concepts, we will use the California housing
@@ -729,7 +726,7 @@ geographical information.</p>
 <p>Therefore, the task to solve is different from the one shown in the previous
 notebook. The target to be predicted is a continuous variable and not anymore
 discrete. This task is called regression.</p>
-<p>This, we will use a predictive model specific to regression and not to
+<p>Thus, we will use a predictive model specific to regression and not to
 classification.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -745,21 +742,21 @@ California Housing dataset
 
 **Data Set Characteristics:**
 
-    :Number of Instances: 20640
+:Number of Instances: 20640
 
-    :Number of Attributes: 8 numeric, predictive attributes and the target
+:Number of Attributes: 8 numeric, predictive attributes and the target
 
-    :Attribute Information:
-        - MedInc        median income in block group
-        - HouseAge      median house age in block group
-        - AveRooms      average number of rooms per household
-        - AveBedrms     average number of bedrooms per household
-        - Population    block group population
-        - AveOccup      average number of household members
-        - Latitude      block group latitude
-        - Longitude     block group longitude
+:Attribute Information:
+    - MedInc        median income in block group
+    - HouseAge      median house age in block group
+    - AveRooms      average number of rooms per household
+    - AveBedrms     average number of bedrooms per household
+    - Population    block group population
+    - AveOccup      average number of household members
+    - Latitude      block group latitude
+    - Longitude     block group longitude
 
-    :Missing Attribute Values: None
+:Missing Attribute Values: None
 
 This dataset was obtained from the StatLib repository.
 https://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html
@@ -790,7 +787,7 @@ It can be downloaded/loaded using the
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -879,8 +876,75 @@ It can be downloaded/loaded using the
       <td>37.85</td>
       <td>-122.25</td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>20635</th>
+      <td>1.5603</td>
+      <td>25.0</td>
+      <td>5.045455</td>
+      <td>1.133333</td>
+      <td>845.0</td>
+      <td>2.560606</td>
+      <td>39.48</td>
+      <td>-121.09</td>
+    </tr>
+    <tr>
+      <th>20636</th>
+      <td>2.5568</td>
+      <td>18.0</td>
+      <td>6.114035</td>
+      <td>1.315789</td>
+      <td>356.0</td>
+      <td>3.122807</td>
+      <td>39.49</td>
+      <td>-121.21</td>
+    </tr>
+    <tr>
+      <th>20637</th>
+      <td>1.7000</td>
+      <td>17.0</td>
+      <td>5.205543</td>
+      <td>1.120092</td>
+      <td>1007.0</td>
+      <td>2.325635</td>
+      <td>39.43</td>
+      <td>-121.22</td>
+    </tr>
+    <tr>
+      <th>20638</th>
+      <td>1.8672</td>
+      <td>18.0</td>
+      <td>5.329513</td>
+      <td>1.171920</td>
+      <td>741.0</td>
+      <td>2.123209</td>
+      <td>39.43</td>
+      <td>-121.32</td>
+    </tr>
+    <tr>
+      <th>20639</th>
+      <td>2.3886</td>
+      <td>16.0</td>
+      <td>5.254717</td>
+      <td>1.162264</td>
+      <td>1387.0</td>
+      <td>2.616981</td>
+      <td>39.37</td>
+      <td>-121.24</td>
+    </tr>
   </tbody>
 </table>
+<p>20640 rows × 8 columns</p>
 </div></div></div>
 </div>
 <p>To simplify future visualization, let’s transform the prices from the 100
@@ -888,17 +952,23 @@ It can be downloaded/loaded using the
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">*=</span> <span class="mi">100</span>
-<span class="n">target</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">target</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    452.6
-1    358.5
-2    352.1
-3    341.3
-4    342.2
-Name: MedHouseVal, dtype: float64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        452.6
+1        358.5
+2        352.1
+3        341.3
+4        342.2
+         ...  
+20635     78.1
+20636     77.1
+20637     92.3
+20638     84.7
+20639     89.4
+Name: MedHouseVal, Length: 20640, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -921,7 +991,411 @@ Appendix - Datasets description section at the end of this MOOC.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeRegressor(random_state=0)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeRegressor</label><div class="sk-toggleable__content"><pre>DecisionTreeRegressor(random_state=0)</pre></div></div></div></div></div></div></div>
+<div class="output text_html"><style>#sk-container-id-1 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-1 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-1 pre {
+  padding: 0;
+}
+
+#sk-container-id-1 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-1 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-1 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-1 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-1 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-1 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-1 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-1 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-1 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-1 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-1 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-1 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-1 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-1 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-1 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeRegressor(random_state=0)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;DecisionTreeRegressor<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.tree.DecisionTreeRegressor.html">?<span>Documentation for DecisionTreeRegressor</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>DecisionTreeRegressor(random_state=0)</pre></div> </div></div></div></div></div></div>
 </div>
 <p>After training the regressor, we would like to know its potential
 generalization performance once deployed in production. For this purpose, we
@@ -990,7 +1464,411 @@ error</strong>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-2 {color: black;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeRegressor(random_state=0)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeRegressor</label><div class="sk-toggleable__content"><pre>DecisionTreeRegressor(random_state=0)</pre></div></div></div></div></div></div></div>
+<div class="output text_html"><style>#sk-container-id-2 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-2 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-2 pre {
+  padding: 0;
+}
+
+#sk-container-id-2 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-2 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-2 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-2 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-2 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-2 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-2 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-2 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-2 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-2 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label label.sk-toggleable__label,
+#sk-container-id-2 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-2 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-2 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-2 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-2 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-2 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-2 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-2 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeRegressor(random_state=0)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;DecisionTreeRegressor<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.tree.DecisionTreeRegressor.html">?<span>Documentation for DecisionTreeRegressor</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>DecisionTreeRegressor(random_state=0)</pre></div> </div></div></div></div></div></div>
 </div>
 <p>Finally, we estimate the different types of errors. Let’s start by computing
 the training error.</p>
@@ -1090,7 +1968,7 @@ it into a pandas dataframe to ease visualization and manipulation.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">cv_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cv_results</span><span class="p">)</span>
-<span class="n">cv_results</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">cv_results</span>
 </pre></div>
 </div>
 </div>
@@ -1121,33 +1999,243 @@ it into a pandas dataframe to ease visualization and manipulation.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.141336</td>
-      <td>0.002956</td>
+      <td>0.140209</td>
+      <td>0.002989</td>
       <td>-46.909797</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.141691</td>
-      <td>0.002892</td>
+      <td>0.139261</td>
+      <td>0.002953</td>
       <td>-46.421170</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.140394</td>
-      <td>0.002817</td>
+      <td>0.139388</td>
+      <td>0.003114</td>
       <td>-47.411089</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.141476</td>
-      <td>0.002725</td>
+      <td>0.139038</td>
+      <td>0.003115</td>
       <td>-44.319824</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.139123</td>
-      <td>0.002908</td>
+      <td>0.138109</td>
+      <td>0.002814</td>
       <td>-47.607875</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.140386</td>
+      <td>0.002574</td>
+      <td>-45.901300</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.141019</td>
+      <td>0.002784</td>
+      <td>-46.572767</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.139016</td>
+      <td>0.003242</td>
+      <td>-46.194585</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.141282</td>
+      <td>0.002993</td>
+      <td>-45.590236</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.139759</td>
+      <td>0.002849</td>
+      <td>-45.727998</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.139306</td>
+      <td>0.002554</td>
+      <td>-49.325285</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0.137549</td>
+      <td>0.002606</td>
+      <td>-47.433377</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0.138619</td>
+      <td>0.003280</td>
+      <td>-46.899316</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0.135531</td>
+      <td>0.003539</td>
+      <td>-46.413821</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>0.138934</td>
+      <td>0.003114</td>
+      <td>-46.727109</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>0.137644</td>
+      <td>0.003228</td>
+      <td>-44.254324</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0.139332</td>
+      <td>0.003088</td>
+      <td>-48.042372</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>0.139616</td>
+      <td>0.002907</td>
+      <td>-43.026746</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0.138818</td>
+      <td>0.002889</td>
+      <td>-46.176363</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>0.137695</td>
+      <td>0.002846</td>
+      <td>-47.662623</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>0.139122</td>
+      <td>0.002938</td>
+      <td>-44.451056</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>0.137525</td>
+      <td>0.002963</td>
+      <td>-46.173780</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>0.141938</td>
+      <td>0.002701</td>
+      <td>-45.795231</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>0.139878</td>
+      <td>0.003003</td>
+      <td>-46.166307</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0.139214</td>
+      <td>0.002695</td>
+      <td>-46.360169</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>0.137617</td>
+      <td>0.002655</td>
+      <td>-46.968612</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>0.159880</td>
+      <td>0.003114</td>
+      <td>-46.325623</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>0.137474</td>
+      <td>0.002969</td>
+      <td>-46.522054</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>0.141046</td>
+      <td>0.003259</td>
+      <td>-47.415111</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>0.138244</td>
+      <td>0.003025</td>
+      <td>-46.050461</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>0.140048</td>
+      <td>0.003187</td>
+      <td>-46.182242</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>0.139594</td>
+      <td>0.003263</td>
+      <td>-45.305162</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>0.140707</td>
+      <td>0.003147</td>
+      <td>-44.359681</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>0.157584</td>
+      <td>0.003149</td>
+      <td>-46.829014</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>0.140404</td>
+      <td>0.003285</td>
+      <td>-46.648786</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>0.138033</td>
+      <td>0.003189</td>
+      <td>-45.653002</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>0.140208</td>
+      <td>0.003276</td>
+      <td>-46.864559</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>0.156018</td>
+      <td>0.003406</td>
+      <td>-47.420250</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>0.138586</td>
+      <td>0.002665</td>
+      <td>-47.352148</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>0.137731</td>
+      <td>0.002849</td>
+      <td>-47.102818</td>
     </tr>
   </tbody>
 </table>
@@ -1210,71 +2298,71 @@ score.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.141336</td>
-      <td>0.002956</td>
+      <td>0.140209</td>
+      <td>0.002989</td>
       <td>-46.909797</td>
       <td>46.909797</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.141691</td>
-      <td>0.002892</td>
+      <td>0.139261</td>
+      <td>0.002953</td>
       <td>-46.421170</td>
       <td>46.421170</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.140394</td>
-      <td>0.002817</td>
+      <td>0.139388</td>
+      <td>0.003114</td>
       <td>-47.411089</td>
       <td>47.411089</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.141476</td>
-      <td>0.002725</td>
+      <td>0.139038</td>
+      <td>0.003115</td>
       <td>-44.319824</td>
       <td>44.319824</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.139123</td>
-      <td>0.002908</td>
+      <td>0.138109</td>
+      <td>0.002814</td>
       <td>-47.607875</td>
       <td>47.607875</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.140749</td>
-      <td>0.002860</td>
+      <td>0.140386</td>
+      <td>0.002574</td>
       <td>-45.901300</td>
       <td>45.901300</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.141667</td>
-      <td>0.002733</td>
+      <td>0.141019</td>
+      <td>0.002784</td>
       <td>-46.572767</td>
       <td>46.572767</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.141417</td>
-      <td>0.002517</td>
+      <td>0.139016</td>
+      <td>0.003242</td>
       <td>-46.194585</td>
       <td>46.194585</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.141797</td>
-      <td>0.002771</td>
+      <td>0.141282</td>
+      <td>0.002993</td>
       <td>-45.590236</td>
       <td>45.590236</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.142418</td>
-      <td>0.002653</td>
+      <td>0.139759</td>
+      <td>0.002849</td>
       <td>-45.727998</td>
       <td>45.727998</td>
     </tr>
@@ -1311,7 +2399,7 @@ estimate of its variability.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c6e6fc8ce67780d4a8a70895d851852a6de74753faa5b93993d54482788afd23.png" src="../_images/c6e6fc8ce67780d4a8a70895d851852a6de74753faa5b93993d54482788afd23.png" />
+<img alt="../_images/e4882abe4e85af48a8c6e000b53d4d81425c40825a30ea5e5383727fc493cab3.png" src="../_images/e4882abe4e85af48a8c6e000b53d4d81425c40825a30ea5e5383727fc493cab3.png" />
 </div>
 </div>
 <p>We observe that the testing error is clustered around 47 k$ and ranges from
@@ -1364,7 +2452,7 @@ the scale of the natural variability of the vector <code class="docutils literal
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9abaf698e215afe64a9e6a3cc66225c763f2706099816e251a48ce61083b56b3.png" src="../_images/9abaf698e215afe64a9e6a3cc66225c763f2706099816e251a48ce61083b56b3.png" />
+<img alt="../_images/3172098caf0ce24f4e6478c65b2b283797ae28c836a8622cfa8e893033a21b42.png" src="../_images/3172098caf0ce24f4e6478c65b2b283797ae28c836a8622cfa8e893033a21b42.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1413,8 +2501,8 @@ passing the option <code class="docutils literal notranslate"><span class="pre">
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.16451406, 0.16091418, 0.1624341 , 0.16195703, 0.15671182]),
- &#39;score_time&#39;: array([0.00223517, 0.00214696, 0.00243282, 0.00220037, 0.00223279]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.16493154, 0.1603086 , 0.16124344, 0.16059422, 0.15544343]),
+ &#39;score_time&#39;: array([0.00240231, 0.00227237, 0.00248528, 0.0021193 , 0.00232959]),
  &#39;estimator&#39;: [DecisionTreeRegressor(random_state=0),
   DecisionTreeRegressor(random_state=0),
   DecisionTreeRegressor(random_state=0),
@@ -1504,7 +2592,7 @@ generalization performance variations.</p></li>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1569,7 +2657,7 @@ By scikit-learn developers
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2022-2024.
       <br/>
     
   </p>
@@ -1606,8 +2694,8 @@ By scikit-learn developers
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>
