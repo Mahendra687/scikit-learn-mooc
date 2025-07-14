@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Bagging &#8212; Scikit-learn course</title>
   
@@ -19,56 +18,52 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css?v=80799b6b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/matomo.js"></script>
-    <script src="../_static/sklearn_mooc.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_scripts/ensemble_bagging';</script>
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/matomo.js?v=8af330ab"></script>
+    <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="📝 Exercise M6.01" href="ensemble_ex_01.html" />
@@ -150,6 +145,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../toc.html">
   
@@ -167,6 +164,17 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
@@ -471,9 +479,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -498,14 +506,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/INRIA/scikit-learn-mooc/main?urlpath=tree/python_scripts/ensemble_bagging.py" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -646,10 +654,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -657,14 +665,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -701,30 +709,27 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="bagging">
-<h1>Bagging<a class="headerlink" href="#bagging" title="Permalink to this heading">#</a></h1>
-<p>This notebook introduces a very natural strategy to build ensembles of machine
-learning models named “bagging”.</p>
+<h1>Bagging<a class="headerlink" href="#bagging" title="Link to this heading">#</a></h1>
+<p>In this notebook we introduce a very natural strategy to build ensembles of
+machine learning models, named “bagging”.</p>
 <p>“Bagging” stands for Bootstrap AGGregatING. It uses bootstrap resampling
 (random sampling with replacement) to learn several models on random
 variations of the training set. At predict time, the predictions of each
 learner are aggregated to give the final predictions.</p>
-<p>First, we will generate a simple synthetic dataset to get insights regarding
-bootstraping.</p>
+<p>We first create a simple synthetic dataset to better understand bootstrapping.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># create a random number generator that will be used to set the randomness</span>
-<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 
-<span class="k">def</span> <span class="nf">generate_data</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_data</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate synthetic dataset. Returns `data_train`, `data_test`,</span>
 <span class="sd">    `target_train`.&quot;&quot;&quot;</span>
     <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Create a random number generator</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_samples</span><span class="p">)</span>
-    <span class="n">noise</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+    <span class="n">noise</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,))</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">noise</span>
     <span class="n">y</span> <span class="o">/=</span> <span class="n">y</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 
@@ -741,8 +746,8 @@ bootstraping.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 
 <span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">target_train</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
@@ -753,15 +758,14 @@ bootstraping.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/46dd80f1fe16d09145e3e07dc99ec9b0e776c9855c0aed0facd2fbb34cb370ed.png" src="../_images/46dd80f1fe16d09145e3e07dc99ec9b0e776c9855c0aed0facd2fbb34cb370ed.png" />
+<img alt="../_images/f405d946f0da23c9994580d89e85c202f4f9fb6b420a6a29ac102ae55af7cb30.png" src="../_images/f405d946f0da23c9994580d89e85c202f4f9fb6b420a6a29ac102ae55af7cb30.png" />
 </div>
 </div>
-<p>The relationship between our feature and the target to predict is non-linear.
-However, a decision tree is capable of approximating such a non-linear
-dependency:</p>
+<p>The target to predict is a non-linear function of the only feature. However, a
+decision tree is capable of approximating such a non-linear dependency:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
 
 <span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
@@ -785,26 +789,27 @@ be meaningless.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/09c87a1ec82e1a784ecd740065f1fc858c001fcce612315dbeb17a9ff8d93fc4.png" src="../_images/09c87a1ec82e1a784ecd740065f1fc858c001fcce612315dbeb17a9ff8d93fc4.png" />
+<img alt="../_images/1bbe98f693c12900aff6889c046b91e75d96f02e4a3e91c4fd569d9cf3ad9ffb.png" src="../_images/1bbe98f693c12900aff6889c046b91e75d96f02e4a3e91c4fd569d9cf3ad9ffb.png" />
 </div>
 </div>
-<p>Let’s see how we can use bootstraping to learn several trees.</p>
+<p>Let’s see how we can use bootstrapping to learn several trees.</p>
 <section id="bootstrap-resampling">
-<h2>Bootstrap resampling<a class="headerlink" href="#bootstrap-resampling" title="Permalink to this heading">#</a></h2>
-<p>Given a dataset with <code class="docutils literal notranslate"><span class="pre">n</span></code> data points, bootstrapping corresponds to resampling
-with replacement  <code class="docutils literal notranslate"><span class="pre">n</span></code> out of such <code class="docutils literal notranslate"><span class="pre">n</span></code> data points uniformly at random.</p>
+<h2>Bootstrap resampling<a class="headerlink" href="#bootstrap-resampling" title="Link to this heading">#</a></h2>
+<p>Bootstrapping involves uniformly resampling <code class="docutils literal notranslate"><span class="pre">n</span></code> data points from a dataset of
+<code class="docutils literal notranslate"><span class="pre">n</span></code> points, with replacement, ensuring each sample has an equal chance of
+selection.</p>
 <p>As a result, the output of the bootstrap sampling procedure is another dataset
-with also n data points, but likely with duplicates. As a consequence, there
-are also data points from the original dataset that are never selected to
-appear in a bootstrap sample (by chance). Those data points that are left away
-are often referred to as the out-of-bag sample.</p>
-<p>We will create a function that given <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> will return a
+with <code class="docutils literal notranslate"><span class="pre">n</span></code> data points, likely containing duplicates. Consequently, some data
+points from the original dataset may not be selected for a bootstrap sample.
+These unselected data points are often referred to as the out-of-bag sample.</p>
+<p>We now create a function that, given <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code>, returns a
 resampled variation <code class="docutils literal notranslate"><span class="pre">data_bootstrap</span></code> and <code class="docutils literal notranslate"><span class="pre">target_bootstrap</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bootstrap_sample</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bootstrap_sample</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="c1"># Indices corresponding to a sampling with replacement of the same sample</span>
     <span class="c1"># size than the original data</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
     <span class="n">bootstrap_indices</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span>
         <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
         <span class="n">size</span><span class="o">=</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
@@ -819,7 +824,7 @@ resampled variation <code class="docutils literal notranslate"><span class="pre"
 </div>
 </div>
 </div>
-<p>We will generate 3 bootstrap samples and qualitatively check the difference
+<p>We generate 3 bootstrap samples and qualitatively check the difference
 with the original dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -829,6 +834,7 @@ with the original dataset.</p>
     <span class="n">data_bootstrap</span><span class="p">,</span> <span class="n">target_bootstrap</span> <span class="o">=</span> <span class="n">bootstrap_sample</span><span class="p">(</span>
         <span class="n">data_train</span><span class="p">,</span>
         <span class="n">target_train</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">bootstrap_idx</span><span class="p">,</span>  <span class="c1"># ensure bootstrap samples are different but reproducible</span>
     <span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
@@ -855,9 +861,9 @@ with the original dataset.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9616ffb27dcc227d2583936d945fe66bc067789f55ba3d709e34882c8e4e73b7.png" src="../_images/9616ffb27dcc227d2583936d945fe66bc067789f55ba3d709e34882c8e4e73b7.png" />
-<img alt="../_images/c6946c4fae9b919f7dda4e96818d5c3b1aff2a046e41b1781ca1f063509f476c.png" src="../_images/c6946c4fae9b919f7dda4e96818d5c3b1aff2a046e41b1781ca1f063509f476c.png" />
-<img alt="../_images/815eb376a1c0dcb050b5b06d056a20ed0299063014b138607131e176bd32b53b.png" src="../_images/815eb376a1c0dcb050b5b06d056a20ed0299063014b138607131e176bd32b53b.png" />
+<img alt="../_images/308dc4320353944fbd49faec1ee4afcf4e85558fd1b167baad56a0a9010eeb33.png" src="../_images/308dc4320353944fbd49faec1ee4afcf4e85558fd1b167baad56a0a9010eeb33.png" />
+<img alt="../_images/fd8a862fcd7512951f2804e630b9914785fcaeaf327f9401eb02ba438991e921.png" src="../_images/fd8a862fcd7512951f2804e630b9914785fcaeaf327f9401eb02ba438991e921.png" />
+<img alt="../_images/a666e5576d824865ed17bd06fbcc981b567d0b18c9f1b1aa5ce0b4d1847a92a4.png" src="../_images/a666e5576d824865ed17bd06fbcc981b567d0b18c9f1b1aa5ce0b4d1847a92a4.png" />
 </div>
 </div>
 <p>Observe that the 3 variations all share common points with the original
@@ -892,9 +898,9 @@ unique samples in the bootstrap samples.</p>
 </div>
 </div>
 <p>On average, roughly 63.2% of the original data points of the original dataset
-will be present in a given bootstrap sample. Since the bootstrap sample has
-the same size as the original dataset, there will be many samples that are in
-the bootstrap sample multiple times.</p>
+are present in a given bootstrap sample. Since the bootstrap sample has the
+same size as the original dataset, there are many samples that are in the
+bootstrap sample multiple times.</p>
 <p>Using bootstrap we are able to generate many datasets, all slightly different.
 We can fit a decision tree for each of these datasets and they all shall be
 slightly different as well.</p>
@@ -905,7 +911,7 @@ slightly different as well.</p>
     <span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="n">data_bootstrap_sample</span><span class="p">,</span> <span class="n">target_bootstrap_sample</span> <span class="o">=</span> <span class="n">bootstrap_sample</span><span class="p">(</span>
-        <span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span>
+        <span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">bootstrap_idx</span>
     <span class="p">)</span>
     <span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_bootstrap_sample</span><span class="p">,</span> <span class="n">target_bootstrap_sample</span><span class="p">)</span>
     <span class="n">bag_of_trees</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
@@ -937,13 +943,13 @@ different predictions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e1be10d8b2d40ab19593f1123b40dfd863262fb9d3c9fed0f265197e6b06b8c3.png" src="../_images/e1be10d8b2d40ab19593f1123b40dfd863262fb9d3c9fed0f265197e6b06b8c3.png" />
+<img alt="../_images/167ffa431f1b03631e0add7cc5b40a1250975171248051b3e3125dbe977ef4aa.png" src="../_images/167ffa431f1b03631e0add7cc5b40a1250975171248051b3e3125dbe977ef4aa.png" />
 </div>
 </div>
 </section>
 <section id="aggregating">
-<h2>Aggregating<a class="headerlink" href="#aggregating" title="Permalink to this heading">#</a></h2>
-<p>Once our trees are fitted, we are able to get predictions for each of them. In
+<h2>Aggregating<a class="headerlink" href="#aggregating" title="Link to this heading">#</a></h2>
+<p>Once our trees are fitted, we are able to get predictions from each of them. In
 regression, the most straightforward way to combine those predictions is just
 to average them: for a given test data point, we feed the input feature values
 to each of the <code class="docutils literal notranslate"><span class="pre">n</span></code> trained models in the ensemble and as a result compute <code class="docutils literal notranslate"><span class="pre">n</span></code>
@@ -981,17 +987,17 @@ for the test data point is the average of those <code class="docutils literal no
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/140958ab01854d488b3ebe7b896353cf254737aa53e437c782abd731bf032328.png" src="../_images/140958ab01854d488b3ebe7b896353cf254737aa53e437c782abd731bf032328.png" />
+<img alt="../_images/39a5631ab87aec99376e3635301c95ae1afe8944f4c0e8ce58e9e1c732b8768a.png" src="../_images/39a5631ab87aec99376e3635301c95ae1afe8944f4c0e8ce58e9e1c732b8768a.png" />
 </div>
 </div>
-<p>The unbroken red line shows the averaged predictions, which would be the final
+<p>The continuous red line shows the averaged predictions, which would be the final
 predictions given by our ‘bag’ of decision tree regressors. Note that the
 predictions of the ensemble is more stable because of the averaging operation.
 As a result, the bag of trees as a whole is less likely to overfit than the
 individual trees.</p>
 </section>
 <section id="bagging-in-scikit-learn">
-<h2>Bagging in scikit-learn<a class="headerlink" href="#bagging-in-scikit-learn" title="Permalink to this heading">#</a></h2>
+<h2>Bagging in scikit-learn<a class="headerlink" href="#bagging-in-scikit-learn" title="Link to this heading">#</a></h2>
 <p>Scikit-learn implements the bagging procedure as a <strong>meta-estimator</strong>, that is,
 an estimator that wraps another estimator: it takes a base model that is
 cloned several times and trained independently on each bootstrap sample.</p>
@@ -1000,7 +1006,7 @@ trees. We set <code class="docutils literal notranslate"><span class="pre">n_est
 above to get a stronger smoothing effect.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaggingRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaggingRegressor</span>
 
 <span class="n">bagged_trees</span> <span class="o">=</span> <span class="n">BaggingRegressor</span><span class="p">(</span>
     <span class="n">estimator</span><span class="o">=</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
@@ -1021,12 +1027,12 @@ above to get a stronger smoothing effect.</p>
 <span class="n">bagged_trees_predictions</span> <span class="o">=</span> <span class="n">bagged_trees</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">bagged_trees_predictions</span><span class="p">)</span>
 
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Predictions from a bagging classifier&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Predictions from a bagging regressor&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3ff6eb2cdd58309753ce87516cfdc375e1791a1ba91f1e23f638163c171a7ead.png" src="../_images/3ff6eb2cdd58309753ce87516cfdc375e1791a1ba91f1e23f638163c171a7ead.png" />
+<img alt="../_images/43925407112893b45284f144b8893a338b1e37f09a6bf4d20ab24675e7dd160b.png" src="../_images/43925407112893b45284f144b8893a338b1e37f09a6bf4d20ab24675e7dd160b.png" />
 </div>
 </div>
 <p>Because we use 100 trees in the ensemble, the average prediction is indeed
@@ -1065,42 +1071,41 @@ Python list in the <code class="docutils literal notranslate"><span class="pre">
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/001b70dea983c119ca73c26137348e23008bf9bed923cbce5824b0df68cf4285.png" src="../_images/001b70dea983c119ca73c26137348e23008bf9bed923cbce5824b0df68cf4285.png" />
+<img alt="../_images/e71b93586c8d8fb155e867b4b215c1ab486cf2b75c29608e595cd596844889a5.png" src="../_images/e71b93586c8d8fb155e867b4b215c1ab486cf2b75c29608e595cd596844889a5.png" />
 </div>
 </div>
 <p>We used a low value of the opacity parameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code> to better appreciate the
-overlap in the prediction functions of the individual trees.</p>
-<p>This visualization gives some insights on the uncertainty in the predictions
-in different areas of the feature space.</p>
+overlap in the prediction functions of the individual trees. Such
+visualization also gives us an intuition on the variance in the predictions
+across different zones of the feature space.</p>
 </section>
 <section id="bagging-complex-pipelines">
-<h2>Bagging complex pipelines<a class="headerlink" href="#bagging-complex-pipelines" title="Permalink to this heading">#</a></h2>
-<p>While we used a decision tree as a base model, nothing prevents us of using
-any other type of model.</p>
+<h2>Bagging complex pipelines<a class="headerlink" href="#bagging-complex-pipelines" title="Link to this heading">#</a></h2>
+<p>Even if here we used a decision tree as a base model, nothing prevents us from
+using any other type of model.</p>
 <p>As we know that the original data generating function is a noisy polynomial
 transformation of the input variable, let us try to fit a bagged polynomial
 regression pipeline on this dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ridge</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_pipeline</span>
 
 
 <span class="n">polynomial_regressor</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
     <span class="n">MinMaxScaler</span><span class="p">(),</span>
-    <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
+    <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
     <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">),</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>This pipeline first scales the data to the 0-1 range with <code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code>. Then
-it extracts degree-4 polynomial features. The resulting features will all stay
-in the 0-1 range by construction: if <code class="docutils literal notranslate"><span class="pre">x</span></code> lies in the 0-1 range then <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">**</span> <span class="pre">n</span></code>
-also lies in the 0-1 range for any value of <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p>
+<p>This pipeline first scales the data to the 0-1 range using <code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code>. It
+then generates degree-4 polynomial features. By design, these features remain
+in the 0-1 range, as any power of <code class="docutils literal notranslate"><span class="pre">x</span></code> within this range also stays within 0-1.</p>
 <p>Then the pipeline feeds the resulting non-linear features to a regularized
 linear regression model for the final prediction of the target variable.</p>
 <p>Note that we intentionally use a small value for the regularization parameter
@@ -1151,7 +1156,7 @@ base models.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fa95a208dad3887e2395bfc129f96805624f4114e2d42eac569f5392fb46aec7.png" src="../_images/fa95a208dad3887e2395bfc129f96805624f4114e2d42eac569f5392fb46aec7.png" />
+<img alt="../_images/5b0a0a33cfbbb2694a6af5360a71ce2149b8de7b5ea6034d1f0200347220b196.png" src="../_images/5b0a0a33cfbbb2694a6af5360a71ce2149b8de7b5ea6034d1f0200347220b196.png" />
 </div>
 </div>
 <p>The predictions of this bagged polynomial regression model looks qualitatively
@@ -1275,12 +1280,14 @@ By scikit-learn developers
 <div class="extra_footer">
   <div>
   <div class="mooc_add">
-   <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Join the full MOOC for better learning!</a>
+   <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Join the full MOOC experience</a>
+   <a href="https://certification.probabl.ai/">Get officially certified!</a>
   </div>
   Brought to you under a <a href="https://github.com/INRIA/scikit-learn-mooc/blob/main/LICENSE">CC-BY License</a> by
   <a href="https://learninglab.inria.fr">Inria Learning Lab</a>,
   <a href="https://scikit-learn.fondation-inria.fr">scikit-learn @ La Fondation Inria</a>,
   <a href="https://www.inria-academy.fr/formation/scikit-learn-la-boite-a-outils-de-lapprentissage-automatique/">Inria Academy</a>,
+  <a href="https://probabl.ai/">probabl</a>,
   with many thanks to the <a href="https://scikit-learn.org">scikit-learn</a> community as a whole!
 </div>
 
@@ -1296,8 +1303,8 @@ By scikit-learn developers
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

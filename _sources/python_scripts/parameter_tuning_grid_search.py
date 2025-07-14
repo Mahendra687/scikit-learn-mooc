@@ -80,15 +80,18 @@ categorical_preprocessor = OrdinalEncoder(
 )
 
 # %% [markdown]
-# We then use a `ColumnTransformer` to select the categorical columns and apply
+# We then use `make_column_transformer` to select the categorical columns and apply
 # the `OrdinalEncoder` to them.
 
 # %%
-from sklearn.compose import ColumnTransformer
+from sklearn.compose import make_column_transformer
 
-preprocessor = ColumnTransformer(
-    [("cat_preprocessor", categorical_preprocessor, categorical_columns)],
+preprocessor = make_column_transformer(
+    (categorical_preprocessor, categorical_columns),
     remainder="passthrough",
+    # Silence a deprecation warning in scikit-learn v1.6 related to how the
+    # ColumnTransformer stores an attribute that we do not use in this notebook
+    force_int_remainder_cols=False,
 )
 
 # %% [markdown]
@@ -148,7 +151,7 @@ print(
 # cross-validation by providing `model_grid_search` as a model to the
 # `cross_validate` function.
 #
-# Here, we used a single train-test split to to evaluate `model_grid_search`. In
+# Here, we used a single train-test split to evaluate `model_grid_search`. In
 # a future notebook will go into more detail about nested cross-validation, when
 # you use cross-validation both for hyperparameter tuning and model evaluation.
 # ```
@@ -217,8 +220,9 @@ cv_results = cv_results.rename(shorten_param, axis=1)
 cv_results
 
 # %% [markdown]
-# With only 2 parameters, we might want to visualize the grid-search as a
-# heatmap. We need to transform our `cv_results` into a dataframe where:
+# Given that we are tuning only 2 parameters, we can visualize the results as a
+# heatmap. To do so, we first need to reshape the `cv_results` into a dataframe
+# where:
 #
 # - the rows correspond to the learning-rate values;
 # - the columns correspond to the maximum number of leaf;
@@ -234,17 +238,31 @@ pivoted_cv_results = cv_results.pivot_table(
 pivoted_cv_results
 
 # %% [markdown]
-# We can use a heatmap representation to show the above dataframe visually.
+# Now that we have the data in the right format, we can create the heatmap as
+# follows:
 
 # %%
 import seaborn as sns
 
 ax = sns.heatmap(
-    pivoted_cv_results, annot=True, cmap="YlGnBu", vmin=0.7, vmax=0.9
+    pivoted_cv_results,
+    annot=True,
+    cmap="YlGnBu",
+    vmin=0.7,
+    vmax=0.9,
+    cbar_kws={"label": "mean test accuracy"},
 )
 ax.invert_yaxis()
 
 # %% [markdown]
+# The heatmap above shows the mean test accuracy (i.e., the average over
+# cross-validation splits) for each combination of hyperparameters, where darker
+# colors indicate better performance. However, notice that using colors only
+# allows us to visually compare the mean test score, but does not carry any
+# information on the standard deviation over splits, making it difficult to say
+# if different scores coming from different combinations lead to a significantly
+# better model or not.
+#
 # The above tables highlights the following things:
 #
 # * for too high values of `learning_rate`, the generalization performance of
@@ -268,5 +286,5 @@ ax.invert_yaxis()
 # In this notebook we have seen:
 #
 # * how to optimize the hyperparameters of a predictive model via a grid-search;
-# * that searching for more than two hyperparamters is too costly;
+# * that searching for more than two hyperparameters is too costly;
 # * that a grid-search does not necessarily find an optimal solution.

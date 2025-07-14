@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Notebook timings &#8212; Scikit-learn course</title>
   
@@ -19,56 +18,52 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css?v=80799b6b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/matomo.js"></script>
-    <script src="../_static/sklearn_mooc.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'appendix/notebook_timings';</script>
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/matomo.js?v=8af330ab"></script>
+    <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Table of contents" href="toc_redirect.html" />
@@ -150,6 +145,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../toc.html">
   
@@ -167,6 +164,17 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
@@ -471,9 +479,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -615,10 +623,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -626,7 +634,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -657,7 +665,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="notebook-timings">
-<h1>Notebook timings<a class="headerlink" href="#notebook-timings" title="Permalink to this heading">#</a></h1>
+<h1>Notebook timings<a class="headerlink" href="#notebook-timings" title="Link to this heading">#</a></h1>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Document</p></th>
@@ -669,555 +677,555 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/01_tabular_data_exploration.html"><span class="doc">python_scripts/01_tabular_data_exploration</span></a></p></td>
-<td><p>2024-06-16 17:31</p></td>
+<td><p>2025-07-14 23:33</p></td>
 <td><p>cache</p></td>
-<td><p>8.88</p></td>
+<td><p>7.78</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/01_tabular_data_exploration_ex_01.html"><span class="doc">python_scripts/01_tabular_data_exploration_ex_01</span></a></p></td>
-<td><p>2024-06-16 17:31</p></td>
+<td><p>2025-07-14 23:33</p></td>
 <td><p>cache</p></td>
-<td><p>0.96</p></td>
+<td><p>0.82</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/01_tabular_data_exploration_sol_01.html"><span class="doc">python_scripts/01_tabular_data_exploration_sol_01</span></a></p></td>
-<td><p>2024-06-16 17:31</p></td>
+<td><p>2025-07-14 23:33</p></td>
 <td><p>cache</p></td>
-<td><p>3.76</p></td>
+<td><p>3.98</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/02_numerical_pipeline_cross_validation.html"><span class="doc">python_scripts/02_numerical_pipeline_cross_validation</span></a></p></td>
-<td><p>2024-06-16 17:31</p></td>
+<td><p>2025-07-14 23:33</p></td>
 <td><p>cache</p></td>
-<td><p>2.12</p></td>
+<td><p>2.34</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/02_numerical_pipeline_ex_00.html"><span class="doc">python_scripts/02_numerical_pipeline_ex_00</span></a></p></td>
-<td><p>2024-06-16 17:31</p></td>
+<td><p>2025-07-14 23:33</p></td>
 <td><p>cache</p></td>
-<td><p>1.66</p></td>
+<td><p>1.89</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/02_numerical_pipeline_ex_01.html"><span class="doc">python_scripts/02_numerical_pipeline_ex_01</span></a></p></td>
-<td><p>2024-06-16 17:31</p></td>
+<td><p>2025-07-14 23:33</p></td>
 <td><p>cache</p></td>
-<td><p>1.74</p></td>
+<td><p>1.7</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/02_numerical_pipeline_hands_on.html"><span class="doc">python_scripts/02_numerical_pipeline_hands_on</span></a></p></td>
-<td><p>2024-06-16 17:31</p></td>
+<td><p>2025-07-14 23:33</p></td>
 <td><p>cache</p></td>
-<td><p>1.91</p></td>
+<td><p>1.95</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/02_numerical_pipeline_introduction.html"><span class="doc">python_scripts/02_numerical_pipeline_introduction</span></a></p></td>
-<td><p>2024-06-16 17:31</p></td>
+<td><p>2025-07-14 23:33</p></td>
 <td><p>cache</p></td>
-<td><p>4.94</p></td>
+<td><p>5.15</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/02_numerical_pipeline_scaling.html"><span class="doc">python_scripts/02_numerical_pipeline_scaling</span></a></p></td>
-<td><p>2024-06-16 17:31</p></td>
+<td><p>2025-07-14 23:33</p></td>
 <td><p>cache</p></td>
-<td><p>3.25</p></td>
+<td><p>3.32</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/02_numerical_pipeline_sol_00.html"><span class="doc">python_scripts/02_numerical_pipeline_sol_00</span></a></p></td>
-<td><p>2024-06-16 17:32</p></td>
+<td><p>2025-07-14 23:33</p></td>
 <td><p>cache</p></td>
-<td><p>5.31</p></td>
+<td><p>5.59</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/02_numerical_pipeline_sol_01.html"><span class="doc">python_scripts/02_numerical_pipeline_sol_01</span></a></p></td>
-<td><p>2024-06-16 17:32</p></td>
+<td><p>2025-07-14 23:33</p></td>
 <td><p>cache</p></td>
-<td><p>1.68</p></td>
+<td><p>1.78</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/03_categorical_pipeline.html"><span class="doc">python_scripts/03_categorical_pipeline</span></a></p></td>
-<td><p>2024-06-16 17:32</p></td>
+<td><p>2025-07-14 23:33</p></td>
 <td><p>cache</p></td>
-<td><p>3.0</p></td>
+<td><p>3.05</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/03_categorical_pipeline_column_transformer.html"><span class="doc">python_scripts/03_categorical_pipeline_column_transformer</span></a></p></td>
-<td><p>2024-06-16 17:32</p></td>
+<td><p>2025-07-14 23:34</p></td>
 <td><p>cache</p></td>
-<td><p>4.31</p></td>
+<td><p>4.59</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/03_categorical_pipeline_ex_01.html"><span class="doc">python_scripts/03_categorical_pipeline_ex_01</span></a></p></td>
-<td><p>2024-06-16 17:32</p></td>
+<td><p>2025-07-14 23:34</p></td>
 <td><p>cache</p></td>
-<td><p>1.77</p></td>
+<td><p>1.72</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/03_categorical_pipeline_ex_02.html"><span class="doc">python_scripts/03_categorical_pipeline_ex_02</span></a></p></td>
-<td><p>2024-06-16 17:32</p></td>
+<td><p>2025-07-14 23:34</p></td>
 <td><p>cache</p></td>
-<td><p>5.94</p></td>
+<td><p>6.08</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/03_categorical_pipeline_sol_01.html"><span class="doc">python_scripts/03_categorical_pipeline_sol_01</span></a></p></td>
-<td><p>2024-06-16 17:32</p></td>
+<td><p>2025-07-14 23:34</p></td>
 <td><p>cache</p></td>
 <td><p>4.26</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/03_categorical_pipeline_sol_02.html"><span class="doc">python_scripts/03_categorical_pipeline_sol_02</span></a></p></td>
-<td><p>2024-06-16 17:32</p></td>
+<td><p>2025-07-14 23:34</p></td>
 <td><p>cache</p></td>
-<td><p>26.03</p></td>
+<td><p>27.0</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/03_categorical_pipeline_visualization.html"><span class="doc">python_scripts/03_categorical_pipeline_visualization</span></a></p></td>
-<td><p>2024-06-16 17:32</p></td>
+<td><p>2025-07-14 23:34</p></td>
 <td><p>cache</p></td>
-<td><p>1.7</p></td>
+<td><p>2.0</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/cross_validation_baseline.html"><span class="doc">python_scripts/cross_validation_baseline</span></a></p></td>
-<td><p>2024-06-16 17:33</p></td>
+<td><p>2025-07-14 23:34</p></td>
 <td><p>cache</p></td>
-<td><p>9.83</p></td>
+<td><p>10.7</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/cross_validation_ex_01.html"><span class="doc">python_scripts/cross_validation_ex_01</span></a></p></td>
-<td><p>2024-06-16 17:33</p></td>
+<td><p>2025-07-14 23:34</p></td>
 <td><p>cache</p></td>
-<td><p>1.15</p></td>
+<td><p>1.19</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/cross_validation_ex_02.html"><span class="doc">python_scripts/cross_validation_ex_02</span></a></p></td>
-<td><p>2024-06-16 17:33</p></td>
+<td><p>2025-07-14 23:34</p></td>
 <td><p>cache</p></td>
-<td><p>1.13</p></td>
+<td><p>1.49</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/cross_validation_grouping.html"><span class="doc">python_scripts/cross_validation_grouping</span></a></p></td>
-<td><p>2024-06-16 17:33</p></td>
+<td><p>2025-07-14 23:35</p></td>
 <td><p>cache</p></td>
-<td><p>6.08</p></td>
+<td><p>6.65</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/cross_validation_learning_curve.html"><span class="doc">python_scripts/cross_validation_learning_curve</span></a></p></td>
-<td><p>2024-06-16 17:33</p></td>
+<td><p>2025-07-14 23:35</p></td>
 <td><p>cache</p></td>
-<td><p>12.71</p></td>
+<td><p>13.36</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/cross_validation_nested.html"><span class="doc">python_scripts/cross_validation_nested</span></a></p></td>
-<td><p>2024-06-16 17:33</p></td>
+<td><p>2025-07-14 23:35</p></td>
 <td><p>cache</p></td>
-<td><p>20.5</p></td>
+<td><p>22.03</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/cross_validation_sol_01.html"><span class="doc">python_scripts/cross_validation_sol_01</span></a></p></td>
-<td><p>2024-06-16 17:33</p></td>
+<td><p>2025-07-14 23:35</p></td>
 <td><p>cache</p></td>
-<td><p>10.3</p></td>
+<td><p>11.03</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/cross_validation_sol_02.html"><span class="doc">python_scripts/cross_validation_sol_02</span></a></p></td>
-<td><p>2024-06-16 17:34</p></td>
+<td><p>2025-07-14 23:35</p></td>
 <td><p>cache</p></td>
-<td><p>7.9</p></td>
+<td><p>7.78</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/cross_validation_stratification.html"><span class="doc">python_scripts/cross_validation_stratification</span></a></p></td>
-<td><p>2024-06-16 17:34</p></td>
+<td><p>2025-07-14 23:36</p></td>
 <td><p>cache</p></td>
-<td><p>3.22</p></td>
+<td><p>3.55</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/cross_validation_time.html"><span class="doc">python_scripts/cross_validation_time</span></a></p></td>
-<td><p>2024-06-16 17:34</p></td>
+<td><p>2025-07-14 23:36</p></td>
 <td><p>cache</p></td>
-<td><p>6.18</p></td>
+<td><p>6.4</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/cross_validation_train_test.html"><span class="doc">python_scripts/cross_validation_train_test</span></a></p></td>
-<td><p>2024-06-16 17:34</p></td>
+<td><p>2025-07-14 23:36</p></td>
 <td><p>cache</p></td>
-<td><p>10.2</p></td>
+<td><p>10.92</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/cross_validation_validation_curve.html"><span class="doc">python_scripts/cross_validation_validation_curve</span></a></p></td>
-<td><p>2024-06-16 17:34</p></td>
+<td><p>2025-07-14 23:36</p></td>
 <td><p>cache</p></td>
-<td><p>18.52</p></td>
+<td><p>19.52</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/datasets_adult_census.html"><span class="doc">python_scripts/datasets_adult_census</span></a></p></td>
-<td><p>2024-06-16 17:34</p></td>
+<td><p>2025-07-14 23:36</p></td>
 <td><p>cache</p></td>
-<td><p>2.6</p></td>
+<td><p>2.84</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/datasets_ames_housing.html"><span class="doc">python_scripts/datasets_ames_housing</span></a></p></td>
-<td><p>2024-06-16 17:34</p></td>
+<td><p>2025-07-14 23:36</p></td>
 <td><p>cache</p></td>
-<td><p>9.02</p></td>
+<td><p>9.81</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/datasets_bike_rides.html"><span class="doc">python_scripts/datasets_bike_rides</span></a></p></td>
-<td><p>2024-06-16 17:35</p></td>
+<td><p>2025-07-14 23:36</p></td>
 <td><p>cache</p></td>
-<td><p>8.89</p></td>
+<td><p>8.77</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/datasets_blood_transfusion.html"><span class="doc">python_scripts/datasets_blood_transfusion</span></a></p></td>
-<td><p>2024-06-16 17:35</p></td>
+<td><p>2025-07-14 23:37</p></td>
 <td><p>cache</p></td>
-<td><p>5.83</p></td>
+<td><p>6.05</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/datasets_california_housing.html"><span class="doc">python_scripts/datasets_california_housing</span></a></p></td>
-<td><p>2024-06-16 17:35</p></td>
+<td><p>2025-07-14 23:37</p></td>
 <td><p>cache</p></td>
-<td><p>15.24</p></td>
+<td><p>15.56</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/dev_features_importance.html"><span class="doc">python_scripts/dev_features_importance</span></a></p></td>
-<td><p>2024-06-16 17:36</p></td>
+<td><p>2025-07-14 23:38</p></td>
 <td><p>cache</p></td>
-<td><p>53.2</p></td>
+<td><p>56.13</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_adaboost.html"><span class="doc">python_scripts/ensemble_adaboost</span></a></p></td>
-<td><p>2024-06-16 17:36</p></td>
+<td><p>2025-07-14 23:38</p></td>
 <td><p>cache</p></td>
 <td><p>3.22</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_bagging.html"><span class="doc">python_scripts/ensemble_bagging</span></a></p></td>
-<td><p>2024-06-16 17:36</p></td>
+<td><p>2025-07-14 23:38</p></td>
 <td><p>cache</p></td>
-<td><p>4.54</p></td>
+<td><p>5.06</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_ex_01.html"><span class="doc">python_scripts/ensemble_ex_01</span></a></p></td>
-<td><p>2024-06-16 17:36</p></td>
-<td><p>cache</p></td>
-<td><p>1.76</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_ex_02.html"><span class="doc">python_scripts/ensemble_ex_02</span></a></p></td>
-<td><p>2024-06-16 17:36</p></td>
-<td><p>cache</p></td>
-<td><p>1.52</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_ex_03.html"><span class="doc">python_scripts/ensemble_ex_03</span></a></p></td>
-<td><p>2024-06-16 17:36</p></td>
-<td><p>cache</p></td>
-<td><p>1.61</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_ex_04.html"><span class="doc">python_scripts/ensemble_ex_04</span></a></p></td>
-<td><p>2024-06-16 17:36</p></td>
-<td><p>cache</p></td>
-<td><p>1.53</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_gradient_boosting.html"><span class="doc">python_scripts/ensemble_gradient_boosting</span></a></p></td>
-<td><p>2024-06-16 17:37</p></td>
-<td><p>cache</p></td>
-<td><p>63.11</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_hist_gradient_boosting.html"><span class="doc">python_scripts/ensemble_hist_gradient_boosting</span></a></p></td>
-<td><p>2024-06-16 17:38</p></td>
-<td><p>cache</p></td>
-<td><p>41.23</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_hyperparameters.html"><span class="doc">python_scripts/ensemble_hyperparameters</span></a></p></td>
-<td><p>2024-06-16 17:39</p></td>
-<td><p>cache</p></td>
-<td><p>57.22</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_introduction.html"><span class="doc">python_scripts/ensemble_introduction</span></a></p></td>
-<td><p>2024-06-16 17:39</p></td>
-<td><p>cache</p></td>
-<td><p>23.03</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_random_forest.html"><span class="doc">python_scripts/ensemble_random_forest</span></a></p></td>
-<td><p>2024-06-16 17:40</p></td>
-<td><p>cache</p></td>
-<td><p>21.85</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_sol_01.html"><span class="doc">python_scripts/ensemble_sol_01</span></a></p></td>
-<td><p>2024-06-16 17:40</p></td>
-<td><p>cache</p></td>
-<td><p>19.09</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_sol_02.html"><span class="doc">python_scripts/ensemble_sol_02</span></a></p></td>
-<td><p>2024-06-16 17:40</p></td>
-<td><p>cache</p></td>
-<td><p>2.39</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_sol_03.html"><span class="doc">python_scripts/ensemble_sol_03</span></a></p></td>
-<td><p>2024-06-16 17:41</p></td>
-<td><p>cache</p></td>
-<td><p>63.4</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_sol_04.html"><span class="doc">python_scripts/ensemble_sol_04</span></a></p></td>
-<td><p>2024-06-16 17:42</p></td>
-<td><p>cache</p></td>
-<td><p>37.57</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/feature_selection_ex_01.html"><span class="doc">python_scripts/feature_selection_ex_01</span></a></p></td>
-<td><p>2024-06-16 17:42</p></td>
-<td><p>cache</p></td>
-<td><p>1.69</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/feature_selection_introduction.html"><span class="doc">python_scripts/feature_selection_introduction</span></a></p></td>
-<td><p>2024-06-16 17:42</p></td>
-<td><p>cache</p></td>
-<td><p>12.9</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/feature_selection_limitation_model.html"><span class="doc">python_scripts/feature_selection_limitation_model</span></a></p></td>
-<td><p>2024-06-16 17:43</p></td>
-<td><p>cache</p></td>
-<td><p>45.4</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/feature_selection_sol_01.html"><span class="doc">python_scripts/feature_selection_sol_01</span></a></p></td>
-<td><p>2024-06-16 17:43</p></td>
-<td><p>cache</p></td>
-<td><p>6.52</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_ex_01.html"><span class="doc">python_scripts/linear_models_ex_01</span></a></p></td>
-<td><p>2024-06-16 17:43</p></td>
-<td><p>cache</p></td>
-<td><p>1.18</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_ex_02.html"><span class="doc">python_scripts/linear_models_ex_02</span></a></p></td>
-<td><p>2024-06-16 17:43</p></td>
-<td><p>cache</p></td>
-<td><p>1.41</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_ex_03.html"><span class="doc">python_scripts/linear_models_ex_03</span></a></p></td>
-<td><p>2024-06-16 17:43</p></td>
-<td><p>cache</p></td>
-<td><p>1.34</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_ex_04.html"><span class="doc">python_scripts/linear_models_ex_04</span></a></p></td>
-<td><p>2024-06-16 17:43</p></td>
-<td><p>cache</p></td>
-<td><p>2.22</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_feature_engineering_classification.html"><span class="doc">python_scripts/linear_models_feature_engineering_classification</span></a></p></td>
-<td><p>2024-06-16 17:43</p></td>
-<td><p>cache</p></td>
-<td><p>7.37</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_regularization.html"><span class="doc">python_scripts/linear_models_regularization</span></a></p></td>
-<td><p>2024-06-16 17:43</p></td>
-<td><p>cache</p></td>
-<td><p>8.66</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_sol_01.html"><span class="doc">python_scripts/linear_models_sol_01</span></a></p></td>
-<td><p>2024-06-16 17:43</p></td>
-<td><p>cache</p></td>
-<td><p>2.41</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_sol_02.html"><span class="doc">python_scripts/linear_models_sol_02</span></a></p></td>
-<td><p>2024-06-16 17:43</p></td>
-<td><p>cache</p></td>
-<td><p>6.86</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_sol_03.html"><span class="doc">python_scripts/linear_models_sol_03</span></a></p></td>
-<td><p>2024-06-16 17:43</p></td>
-<td><p>cache</p></td>
-<td><p>15.4</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_sol_04.html"><span class="doc">python_scripts/linear_models_sol_04</span></a></p></td>
-<td><p>2024-06-16 17:44</p></td>
-<td><p>cache</p></td>
-<td><p>5.85</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_regression_in_sklearn.html"><span class="doc">python_scripts/linear_regression_in_sklearn</span></a></p></td>
-<td><p>2024-06-16 17:44</p></td>
-<td><p>cache</p></td>
-<td><p>2.63</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_regression_non_linear_link.html"><span class="doc">python_scripts/linear_regression_non_linear_link</span></a></p></td>
-<td><p>2024-06-16 17:44</p></td>
-<td><p>cache</p></td>
-<td><p>3.86</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_regression_without_sklearn.html"><span class="doc">python_scripts/linear_regression_without_sklearn</span></a></p></td>
-<td><p>2024-06-16 17:44</p></td>
-<td><p>cache</p></td>
-<td><p>2.89</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/logistic_regression.html"><span class="doc">python_scripts/logistic_regression</span></a></p></td>
-<td><p>2024-06-16 17:44</p></td>
-<td><p>cache</p></td>
-<td><p>3.44</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/metrics_classification.html"><span class="doc">python_scripts/metrics_classification</span></a></p></td>
-<td><p>2024-06-16 17:44</p></td>
-<td><p>cache</p></td>
-<td><p>3.4</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/metrics_ex_01.html"><span class="doc">python_scripts/metrics_ex_01</span></a></p></td>
-<td><p>2024-06-16 17:44</p></td>
-<td><p>cache</p></td>
-<td><p>1.77</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/metrics_ex_02.html"><span class="doc">python_scripts/metrics_ex_02</span></a></p></td>
-<td><p>2024-06-16 17:44</p></td>
-<td><p>cache</p></td>
-<td><p>1.14</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/metrics_regression.html"><span class="doc">python_scripts/metrics_regression</span></a></p></td>
-<td><p>2024-06-16 17:44</p></td>
-<td><p>cache</p></td>
-<td><p>2.63</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/metrics_sol_01.html"><span class="doc">python_scripts/metrics_sol_01</span></a></p></td>
-<td><p>2024-06-16 17:44</p></td>
-<td><p>cache</p></td>
-<td><p>2.83</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/metrics_sol_02.html"><span class="doc">python_scripts/metrics_sol_02</span></a></p></td>
-<td><p>2024-06-16 17:44</p></td>
-<td><p>cache</p></td>
-<td><p>4.96</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_ex_02.html"><span class="doc">python_scripts/parameter_tuning_ex_02</span></a></p></td>
-<td><p>2024-06-16 17:44</p></td>
-<td><p>cache</p></td>
-<td><p>1.98</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_ex_03.html"><span class="doc">python_scripts/parameter_tuning_ex_03</span></a></p></td>
-<td><p>2024-06-16 17:44</p></td>
-<td><p>cache</p></td>
-<td><p>1.74</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_grid_search.html"><span class="doc">python_scripts/parameter_tuning_grid_search</span></a></p></td>
-<td><p>2024-06-16 17:44</p></td>
-<td><p>cache</p></td>
-<td><p>10.58</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_manual.html"><span class="doc">python_scripts/parameter_tuning_manual</span></a></p></td>
-<td><p>2024-06-16 17:44</p></td>
-<td><p>cache</p></td>
-<td><p>4.89</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_nested.html"><span class="doc">python_scripts/parameter_tuning_nested</span></a></p></td>
-<td><p>2024-06-16 17:45</p></td>
-<td><p>cache</p></td>
-<td><p>25.24</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_parallel_plot.html"><span class="doc">python_scripts/parameter_tuning_parallel_plot</span></a></p></td>
-<td><p>2024-06-16 17:45</p></td>
-<td><p>cache</p></td>
-<td><p>2.97</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_randomized_search.html"><span class="doc">python_scripts/parameter_tuning_randomized_search</span></a></p></td>
-<td><p>2024-06-16 17:45</p></td>
-<td><p>cache</p></td>
-<td><p>23.58</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_sol_02.html"><span class="doc">python_scripts/parameter_tuning_sol_02</span></a></p></td>
-<td><p>2024-06-16 17:45</p></td>
-<td><p>cache</p></td>
-<td><p>6.09</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_sol_03.html"><span class="doc">python_scripts/parameter_tuning_sol_03</span></a></p></td>
-<td><p>2024-06-16 17:46</p></td>
-<td><p>cache</p></td>
-<td><p>19.43</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/trees_classification.html"><span class="doc">python_scripts/trees_classification</span></a></p></td>
-<td><p>2024-06-16 17:46</p></td>
-<td><p>cache</p></td>
-<td><p>3.12</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/trees_dataset.html"><span class="doc">python_scripts/trees_dataset</span></a></p></td>
-<td><p>2024-06-16 17:46</p></td>
-<td><p>cache</p></td>
-<td><p>3.19</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/trees_ex_01.html"><span class="doc">python_scripts/trees_ex_01</span></a></p></td>
-<td><p>2024-06-16 17:46</p></td>
+<td><p>2025-07-14 23:38</p></td>
 <td><p>cache</p></td>
 <td><p>1.88</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/trees_ex_02.html"><span class="doc">python_scripts/trees_ex_02</span></a></p></td>
-<td><p>2024-06-16 17:46</p></td>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_ex_02.html"><span class="doc">python_scripts/ensemble_ex_02</span></a></p></td>
+<td><p>2025-07-14 23:38</p></td>
 <td><p>cache</p></td>
-<td><p>1.21</p></td>
+<td><p>1.82</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_ex_03.html"><span class="doc">python_scripts/ensemble_ex_03</span></a></p></td>
+<td><p>2025-07-14 23:38</p></td>
+<td><p>cache</p></td>
+<td><p>1.67</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_ex_04.html"><span class="doc">python_scripts/ensemble_ex_04</span></a></p></td>
+<td><p>2025-07-14 23:38</p></td>
+<td><p>cache</p></td>
+<td><p>1.64</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_gradient_boosting.html"><span class="doc">python_scripts/ensemble_gradient_boosting</span></a></p></td>
+<td><p>2025-07-14 23:39</p></td>
+<td><p>cache</p></td>
+<td><p>66.85</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_hist_gradient_boosting.html"><span class="doc">python_scripts/ensemble_hist_gradient_boosting</span></a></p></td>
+<td><p>2025-07-14 23:40</p></td>
+<td><p>cache</p></td>
+<td><p>42.15</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_hyperparameters.html"><span class="doc">python_scripts/ensemble_hyperparameters</span></a></p></td>
+<td><p>2025-07-14 23:41</p></td>
+<td><p>cache</p></td>
+<td><p>59.6</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_introduction.html"><span class="doc">python_scripts/ensemble_introduction</span></a></p></td>
+<td><p>2025-07-14 23:41</p></td>
+<td><p>cache</p></td>
+<td><p>24.17</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_random_forest.html"><span class="doc">python_scripts/ensemble_random_forest</span></a></p></td>
+<td><p>2025-07-14 23:42</p></td>
+<td><p>cache</p></td>
+<td><p>21.98</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_sol_01.html"><span class="doc">python_scripts/ensemble_sol_01</span></a></p></td>
+<td><p>2025-07-14 23:42</p></td>
+<td><p>cache</p></td>
+<td><p>22.96</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_sol_02.html"><span class="doc">python_scripts/ensemble_sol_02</span></a></p></td>
+<td><p>2025-07-14 23:42</p></td>
+<td><p>cache</p></td>
+<td><p>2.55</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_sol_03.html"><span class="doc">python_scripts/ensemble_sol_03</span></a></p></td>
+<td><p>2025-07-14 23:44</p></td>
+<td><p>cache</p></td>
+<td><p>96.29</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/ensemble_sol_04.html"><span class="doc">python_scripts/ensemble_sol_04</span></a></p></td>
+<td><p>2025-07-14 23:44</p></td>
+<td><p>cache</p></td>
+<td><p>38.03</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/feature_selection_ex_01.html"><span class="doc">python_scripts/feature_selection_ex_01</span></a></p></td>
+<td><p>2025-07-14 23:44</p></td>
+<td><p>cache</p></td>
+<td><p>1.64</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/feature_selection_introduction.html"><span class="doc">python_scripts/feature_selection_introduction</span></a></p></td>
+<td><p>2025-07-14 23:45</p></td>
+<td><p>cache</p></td>
+<td><p>13.14</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/feature_selection_limitation_model.html"><span class="doc">python_scripts/feature_selection_limitation_model</span></a></p></td>
+<td><p>2025-07-14 23:45</p></td>
+<td><p>cache</p></td>
+<td><p>45.89</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/feature_selection_sol_01.html"><span class="doc">python_scripts/feature_selection_sol_01</span></a></p></td>
+<td><p>2025-07-14 23:45</p></td>
+<td><p>cache</p></td>
+<td><p>6.76</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_ex_01.html"><span class="doc">python_scripts/linear_models_ex_01</span></a></p></td>
+<td><p>2025-07-14 23:45</p></td>
+<td><p>cache</p></td>
+<td><p>1.12</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_ex_02.html"><span class="doc">python_scripts/linear_models_ex_02</span></a></p></td>
+<td><p>2025-07-14 23:45</p></td>
+<td><p>cache</p></td>
+<td><p>1.3</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_ex_03.html"><span class="doc">python_scripts/linear_models_ex_03</span></a></p></td>
+<td><p>2025-07-14 23:46</p></td>
+<td><p>cache</p></td>
+<td><p>1.42</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_ex_04.html"><span class="doc">python_scripts/linear_models_ex_04</span></a></p></td>
+<td><p>2025-07-14 23:46</p></td>
+<td><p>cache</p></td>
+<td><p>1.98</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_feature_engineering_classification.html"><span class="doc">python_scripts/linear_models_feature_engineering_classification</span></a></p></td>
+<td><p>2025-07-14 23:46</p></td>
+<td><p>cache</p></td>
+<td><p>6.98</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_regularization.html"><span class="doc">python_scripts/linear_models_regularization</span></a></p></td>
+<td><p>2025-07-14 23:46</p></td>
+<td><p>cache</p></td>
+<td><p>8.62</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_sol_01.html"><span class="doc">python_scripts/linear_models_sol_01</span></a></p></td>
+<td><p>2025-07-14 23:46</p></td>
+<td><p>cache</p></td>
+<td><p>2.09</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_sol_02.html"><span class="doc">python_scripts/linear_models_sol_02</span></a></p></td>
+<td><p>2025-07-14 23:46</p></td>
+<td><p>cache</p></td>
+<td><p>6.15</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_sol_03.html"><span class="doc">python_scripts/linear_models_sol_03</span></a></p></td>
+<td><p>2025-07-14 23:46</p></td>
+<td><p>cache</p></td>
+<td><p>15.18</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_models_sol_04.html"><span class="doc">python_scripts/linear_models_sol_04</span></a></p></td>
+<td><p>2025-07-14 23:46</p></td>
+<td><p>cache</p></td>
+<td><p>5.4</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_regression_in_sklearn.html"><span class="doc">python_scripts/linear_regression_in_sklearn</span></a></p></td>
+<td><p>2025-07-14 23:46</p></td>
+<td><p>cache</p></td>
+<td><p>2.17</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_regression_non_linear_link.html"><span class="doc">python_scripts/linear_regression_non_linear_link</span></a></p></td>
+<td><p>2025-07-14 23:46</p></td>
+<td><p>cache</p></td>
+<td><p>3.56</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/linear_regression_without_sklearn.html"><span class="doc">python_scripts/linear_regression_without_sklearn</span></a></p></td>
+<td><p>2025-07-14 23:46</p></td>
+<td><p>cache</p></td>
+<td><p>2.7</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/logistic_regression.html"><span class="doc">python_scripts/logistic_regression</span></a></p></td>
+<td><p>2025-07-14 23:46</p></td>
+<td><p>cache</p></td>
+<td><p>3.34</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/metrics_classification.html"><span class="doc">python_scripts/metrics_classification</span></a></p></td>
+<td><p>2025-07-14 23:47</p></td>
+<td><p>cache</p></td>
+<td><p>3.34</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/metrics_ex_01.html"><span class="doc">python_scripts/metrics_ex_01</span></a></p></td>
+<td><p>2025-07-14 23:47</p></td>
+<td><p>cache</p></td>
+<td><p>1.78</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/metrics_ex_02.html"><span class="doc">python_scripts/metrics_ex_02</span></a></p></td>
+<td><p>2025-07-14 23:47</p></td>
+<td><p>cache</p></td>
+<td><p>1.32</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/metrics_regression.html"><span class="doc">python_scripts/metrics_regression</span></a></p></td>
+<td><p>2025-07-14 23:47</p></td>
+<td><p>cache</p></td>
+<td><p>2.61</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/metrics_sol_01.html"><span class="doc">python_scripts/metrics_sol_01</span></a></p></td>
+<td><p>2025-07-14 23:47</p></td>
+<td><p>cache</p></td>
+<td><p>2.4</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/metrics_sol_02.html"><span class="doc">python_scripts/metrics_sol_02</span></a></p></td>
+<td><p>2025-07-14 23:47</p></td>
+<td><p>cache</p></td>
+<td><p>4.95</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_ex_02.html"><span class="doc">python_scripts/parameter_tuning_ex_02</span></a></p></td>
+<td><p>2025-07-14 23:47</p></td>
+<td><p>cache</p></td>
+<td><p>1.8</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_ex_03.html"><span class="doc">python_scripts/parameter_tuning_ex_03</span></a></p></td>
+<td><p>2025-07-14 23:47</p></td>
+<td><p>cache</p></td>
+<td><p>1.65</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_grid_search.html"><span class="doc">python_scripts/parameter_tuning_grid_search</span></a></p></td>
+<td><p>2025-07-14 23:47</p></td>
+<td><p>cache</p></td>
+<td><p>10.43</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_manual.html"><span class="doc">python_scripts/parameter_tuning_manual</span></a></p></td>
+<td><p>2025-07-14 23:47</p></td>
+<td><p>cache</p></td>
+<td><p>4.44</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_nested.html"><span class="doc">python_scripts/parameter_tuning_nested</span></a></p></td>
+<td><p>2025-07-14 23:47</p></td>
+<td><p>cache</p></td>
+<td><p>24.41</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_parallel_plot.html"><span class="doc">python_scripts/parameter_tuning_parallel_plot</span></a></p></td>
+<td><p>2025-07-14 23:48</p></td>
+<td><p>cache</p></td>
+<td><p>2.98</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_randomized_search.html"><span class="doc">python_scripts/parameter_tuning_randomized_search</span></a></p></td>
+<td><p>2025-07-14 23:48</p></td>
+<td><p>cache</p></td>
+<td><p>20.63</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_sol_02.html"><span class="doc">python_scripts/parameter_tuning_sol_02</span></a></p></td>
+<td><p>2025-07-14 23:48</p></td>
+<td><p>cache</p></td>
+<td><p>6.22</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/parameter_tuning_sol_03.html"><span class="doc">python_scripts/parameter_tuning_sol_03</span></a></p></td>
+<td><p>2025-07-14 23:48</p></td>
+<td><p>cache</p></td>
+<td><p>19.59</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/trees_classification.html"><span class="doc">python_scripts/trees_classification</span></a></p></td>
+<td><p>2025-07-14 23:48</p></td>
+<td><p>cache</p></td>
+<td><p>2.94</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/trees_dataset.html"><span class="doc">python_scripts/trees_dataset</span></a></p></td>
+<td><p>2025-07-14 23:48</p></td>
+<td><p>cache</p></td>
+<td><p>2.94</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/trees_ex_01.html"><span class="doc">python_scripts/trees_ex_01</span></a></p></td>
+<td><p>2025-07-14 23:48</p></td>
+<td><p>cache</p></td>
+<td><p>1.62</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/trees_ex_02.html"><span class="doc">python_scripts/trees_ex_02</span></a></p></td>
+<td><p>2025-07-14 23:48</p></td>
+<td><p>cache</p></td>
+<td><p>1.29</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/trees_hyperparameters.html"><span class="doc">python_scripts/trees_hyperparameters</span></a></p></td>
-<td><p>2024-06-16 17:46</p></td>
+<td><p>2025-07-14 23:49</p></td>
 <td><p>cache</p></td>
-<td><p>5.62</p></td>
+<td><p>5.56</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/trees_regression.html"><span class="doc">python_scripts/trees_regression</span></a></p></td>
-<td><p>2024-06-16 17:46</p></td>
+<td><p>2025-07-14 23:49</p></td>
 <td><p>cache</p></td>
-<td><p>3.52</p></td>
+<td><p>2.99</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="../python_scripts/trees_sol_01.html"><span class="doc">python_scripts/trees_sol_01</span></a></p></td>
-<td><p>2024-06-16 17:46</p></td>
+<td><p>2025-07-14 23:49</p></td>
 <td><p>cache</p></td>
-<td><p>3.02</p></td>
+<td><p>2.92</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="../python_scripts/trees_sol_02.html"><span class="doc">python_scripts/trees_sol_02</span></a></p></td>
-<td><p>2024-06-16 17:46</p></td>
+<td><p>2025-07-14 23:49</p></td>
 <td><p>cache</p></td>
-<td><p>2.62</p></td>
+<td><p>2.37</p></td>
 <td><p>✅</p></td>
 </tr>
 </tbody>
@@ -1315,12 +1323,14 @@ By scikit-learn developers
 <div class="extra_footer">
   <div>
   <div class="mooc_add">
-   <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Join the full MOOC for better learning!</a>
+   <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Join the full MOOC experience</a>
+   <a href="https://certification.probabl.ai/">Get officially certified!</a>
   </div>
   Brought to you under a <a href="https://github.com/INRIA/scikit-learn-mooc/blob/main/LICENSE">CC-BY License</a> by
   <a href="https://learninglab.inria.fr">Inria Learning Lab</a>,
   <a href="https://scikit-learn.fondation-inria.fr">scikit-learn @ La Fondation Inria</a>,
   <a href="https://www.inria-academy.fr/formation/scikit-learn-la-boite-a-outils-de-lapprentissage-automatique/">Inria Academy</a>,
+  <a href="https://probabl.ai/">probabl</a>,
   with many thanks to the <a href="https://scikit-learn.org">scikit-learn</a> community as a whole!
 </div>
 
@@ -1336,8 +1346,8 @@ By scikit-learn developers
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

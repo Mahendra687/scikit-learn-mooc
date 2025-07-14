@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>📃 Solution for Exercise M4.04 &#8212; Scikit-learn course</title>
   
@@ -19,56 +18,52 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css?v=80799b6b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/matomo.js"></script>
-    <script src="../_static/sklearn_mooc.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_scripts/linear_models_sol_04';</script>
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/matomo.js?v=8af330ab"></script>
+    <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="✅ Quiz M4.03" href="../linear_models/linear_models_quiz_m4_03.html" />
@@ -150,6 +145,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../toc.html">
   
@@ -167,6 +164,17 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
@@ -471,9 +479,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -498,14 +506,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/INRIA/scikit-learn-mooc/main?urlpath=tree/python_scripts/linear_models_sol_04.py" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -646,10 +654,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -657,14 +665,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -700,7 +708,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="solution-for-exercise-m4-04">
-<h1>📃 Solution for Exercise M4.04<a class="headerlink" href="#solution-for-exercise-m4-04" title="Permalink to this heading">#</a></h1>
+<h1>📃 Solution for Exercise M4.04<a class="headerlink" href="#solution-for-exercise-m4-04" title="Link to this heading">#</a></h1>
 <p>In the previous Module we tuned the hyperparameter <code class="docutils literal notranslate"><span class="pre">C</span></code> of the logistic
 regression without mentioning that it controls the regularization strength.
 Later, on the slides on 🎥 <strong>Intuitions on regularized linear models</strong> we
@@ -719,7 +727,7 @@ Appendix - Datasets description section at the end of this MOOC.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">penguins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../datasets/penguins_classification.csv&quot;</span><span class="p">)</span>
 <span class="n">penguins</span> <span class="o">=</span> <span class="p">(</span>
@@ -734,7 +742,7 @@ Appendix - Datasets description section at the end of this MOOC.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 
 <span class="n">penguins_train</span><span class="p">,</span> <span class="n">penguins_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
     <span class="n">penguins</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.4</span>
@@ -757,12 +765,12 @@ predicted probability is to 0 or 1 and the more confident the classifier is in
 its predictions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">sklearn.inspection</span> <span class="kn">import</span> <span class="n">DecisionBoundaryDisplay</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.inspection</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionBoundaryDisplay</span>
 
 
-<span class="k">def</span> <span class="nf">plot_decision_boundary</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_decision_boundary</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
     <span class="n">accuracy</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">target_test</span><span class="p">)</span>
     <span class="n">C</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_params</span><span class="p">()[</span><span class="s2">&quot;logisticregression__C&quot;</span><span class="p">]</span>
@@ -805,9 +813,9 @@ its predictions.</p>
 <p>Let’s now create our predictive model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
 
 <span class="n">logistic_regression</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">())</span>
 </pre></div>
@@ -815,7 +823,7 @@ its predictions.</p>
 </div>
 </div>
 <section id="influence-of-the-parameter-c-on-the-decision-boundary">
-<h2>Influence of the parameter <code class="docutils literal notranslate"><span class="pre">C</span></code> on the decision boundary<a class="headerlink" href="#influence-of-the-parameter-c-on-the-decision-boundary" title="Permalink to this heading">#</a></h2>
+<h2>Influence of the parameter <code class="docutils literal notranslate"><span class="pre">C</span></code> on the decision boundary<a class="headerlink" href="#influence-of-the-parameter-c-on-the-decision-boundary" title="Link to this heading">#</a></h2>
 <p>Given the following candidates for the <code class="docutils literal notranslate"><span class="pre">C</span></code> parameter and the
 <code class="docutils literal notranslate"><span class="pre">plot_decision_boundary</span></code> function, find out the impact of <code class="docutils literal notranslate"><span class="pre">C</span></code> on the
 classifier’s decision boundary.</p>
@@ -837,13 +845,13 @@ classifier’s decision boundary.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8d82f0105e367401bce3ffda356e26e72864e0b6469f3d39215678e0fc94105e.png" src="../_images/8d82f0105e367401bce3ffda356e26e72864e0b6469f3d39215678e0fc94105e.png" />
-<img alt="../_images/d63ec44dfedee85997c9840afa6d122fc81f12b088aa05a584ad916b7f64a14c.png" src="../_images/d63ec44dfedee85997c9840afa6d122fc81f12b088aa05a584ad916b7f64a14c.png" />
-<img alt="../_images/286db6c82c1c15c8ffa5667364e47c9962cd0e7cb983de1403bb5d7d5f9b3db7.png" src="../_images/286db6c82c1c15c8ffa5667364e47c9962cd0e7cb983de1403bb5d7d5f9b3db7.png" />
-<img alt="../_images/9bf41942b5acec6530be1770858dc79263276493ac801eddc8086e3ecdbf835e.png" src="../_images/9bf41942b5acec6530be1770858dc79263276493ac801eddc8086e3ecdbf835e.png" />
-<img alt="../_images/afd11009d023e8851947dbb7bf36b8d22fe5ec3e9f41358bbb13809a4dc1ff49.png" src="../_images/afd11009d023e8851947dbb7bf36b8d22fe5ec3e9f41358bbb13809a4dc1ff49.png" />
-<img alt="../_images/cf3abbf943eb3d5a99b804aceab586485db8b8d0cb424906efa2ce5a3ed79ca9.png" src="../_images/cf3abbf943eb3d5a99b804aceab586485db8b8d0cb424906efa2ce5a3ed79ca9.png" />
-<img alt="../_images/f01c233415c831d841ffc66bf87f7a232178ca774b377bd6bf8d452fb23bad5d.png" src="../_images/f01c233415c831d841ffc66bf87f7a232178ca774b377bd6bf8d452fb23bad5d.png" />
+<img alt="../_images/fd7d6717896428d172e81f92497384cd82bedee2d419a83eb540b3f93f88a8bb.png" src="../_images/fd7d6717896428d172e81f92497384cd82bedee2d419a83eb540b3f93f88a8bb.png" />
+<img alt="../_images/e43fa756ebc25d787868116e8ab53a412b3f889d9b777c6cc8ebe5a79183cae3.png" src="../_images/e43fa756ebc25d787868116e8ab53a412b3f889d9b777c6cc8ebe5a79183cae3.png" />
+<img alt="../_images/d0c8c8015c1d1f9b7903417266c8562f645579899f12c48817af29bf16817386.png" src="../_images/d0c8c8015c1d1f9b7903417266c8562f645579899f12c48817af29bf16817386.png" />
+<img alt="../_images/06ac8ff4b82e2e078a713e6db4a8babd746e17e9ab1ceae9629c467949e13289.png" src="../_images/06ac8ff4b82e2e078a713e6db4a8babd746e17e9ab1ceae9629c467949e13289.png" />
+<img alt="../_images/cc26f3c8b45818c8e262e50458ceaf1a7996ca161fb81983e444ba31cd0059d1.png" src="../_images/cc26f3c8b45818c8e262e50458ceaf1a7996ca161fb81983e444ba31cd0059d1.png" />
+<img alt="../_images/2b6d03b69b8bef37c2cd8575904632310b4edd3e9144188ad8e2d1e8dc2b4253.png" src="../_images/2b6d03b69b8bef37c2cd8575904632310b4edd3e9144188ad8e2d1e8dc2b4253.png" />
+<img alt="../_images/96eb675b8d9ccfc389db9819b560d37968bf5d57fc0a83f2d26d115e467a3fbf.png" src="../_images/96eb675b8d9ccfc389db9819b560d37968bf5d57fc0a83f2d26d115e467a3fbf.png" />
 </div>
 </div>
 <p>On this series of plots we can observe several important points. Regarding the
@@ -886,7 +894,7 @@ penguins. This explains why the decision boundary is shifted to the right when
 almost everywhere in the feature space.</p>
 </section>
 <section id="impact-of-the-regularization-on-the-weights">
-<h2>Impact of the regularization on the weights<a class="headerlink" href="#impact-of-the-regularization-on-the-weights" title="Permalink to this heading">#</a></h2>
+<h2>Impact of the regularization on the weights<a class="headerlink" href="#impact-of-the-regularization-on-the-weights" title="Link to this heading">#</a></h2>
 <p>Look at the impact of the <code class="docutils literal notranslate"><span class="pre">C</span></code> hyperparameter on the magnitude of the weights.
 <strong>Hint</strong>: You can <a class="reference external" href="https://scikit-learn.org/stable/modules/compose.html#access-pipeline-steps">access pipeline
 steps</a>
@@ -914,7 +922,7 @@ by name or position. Then you can query the attributes of that step such as
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bf5f3393779de48ba95eefc45f3d1b1177d5e14d6ed874936f3eae4e7c486940.png" src="../_images/bf5f3393779de48ba95eefc45f3d1b1177d5e14d6ed874936f3eae4e7c486940.png" />
+<img alt="../_images/9c9b2d837df4c1bf4b758752011a9d330b4524823d7f3c85cbcaa6693855f2d1.png" src="../_images/9c9b2d837df4c1bf4b758752011a9d330b4524823d7f3c85cbcaa6693855f2d1.png" />
 </div>
 </div>
 <p>As small <code class="docutils literal notranslate"><span class="pre">C</span></code> provides a more regularized model, it shrinks the weights values
@@ -929,7 +937,7 @@ is almost constant in the feature space: the predicted probability is only
 based on the intercept parameter of the model (which is never regularized).</p>
 </section>
 <section id="impact-of-the-regularization-on-with-non-linear-feature-engineering">
-<h2>Impact of the regularization on with non-linear feature engineering<a class="headerlink" href="#impact-of-the-regularization-on-with-non-linear-feature-engineering" title="Permalink to this heading">#</a></h2>
+<h2>Impact of the regularization on with non-linear feature engineering<a class="headerlink" href="#impact-of-the-regularization-on-with-non-linear-feature-engineering" title="Link to this heading">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">plot_decision_boundary</span></code> function to repeat the experiment using a
 non-linear feature engineering pipeline. For such purpose, insert
 <code class="docutils literal notranslate"><span class="pre">Nystroem(kernel=&quot;rbf&quot;,</span> <span class="pre">gamma=1,</span> <span class="pre">n_components=100)</span></code> between the
@@ -942,7 +950,7 @@ trade-off?</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.kernel_approximation</span> <span class="kn">import</span> <span class="n">Nystroem</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.kernel_approximation</span><span class="w"> </span><span class="kn">import</span> <span class="n">Nystroem</span>
 
 <span class="c1"># solution</span>
 <span class="n">classifier</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
@@ -958,13 +966,13 @@ trade-off?</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8d82f0105e367401bce3ffda356e26e72864e0b6469f3d39215678e0fc94105e.png" src="../_images/8d82f0105e367401bce3ffda356e26e72864e0b6469f3d39215678e0fc94105e.png" />
-<img alt="../_images/dfc101e72fbe0c1fb7bf5251a0c7d1d657d0a9685e928bac2b88b816bae0f82c.png" src="../_images/dfc101e72fbe0c1fb7bf5251a0c7d1d657d0a9685e928bac2b88b816bae0f82c.png" />
-<img alt="../_images/01d8ea462bf8ad9615884144bbcbb36ad2f987010540d74bfbb2e92f36cb2b8a.png" src="../_images/01d8ea462bf8ad9615884144bbcbb36ad2f987010540d74bfbb2e92f36cb2b8a.png" />
-<img alt="../_images/2109aaa39d65c9ad7c383ad27bb7643162a3246b6bc5aa41d34148e6d070e9d4.png" src="../_images/2109aaa39d65c9ad7c383ad27bb7643162a3246b6bc5aa41d34148e6d070e9d4.png" />
-<img alt="../_images/b6740e7c89c6ff9ad9aec7de8c9bc71ea4f194a315a2690c624bac88ee3bdefc.png" src="../_images/b6740e7c89c6ff9ad9aec7de8c9bc71ea4f194a315a2690c624bac88ee3bdefc.png" />
-<img alt="../_images/8a6324f701c3cda2a9f2c040155b16dfc2ce3f8930d73d4567003eaa71769855.png" src="../_images/8a6324f701c3cda2a9f2c040155b16dfc2ce3f8930d73d4567003eaa71769855.png" />
-<img alt="../_images/72a47c196fa588b4fd022cc34cb7ecdc28deb15f1aca3cf3101c10b2b0a6f3e8.png" src="../_images/72a47c196fa588b4fd022cc34cb7ecdc28deb15f1aca3cf3101c10b2b0a6f3e8.png" />
+<img alt="../_images/fd7d6717896428d172e81f92497384cd82bedee2d419a83eb540b3f93f88a8bb.png" src="../_images/fd7d6717896428d172e81f92497384cd82bedee2d419a83eb540b3f93f88a8bb.png" />
+<img alt="../_images/aa76184e90bf0aa3873b3251d6ef1fec94a7d7a173b619b29e17320af8572a35.png" src="../_images/aa76184e90bf0aa3873b3251d6ef1fec94a7d7a173b619b29e17320af8572a35.png" />
+<img alt="../_images/c1d198efd376758d82244e961e50322b25d919fee06e946677340b033bd7b268.png" src="../_images/c1d198efd376758d82244e961e50322b25d919fee06e946677340b033bd7b268.png" />
+<img alt="../_images/1fcc7357e8d8d0d823467981bcc717e96f57ab6fb92eaeb39b6482452d9dc3ec.png" src="../_images/1fcc7357e8d8d0d823467981bcc717e96f57ab6fb92eaeb39b6482452d9dc3ec.png" />
+<img alt="../_images/471e382c4967d819f59bc4b54fdc21d770d6c41fef29b38d36a18f24d862dc56.png" src="../_images/471e382c4967d819f59bc4b54fdc21d770d6c41fef29b38d36a18f24d862dc56.png" />
+<img alt="../_images/a53588f310fc6613b82308d46914cc4e6a039427dc081f87ca1b5bde0ae580a0.png" src="../_images/a53588f310fc6613b82308d46914cc4e6a039427dc081f87ca1b5bde0ae580a0.png" />
+<img alt="../_images/7af40c6e8eeb335312367e3ee35b7ec885bbf4fa91fcf76b02ae9e251dca2f8a.png" src="../_images/7af40c6e8eeb335312367e3ee35b7ec885bbf4fa91fcf76b02ae9e251dca2f8a.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1111,12 +1119,14 @@ By scikit-learn developers
 <div class="extra_footer">
   <div>
   <div class="mooc_add">
-   <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Join the full MOOC for better learning!</a>
+   <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Join the full MOOC experience</a>
+   <a href="https://certification.probabl.ai/">Get officially certified!</a>
   </div>
   Brought to you under a <a href="https://github.com/INRIA/scikit-learn-mooc/blob/main/LICENSE">CC-BY License</a> by
   <a href="https://learninglab.inria.fr">Inria Learning Lab</a>,
   <a href="https://scikit-learn.fondation-inria.fr">scikit-learn @ La Fondation Inria</a>,
   <a href="https://www.inria-academy.fr/formation/scikit-learn-la-boite-a-outils-de-lapprentissage-automatique/">Inria Academy</a>,
+  <a href="https://probabl.ai/">probabl</a>,
   with many thanks to the <a href="https://scikit-learn.org">scikit-learn</a> community as a whole!
 </div>
 
@@ -1132,8 +1142,8 @@ By scikit-learn developers
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

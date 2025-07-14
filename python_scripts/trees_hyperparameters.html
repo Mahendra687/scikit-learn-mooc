@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Importance of decision tree hyperparameters on generalization &#8212; Scikit-learn course</title>
   
@@ -19,56 +18,52 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css?v=80799b6b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/matomo.js"></script>
-    <script src="../_static/sklearn_mooc.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_scripts/trees_hyperparameters';</script>
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/matomo.js?v=8af330ab"></script>
+    <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="✅ Quiz M5.04" href="../trees/trees_quiz_m5_04.html" />
@@ -150,6 +145,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../toc.html">
   
@@ -167,6 +164,17 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
@@ -471,9 +479,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -498,14 +506,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/INRIA/scikit-learn-mooc/main?urlpath=tree/python_scripts/trees_hyperparameters.py" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -646,10 +654,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -657,14 +665,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -700,14 +708,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="importance-of-decision-tree-hyperparameters-on-generalization">
-<h1>Importance of decision tree hyperparameters on generalization<a class="headerlink" href="#importance-of-decision-tree-hyperparameters-on-generalization" title="Permalink to this heading">#</a></h1>
+<h1>Importance of decision tree hyperparameters on generalization<a class="headerlink" href="#importance-of-decision-tree-hyperparameters-on-generalization" title="Link to this heading">#</a></h1>
 <p>In this notebook, we illustrate the importance of some key hyperparameters on
 the decision tree; we demonstrate their effects on the classification and
 regression problems we saw previously.</p>
 <p>First, we load the classification and regression datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">data_clf_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Culmen Length (mm)&quot;</span><span class="p">,</span> <span class="s2">&quot;Culmen Depth (mm)&quot;</span><span class="p">]</span>
 <span class="n">target_clf_column</span> <span class="o">=</span> <span class="s2">&quot;Species&quot;</span>
@@ -731,18 +739,18 @@ regression problems we saw previously.</p>
 Appendix - Datasets description section at the end of this MOOC.</p>
 </div>
 <section id="create-helper-functions">
-<h2>Create helper functions<a class="headerlink" href="#create-helper-functions" title="Permalink to this heading">#</a></h2>
+<h2>Create helper functions<a class="headerlink" href="#create-helper-functions" title="Link to this heading">#</a></h2>
 <p>We create some helper functions to plot the data samples as well as the
 decision boundary for classification and the regression line for regression.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">sklearn.inspection</span> <span class="kn">import</span> <span class="n">DecisionBoundaryDisplay</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.inspection</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionBoundaryDisplay</span>
 
 
-<span class="k">def</span> <span class="nf">fit_and_plot_classification</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">,</span> <span class="n">target_names</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_and_plot_classification</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">,</span> <span class="n">target_names</span><span class="p">):</span>
     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">feature_names</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">target_names</span><span class="p">])</span>
     <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">target_names</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
         <span class="n">palette</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;tab:red&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:blue&quot;</span><span class="p">]</span>
@@ -765,7 +773,7 @@ decision boundary for classification and the regression line for regression.</p>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">fit_and_plot_regression</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">,</span> <span class="n">target_names</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_and_plot_regression</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">,</span> <span class="n">target_names</span><span class="p">):</span>
     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">feature_names</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">target_names</span><span class="p">])</span>
     <span class="n">data_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
         <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span>
@@ -783,7 +791,7 @@ decision boundary for classification and the regression line for regression.</p>
 </div>
 </section>
 <section id="effect-of-the-max-depth-parameter">
-<h2>Effect of the <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> parameter<a class="headerlink" href="#effect-of-the-max-depth-parameter" title="Permalink to this heading">#</a></h2>
+<h2>Effect of the <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> parameter<a class="headerlink" href="#effect-of-the-max-depth-parameter" title="Link to this heading">#</a></h2>
 <p>The hyperparameter <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> controls the overall complexity of a decision
 tree. This hyperparameter allows to get a trade-off between an under-fitted
 and over-fitted decision tree. Let’s build a shallow tree and then a deeper
@@ -792,7 +800,7 @@ parameter.</p>
 <p>We can first set the <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> parameter value to a very low value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">DecisionTreeRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">DecisionTreeRegressor</span>
 
 <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">tree_clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">)</span>
@@ -811,7 +819,7 @@ parameter.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bfadef64c14f3ebc18f0cd8bb256a3daa4f9ca811d7971859f93d764053f9908.png" src="../_images/bfadef64c14f3ebc18f0cd8bb256a3daa4f9ca811d7971859f93d764053f9908.png" />
+<img alt="../_images/45a9d73f0392dea9b845ad14ac78fba264c36fc74680838eb92696ccebc5f85f.png" src="../_images/45a9d73f0392dea9b845ad14ac78fba264c36fc74680838eb92696ccebc5f85f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -824,7 +832,7 @@ parameter.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/13203e164ba30f54f91eb5b9129a8ce8b0c836634e55f619821665dff2c00b6e.png" src="../_images/13203e164ba30f54f91eb5b9129a8ce8b0c836634e55f619821665dff2c00b6e.png" />
+<img alt="../_images/b48ad532d880a22768173033b5a3e88daf2b1db53aeb2ca4556208557ebc26e3.png" src="../_images/b48ad532d880a22768173033b5a3e88daf2b1db53aeb2ca4556208557ebc26e3.png" />
 </div>
 </div>
 <p>Now, let’s increase the <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> parameter value to check the difference by
@@ -848,7 +856,7 @@ observing the decision function.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/643cc50e8fc583698249115122b8f2c6f39ec11b1a18931668d289358cbca35c.png" src="../_images/643cc50e8fc583698249115122b8f2c6f39ec11b1a18931668d289358cbca35c.png" />
+<img alt="../_images/6d4e7f932cf582608296f2134d98ab4cce85270385c0bdc03077d96ffb081168.png" src="../_images/6d4e7f932cf582608296f2134d98ab4cce85270385c0bdc03077d96ffb081168.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -861,7 +869,7 @@ observing the decision function.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ff2c098cff10ab5cbd9354b2528a0ee80c0eb2b53a61e0f08645b8560599520f.png" src="../_images/ff2c098cff10ab5cbd9354b2528a0ee80c0eb2b53a61e0f08645b8560599520f.png" />
+<img alt="../_images/f626d171280fc18f5cc1a6846c3601d66630f188a15dde3cdb086dc14b3fecd3.png" src="../_images/f626d171280fc18f5cc1a6846c3601d66630f188a15dde3cdb086dc14b3fecd3.png" />
 </div>
 </div>
 <p>For both classification and regression setting, we observe that increasing the
@@ -871,7 +879,7 @@ may overfit the training data, creating partitions which are only correct for
 one should optimize via cross-validation and grid-search.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridSearchCV</span>
 
 <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)}</span>
 <span class="n">tree_clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">DecisionTreeClassifier</span><span class="p">(),</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">)</span>
@@ -892,7 +900,7 @@ one should optimize via cross-validation and grid-search.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/46a51f9667c06ca8576aa053595f8d6c7cc50c51f9c8fa39c258afd05839099c.png" src="../_images/46a51f9667c06ca8576aa053595f8d6c7cc50c51f9c8fa39c258afd05839099c.png" />
+<img alt="../_images/680be1b6a319470232f2cb63d3ac0d9c046ab01a8e87f8ee2790b88b7cfb57b3.png" src="../_images/680be1b6a319470232f2cb63d3ac0d9c046ab01a8e87f8ee2790b88b7cfb57b3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -907,7 +915,7 @@ one should optimize via cross-validation and grid-search.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/024afbe3dd673fc1222ff1217e3c91a97760c227fc7b6c58ffd5f6806aa75bed.png" src="../_images/024afbe3dd673fc1222ff1217e3c91a97760c227fc7b6c58ffd5f6806aa75bed.png" />
+<img alt="../_images/c972cb385c6cac352223ce2839d844d265f9af0e286a27ab7e9ae7bd830e9e4b.png" src="../_images/c972cb385c6cac352223ce2839d844d265f9af0e286a27ab7e9ae7bd830e9e4b.png" />
 </div>
 </div>
 <p>With this example, we see that there is not a single value that is optimal for
@@ -915,7 +923,7 @@ any dataset. Thus, this parameter is required to be optimized for each
 application.</p>
 </section>
 <section id="other-hyperparameters-in-decision-trees">
-<h2>Other hyperparameters in decision trees<a class="headerlink" href="#other-hyperparameters-in-decision-trees" title="Permalink to this heading">#</a></h2>
+<h2>Other hyperparameters in decision trees<a class="headerlink" href="#other-hyperparameters-in-decision-trees" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> hyperparameter controls the overall complexity of the tree.
 This parameter is adequate under the assumption that a tree is built
 symmetrically. However, there is no reason why a tree should be symmetrical.
@@ -928,7 +936,7 @@ implies that a decision tree needs more splits to classify properly samples
 from the second subset than from the first subset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_blobs</span>
 
 <span class="n">data_clf_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Feature #0&quot;</span><span class="p">,</span> <span class="s2">&quot;Feature #1&quot;</span><span class="p">]</span>
 <span class="n">target_clf_column</span> <span class="o">=</span> <span class="s2">&quot;Class&quot;</span>
@@ -965,7 +973,7 @@ from the second subset than from the first subset.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1ef61fc3a946e74989658a6a8955a851a3748e07ac4456ee05afa6d47b9cfaeb.png" src="../_images/1ef61fc3a946e74989658a6a8955a851a3748e07ac4456ee05afa6d47b9cfaeb.png" />
+<img alt="../_images/2c08667a690ea9c2094b31465189eb68d2e841893ed485e591f5c919711743fd.png" src="../_images/2c08667a690ea9c2094b31465189eb68d2e841893ed485e591f5c919711743fd.png" />
 </div>
 </div>
 <p>We first train a shallow decision tree with <code class="docutils literal notranslate"><span class="pre">max_depth=2</span></code>. We would expect
@@ -982,7 +990,7 @@ this depth to be enough to separate the blobs that are easy to separate.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/96fe40cbd9c1e26b851df6fb4c1069cf5875f52cea03eb72ba03eb27707c8ecf.png" src="../_images/96fe40cbd9c1e26b851df6fb4c1069cf5875f52cea03eb72ba03eb27707c8ecf.png" />
+<img alt="../_images/c528271c2add3eb9d04b111b0e35d26e69f3760fbcf9232a1b41de832c87ab4b.png" src="../_images/c528271c2add3eb9d04b111b0e35d26e69f3760fbcf9232a1b41de832c87ab4b.png" />
 </div>
 </div>
 <p>As expected, we see that the blue blob in the lower right and the red blob on
@@ -990,7 +998,7 @@ the top are easily separated. However, more splits are required to better
 split the blob were both blue and red data points are mixed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">plot_tree</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_tree</span>
 
 <span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plot_tree</span><span class="p">(</span><span class="n">tree_clf</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">data_clf_columns</span><span class="p">)</span>
@@ -998,7 +1006,7 @@ split the blob were both blue and red data points are mixed.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d78e19edc4b173a0d4e142211deba3da6f197a9a1fdd729d0b407b78f46912ee.png" src="../_images/d78e19edc4b173a0d4e142211deba3da6f197a9a1fdd729d0b407b78f46912ee.png" />
+<img alt="../_images/aff81281e39305f83e1ee6319e95f40a46922e548790edb504b9f0a384bd96b8.png" src="../_images/aff81281e39305f83e1ee6319e95f40a46922e548790edb504b9f0a384bd96b8.png" />
 </div>
 </div>
 <p>We see that the right branch achieves perfect classification. Now, we increase
@@ -1015,7 +1023,7 @@ the depth to check how the tree grows.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0522866330231fa2080e854e9d5fdbc6e63c618e7d2b6881af2bfb6eabe79a90.png" src="../_images/0522866330231fa2080e854e9d5fdbc6e63c618e7d2b6881af2bfb6eabe79a90.png" />
+<img alt="../_images/2791f337a61344aa36dbdca6de723893dabd941d32b54d6ed8bf044e2e85fb2a.png" src="../_images/2791f337a61344aa36dbdca6de723893dabd941d32b54d6ed8bf044e2e85fb2a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1026,7 +1034,7 @@ the depth to check how the tree grows.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/09286e38ee597baaf4de7562aff25977187b0f8b7f49e1a9d5c0e87aeb08dfec.png" src="../_images/09286e38ee597baaf4de7562aff25977187b0f8b7f49e1a9d5c0e87aeb08dfec.png" />
+<img alt="../_images/b67b1ab05105a2952f20b400f9c2d18b5a7f698d8ed8fdb83198af18dc2781c3.png" src="../_images/b67b1ab05105a2952f20b400f9c2d18b5a7f698d8ed8fdb83198af18dc2781c3.png" />
 </div>
 </div>
 <p>As expected, the left branch of the tree continue to grow while no further
@@ -1051,7 +1059,7 @@ constraint at the leaves or nodes level. We check the effect of
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f0d039820429d0474cc3acf84007be348ada25254deb2d46a1a497bc53ac975a.png" src="../_images/f0d039820429d0474cc3acf84007be348ada25254deb2d46a1a497bc53ac975a.png" />
+<img alt="../_images/f6dbdbc60bfced8433e397aa320b3c8b0c96ebad7d27caf19a421c7d56f0aefe.png" src="../_images/f6dbdbc60bfced8433e397aa320b3c8b0c96ebad7d27caf19a421c7d56f0aefe.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1062,7 +1070,7 @@ constraint at the leaves or nodes level. We check the effect of
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3de43ac1e7f37ca7fb300dfc5e936dff3d935ea3ec9037e4d709a655bc158fef.png" src="../_images/3de43ac1e7f37ca7fb300dfc5e936dff3d935ea3ec9037e4d709a655bc158fef.png" />
+<img alt="../_images/13e8b146dd8f6261fefd35fd4e1ad26b4f91ed9ef7e1fbe9eb5741bcf5654748.png" src="../_images/13e8b146dd8f6261fefd35fd4e1ad26b4f91ed9ef7e1fbe9eb5741bcf5654748.png" />
 </div>
 </div>
 <p>This hyperparameter allows to have leaves with a minimum number of samples and
@@ -1178,12 +1186,14 @@ By scikit-learn developers
 <div class="extra_footer">
   <div>
   <div class="mooc_add">
-   <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Join the full MOOC for better learning!</a>
+   <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Join the full MOOC experience</a>
+   <a href="https://certification.probabl.ai/">Get officially certified!</a>
   </div>
   Brought to you under a <a href="https://github.com/INRIA/scikit-learn-mooc/blob/main/LICENSE">CC-BY License</a> by
   <a href="https://learninglab.inria.fr">Inria Learning Lab</a>,
   <a href="https://scikit-learn.fondation-inria.fr">scikit-learn @ La Fondation Inria</a>,
   <a href="https://www.inria-academy.fr/formation/scikit-learn-la-boite-a-outils-de-lapprentissage-automatique/">Inria Academy</a>,
+  <a href="https://probabl.ai/">probabl</a>,
   with many thanks to the <a href="https://scikit-learn.org">scikit-learn</a> community as a whole!
 </div>
 
@@ -1199,8 +1209,8 @@ By scikit-learn developers
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
