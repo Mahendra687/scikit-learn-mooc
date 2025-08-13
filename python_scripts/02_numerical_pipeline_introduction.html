@@ -61,8 +61,8 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_scripts/02_numerical_pipeline_introduction';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/matomo.js?v=8af330ab"></script>
     <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
+    <script src="../_static/matomo.js?v=8af330ab"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -1070,11 +1070,19 @@ target data.</p>
 <p>Learning can be represented as follows:</p>
 <p><img alt="Predictor fit diagram" src="../_images/api_diagram-predictor.fit.svg" /></p>
 <p>In scikit-learn an object that has a <code class="docutils literal notranslate"><span class="pre">fit</span></code> method is called an <strong>estimator</strong>.
-The method <code class="docutils literal notranslate"><span class="pre">fit</span></code> is composed of two elements: (i) a <strong>learning algorithm</strong> and
+If the estimator additionally has :</p>
+<ul class="simple">
+<li><p>a  <code class="docutils literal notranslate"><span class="pre">predict</span></code> method, it is called a <strong>predictor</strong>. Examples of predictors
+are classifiers or regressors.</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">transform</span></code> method, it is called a <strong>transformer</strong>. Examples of
+transformers are scalers or encoders. We will see more about transformers in
+the next notebook.</p></li>
+</ul>
+<p>The method <code class="docutils literal notranslate"><span class="pre">fit</span></code> is composed of two elements: (i) a <strong>learning algorithm</strong> and
 (ii) some <strong>model states</strong>. The learning algorithm takes the training data and
 training target as input and sets the model states. These model states are
-later used to either predict (for classifiers and regressors) or transform
-data (for transformers).</p>
+later used to either predict or transform data as explained above. See the
+glossary for more detailed definitions.</p>
 <p>Both the learning algorithm and the type of model states are specific to each
 type of model.</p>
 <div class="admonition note">
@@ -1091,8 +1099,7 @@ commonly called <code class="docutils literal notranslate"><span class="pre">y</
 </div>
 </div>
 </div>
-<p>An estimator (an object with a <code class="docutils literal notranslate"><span class="pre">fit</span></code> method) with a <code class="docutils literal notranslate"><span class="pre">predict</span></code> method is called
-a <strong>predictor</strong>. We can illustrate the prediction mechanism as follows:</p>
+<p>We can illustrate the prediction mechanism as follows:</p>
 <p><img alt="Predictor predict diagram" src="../_images/api_diagram-predictor.predict.svg" /></p>
 <p>To predict, a model uses a <strong>prediction function</strong> that uses the input data
 together with the model states. As for the learning algorithm and the model

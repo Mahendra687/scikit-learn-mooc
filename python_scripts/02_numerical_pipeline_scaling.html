@@ -61,8 +61,8 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_scripts/02_numerical_pipeline_scaling';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/matomo.js?v=8af330ab"></script>
     <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
+    <script src="../_static/matomo.js?v=8af330ab"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -879,7 +879,8 @@ benefit from scaling the features while other models such as decision trees do
 not need such preprocessing (but would not suffer from it).</p>
 <p>We show how to apply such normalization using a scikit-learn transformer
 called <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>. This transformer shifts and scales each feature
-individually so that they all have a 0-mean and a unit standard deviation.</p>
+individually so that they all have a 0-mean and a unit standard deviation.
+We recall that transformers are estimators that have a <code class="docutils literal notranslate"><span class="pre">transform</span></code> method.</p>
 <p>We now investigate different steps used in scikit-learn to achieve such a
 transformation of the data.</p>
 <p>First, one needs to call the method <code class="docutils literal notranslate"><span class="pre">fit</span></code> in order to learn the scaling from
