@@ -61,8 +61,8 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_scripts/02_numerical_pipeline_scaling';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
     <script src="../_static/matomo.js?v=8af330ab"></script>
+    <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -870,7 +870,8 @@ k-nearest neighbors, should be trained on normalized features to make each
 feature contribute approximately equally to the distance computations.</p></li>
 <li><p>Many models such as logistic regression use a numerical solver (based on
 gradient descent) to find their optimal parameters. This solver converges
-faster when the features are scaled.</p></li>
+faster when the features are scaled, as it requires less steps (called
+<strong>iterations</strong>) to reach the optimal solution.</p></li>
 </ul>
 </div>
 <p>Whether or not a machine learning model requires scaling the features depends
@@ -2069,7 +2070,7 @@ generalization performance of such a predictive pipeline.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The accuracy using a Pipeline is 0.807 with a fitting time of 0.051 seconds in 9 iterations
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The accuracy using a Pipeline is 0.807 with a fitting time of 0.052 seconds in 9 iterations
 </pre></div>
 </div>
 </div>
@@ -2099,7 +2100,7 @@ previous notebook which did not scale features.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The accuracy using a LogisticRegression is 0.807 with a fitting time of 0.118 seconds in 60 iterations
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The accuracy using a LogisticRegression is 0.807 with a fitting time of 0.121 seconds in 60 iterations
 </pre></div>
 </div>
 </div>
