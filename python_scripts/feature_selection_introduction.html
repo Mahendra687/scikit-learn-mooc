@@ -51,7 +51,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -61,8 +61,8 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_scripts/feature_selection_introduction';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/matomo.js?v=8af330ab"></script>
     <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
+    <script src="../_static/matomo.js?v=8af330ab"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -451,6 +451,28 @@
 
 <li class="toctree-l1"><a class="reference internal" href="../interpretation/interpretation_quiz.html">✅ Quiz</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🚧 Clustering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../clustering/clustering_module_intro.html">Module overview</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/clustering_kmeans_index.html">K-means</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="clustering_kmeans.html">K-means clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering_ex_01.html">📝 Exercise M4.01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering_sol_01.html">📃 Solution for Exercise M4.01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering_supervised_metrics.html">Clustering performance metrics in the presence of labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering_ex_02.html">📝 Exercise M4.02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering_sol_02.html">📃 Solution for Exercise M4.02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/clustering_quiz_m4_01.html">✅ Quiz M4.01</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/clustering_assumptions_index.html">Clustering when k-means assumptions fail</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="clustering_hdbscan.html">Non-convex clustering using HDBSCAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering_transformer.html">Making clusters part of a supervised pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/clustering_quiz_m4_02.html">✅ Quiz M4.02</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../clustering/clustering_wrap_up_quiz.html">🏁 Wrap-up quiz 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clustering/clustering_module_take_away.html">Main take-away</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -813,7 +835,7 @@ single pandas dataframe.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d1b439d8f228d626e98c0ee22f7b86903aadbd8f3c02ce52771bfc713463ea9a.png" src="../_images/d1b439d8f228d626e98c0ee22f7b86903aadbd8f3c02ce52771bfc713463ea9a.png" />
+<img alt="../_images/0d35fbfdf7526f189eee380a9bf3e6f662bd8fafddca90f88a654f3cd9f61399.png" src="../_images/0d35fbfdf7526f189eee380a9bf3e6f662bd8fafddca90f88a654f3cd9f61399.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -825,7 +847,7 @@ single pandas dataframe.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/775bb064a71162da1f35362565ffc5ee8b03fdf48b35299b6fb360f8c6ebe786.png" src="../_images/775bb064a71162da1f35362565ffc5ee8b03fdf48b35299b6fb360f8c6ebe786.png" />
+<img alt="../_images/ee8feec575a5c5ec09dc3d77e4bf52528dcef30bffe795d88ae3b7fb1ccba374.png" src="../_images/ee8feec575a5c5ec09dc3d77e4bf52528dcef30bffe795d88ae3b7fb1ccba374.png" />
 </div>
 </div>
 <p>We can draw the same conclusions for both training and scoring elapsed time:
@@ -841,7 +863,7 @@ in terms of metrics remain the same. Let’s check the testing score.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/98cb548dcc5804026efa15cf4f9f99773c37b114bef2a32bd2e1ea2b7be719a2.png" src="../_images/98cb548dcc5804026efa15cf4f9f99773c37b114bef2a32bd2e1ea2b7be719a2.png" />
+<img alt="../_images/a9364298ec807d031b556866df48e0e54c2cff0fd9d7ae974e78f8065c97f5eb.png" src="../_images/a9364298ec807d031b556866df48e0e54c2cff0fd9d7ae974e78f8065c97f5eb.png" />
 </div>
 </div>
 <p>We can observe that the model’s generalization performance selecting a subset

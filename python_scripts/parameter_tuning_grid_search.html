@@ -51,7 +51,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -61,8 +61,8 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_scripts/parameter_tuning_grid_search';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/matomo.js?v=8af330ab"></script>
     <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
+    <script src="../_static/matomo.js?v=8af330ab"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -450,6 +450,28 @@
 <li class="toctree-l1"><a class="reference internal" href="dev_features_importance.html">Feature importance</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../interpretation/interpretation_quiz.html">✅ Quiz</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">🚧 Clustering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../clustering/clustering_module_intro.html">Module overview</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/clustering_kmeans_index.html">K-means</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="clustering_kmeans.html">K-means clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering_ex_01.html">📝 Exercise M4.01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering_sol_01.html">📃 Solution for Exercise M4.01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering_supervised_metrics.html">Clustering performance metrics in the presence of labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering_ex_02.html">📝 Exercise M4.02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering_sol_02.html">📃 Solution for Exercise M4.02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/clustering_quiz_m4_01.html">✅ Quiz M4.01</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../clustering/clustering_assumptions_index.html">Clustering when k-means assumptions fail</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="clustering_hdbscan.html">Non-convex clustering using HDBSCAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clustering_transformer.html">Making clusters part of a supervised pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clustering/clustering_quiz_m4_02.html">✅ Quiz M4.02</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../clustering/clustering_wrap_up_quiz.html">🏁 Wrap-up quiz 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clustering/clustering_module_take_away.html">Main take-away</a></li>
 </ul>
 
     </div>
@@ -1531,8 +1553,8 @@ number of nodes for a total of 4 x 3 = 12 combinations.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.04 s, sys: 84.4 ms, total: 1.13 s
-Wall time: 5.59 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.05 s, sys: 84.3 ms, total: 1.14 s
+Wall time: 5.67 s
 </pre></div>
 </div>
 <div class="output text_html"><style>#sk-container-id-2 {
@@ -2133,10 +2155,10 @@ results.</p>
   <tbody>
     <tr>
       <th>5</th>
-      <td>0.363380</td>
-      <td>0.034204</td>
-      <td>0.204598</td>
-      <td>0.011878</td>
+      <td>0.365882</td>
+      <td>0.032771</td>
+      <td>0.204168</td>
+      <td>0.011802</td>
       <td>0.10</td>
       <td>30</td>
       <td>{'classifier__learning_rate': 0.1, 'classifier...</td>
@@ -2148,10 +2170,10 @@ results.</p>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.294875</td>
-      <td>0.007416</td>
-      <td>0.179578</td>
-      <td>0.004007</td>
+      <td>0.297406</td>
+      <td>0.003796</td>
+      <td>0.176176</td>
+      <td>0.000715</td>
       <td>0.10</td>
       <td>10</td>
       <td>{'classifier__learning_rate': 0.1, 'classifier...</td>
@@ -2163,10 +2185,10 @@ results.</p>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.097321</td>
-      <td>0.000928</td>
-      <td>0.063194</td>
-      <td>0.002742</td>
+      <td>0.098761</td>
+      <td>0.002278</td>
+      <td>0.066671</td>
+      <td>0.004178</td>
       <td>1.00</td>
       <td>10</td>
       <td>{'classifier__learning_rate': 1, 'classifier__...</td>
@@ -2178,10 +2200,10 @@ results.</p>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.124109</td>
-      <td>0.024962</td>
-      <td>0.070656</td>
-      <td>0.009277</td>
+      <td>0.125521</td>
+      <td>0.026221</td>
+      <td>0.072172</td>
+      <td>0.007137</td>
       <td>1.00</td>
       <td>3</td>
       <td>{'classifier__learning_rate': 1, 'classifier__...</td>
@@ -2193,10 +2215,10 @@ results.</p>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.209793</td>
-      <td>0.004590</td>
-      <td>0.114166</td>
-      <td>0.001873</td>
+      <td>0.214563</td>
+      <td>0.002712</td>
+      <td>0.115802</td>
+      <td>0.003653</td>
       <td>0.10</td>
       <td>3</td>
       <td>{'classifier__learning_rate': 0.1, 'classifier...</td>
@@ -2208,10 +2230,10 @@ results.</p>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.109623</td>
-      <td>0.009587</td>
-      <td>0.066178</td>
-      <td>0.001567</td>
+      <td>0.107940</td>
+      <td>0.005427</td>
+      <td>0.073533</td>
+      <td>0.004638</td>
       <td>1.00</td>
       <td>30</td>
       <td>{'classifier__learning_rate': 1, 'classifier__...</td>
@@ -2223,10 +2245,10 @@ results.</p>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.457289</td>
-      <td>0.001014</td>
-      <td>0.233211</td>
-      <td>0.007473</td>
+      <td>0.459767</td>
+      <td>0.002117</td>
+      <td>0.233588</td>
+      <td>0.007358</td>
       <td>0.01</td>
       <td>30</td>
       <td>{'classifier__learning_rate': 0.01, 'classifie...</td>
@@ -2238,10 +2260,10 @@ results.</p>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.300840</td>
-      <td>0.000623</td>
-      <td>0.178322</td>
-      <td>0.004189</td>
+      <td>0.302873</td>
+      <td>0.003681</td>
+      <td>0.175089</td>
+      <td>0.002877</td>
       <td>0.01</td>
       <td>10</td>
       <td>{'classifier__learning_rate': 0.01, 'classifie...</td>
@@ -2253,10 +2275,10 @@ results.</p>
     </tr>
     <tr>
       <th>0</th>
-      <td>0.216408</td>
-      <td>0.000157</td>
-      <td>0.113509</td>
-      <td>0.001546</td>
+      <td>0.219679</td>
+      <td>0.001220</td>
+      <td>0.113187</td>
+      <td>0.001691</td>
       <td>0.01</td>
       <td>3</td>
       <td>{'classifier__learning_rate': 0.01, 'classifie...</td>
@@ -2268,10 +2290,10 @@ results.</p>
     </tr>
     <tr>
       <th>10</th>
-      <td>0.066456</td>
-      <td>0.002231</td>
-      <td>0.043274</td>
-      <td>0.001718</td>
+      <td>0.069289</td>
+      <td>0.003253</td>
+      <td>0.043602</td>
+      <td>0.001835</td>
       <td>10.00</td>
       <td>10</td>
       <td>{'classifier__learning_rate': 10, 'classifier_...</td>
@@ -2283,10 +2305,10 @@ results.</p>
     </tr>
     <tr>
       <th>11</th>
-      <td>0.066132</td>
-      <td>0.000124</td>
-      <td>0.043526</td>
-      <td>0.000772</td>
+      <td>0.067745</td>
+      <td>0.000062</td>
+      <td>0.044024</td>
+      <td>0.001889</td>
       <td>10.00</td>
       <td>30</td>
       <td>{'classifier__learning_rate': 10, 'classifier_...</td>
@@ -2298,10 +2320,10 @@ results.</p>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.066026</td>
-      <td>0.001486</td>
-      <td>0.044703</td>
-      <td>0.004328</td>
+      <td>0.065255</td>
+      <td>0.000701</td>
+      <td>0.042070</td>
+      <td>0.001063</td>
       <td>10.00</td>
       <td>3</td>
       <td>{'classifier__learning_rate': 10, 'classifier_...</td>
