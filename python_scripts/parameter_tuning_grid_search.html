@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -40,10 +40,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css?v=80799b6b" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -63,6 +63,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_scripts/parameter_tuning_grid_search';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/matomo.js?v=8af330ab"></script>
     <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
@@ -74,20 +75,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -113,7 +120,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -700,7 +751,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-predictive-model">Our predictive model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-using-a-grid-search">Tuning using a grid-search</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-need-for-a-validation-set">The need for a validation set</a></li>
@@ -2446,8 +2497,8 @@ number of nodes for a total of 4 x 3 = 12 combinations.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 989 ms, sys: 112 ms, total: 1.1 s
-Wall time: 5.44 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 962 ms, sys: 77.7 ms, total: 1.04 s
+Wall time: 5.24 s
 </pre></div>
 </div>
 <div class="output text_html"><style>#sk-container-id-2 {
@@ -4031,10 +4082,10 @@ results.</p>
   <tbody>
     <tr>
       <th>5</th>
-      <td>0.333820</td>
-      <td>0.030533</td>
-      <td>0.120474</td>
-      <td>0.009968</td>
+      <td>0.314144</td>
+      <td>0.028212</td>
+      <td>0.105077</td>
+      <td>0.005639</td>
       <td>0.10</td>
       <td>30</td>
       <td>{'classifier__learning_rate': 0.1, 'classifier...</td>
@@ -4046,10 +4097,10 @@ results.</p>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.273673</td>
-      <td>0.003833</td>
-      <td>0.110306</td>
-      <td>0.000480</td>
+      <td>0.261190</td>
+      <td>0.003065</td>
+      <td>0.101930</td>
+      <td>0.002676</td>
       <td>0.10</td>
       <td>10</td>
       <td>{'classifier__learning_rate': 0.1, 'classifier...</td>
@@ -4061,10 +4112,10 @@ results.</p>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.091385</td>
-      <td>0.003134</td>
-      <td>0.046426</td>
-      <td>0.001831</td>
+      <td>0.085853</td>
+      <td>0.003692</td>
+      <td>0.044183</td>
+      <td>0.001311</td>
       <td>1.00</td>
       <td>10</td>
       <td>{'classifier__learning_rate': 1, 'classifier__...</td>
@@ -4076,10 +4127,10 @@ results.</p>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.115222</td>
-      <td>0.024887</td>
-      <td>0.056935</td>
-      <td>0.007110</td>
+      <td>0.112771</td>
+      <td>0.027063</td>
+      <td>0.055928</td>
+      <td>0.008546</td>
       <td>1.00</td>
       <td>3</td>
       <td>{'classifier__learning_rate': 1, 'classifier__...</td>
@@ -4091,10 +4142,10 @@ results.</p>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.198190</td>
-      <td>0.002539</td>
-      <td>0.087961</td>
-      <td>0.000958</td>
+      <td>0.187226</td>
+      <td>0.000808</td>
+      <td>0.084155</td>
+      <td>0.003591</td>
       <td>0.10</td>
       <td>3</td>
       <td>{'classifier__learning_rate': 0.1, 'classifier...</td>
@@ -4106,10 +4157,10 @@ results.</p>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.099665</td>
-      <td>0.008742</td>
-      <td>0.047540</td>
-      <td>0.000533</td>
+      <td>0.094265</td>
+      <td>0.001348</td>
+      <td>0.044196</td>
+      <td>0.000090</td>
       <td>1.00</td>
       <td>30</td>
       <td>{'classifier__learning_rate': 1, 'classifier__...</td>
@@ -4121,10 +4172,10 @@ results.</p>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.433486</td>
-      <td>0.000739</td>
-      <td>0.142323</td>
-      <td>0.003628</td>
+      <td>0.401361</td>
+      <td>0.002324</td>
+      <td>0.128583</td>
+      <td>0.004424</td>
       <td>0.01</td>
       <td>30</td>
       <td>{'classifier__learning_rate': 0.01, 'classifie...</td>
@@ -4136,10 +4187,10 @@ results.</p>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.285000</td>
-      <td>0.003478</td>
-      <td>0.114940</td>
-      <td>0.001280</td>
+      <td>0.269269</td>
+      <td>0.003261</td>
+      <td>0.107242</td>
+      <td>0.004835</td>
       <td>0.01</td>
       <td>10</td>
       <td>{'classifier__learning_rate': 0.01, 'classifie...</td>
@@ -4151,10 +4202,10 @@ results.</p>
     </tr>
     <tr>
       <th>0</th>
-      <td>0.205913</td>
-      <td>0.001345</td>
-      <td>0.087337</td>
-      <td>0.001221</td>
+      <td>0.196864</td>
+      <td>0.001690</td>
+      <td>0.082868</td>
+      <td>0.000752</td>
       <td>0.01</td>
       <td>3</td>
       <td>{'classifier__learning_rate': 0.01, 'classifie...</td>
@@ -4166,10 +4217,10 @@ results.</p>
     </tr>
     <tr>
       <th>10</th>
-      <td>0.065734</td>
-      <td>0.003757</td>
-      <td>0.035541</td>
-      <td>0.001181</td>
+      <td>0.062857</td>
+      <td>0.004336</td>
+      <td>0.033838</td>
+      <td>0.000611</td>
       <td>10.00</td>
       <td>10</td>
       <td>{'classifier__learning_rate': 10, 'classifier_...</td>
@@ -4181,10 +4232,10 @@ results.</p>
     </tr>
     <tr>
       <th>11</th>
-      <td>0.064115</td>
-      <td>0.000636</td>
-      <td>0.034699</td>
-      <td>0.000910</td>
+      <td>0.059241</td>
+      <td>0.000055</td>
+      <td>0.033864</td>
+      <td>0.000502</td>
       <td>10.00</td>
       <td>30</td>
       <td>{'classifier__learning_rate': 10, 'classifier_...</td>
@@ -4196,10 +4247,10 @@ results.</p>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.062653</td>
-      <td>0.004093</td>
-      <td>0.034745</td>
-      <td>0.001859</td>
+      <td>0.060154</td>
+      <td>0.004535</td>
+      <td>0.033238</td>
+      <td>0.000834</td>
       <td>10.00</td>
       <td>3</td>
       <td>{'classifier__learning_rate': 10, 'classifier_...</td>
@@ -4463,7 +4514,7 @@ follows:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3e84f1edbdfdaf84d1c955799258955a51f40b6cf9a93b0311e4ed0c4255d0c3.png" src="../_images/3e84f1edbdfdaf84d1c955799258955a51f40b6cf9a93b0311e4ed0c4255d0c3.png" />
+<img alt="../_images/efba4251d93d0afddcff3079ee4487c0985de2b6ab12e7bd6a2c105289a8ece0.png" src="../_images/efba4251d93d0afddcff3079ee4487c0985de2b6ab12e7bd6a2c105289a8ece0.png" />
 </div>
 </div>
 <p>The heatmap above shows the mean test accuracy (i.e., the average over
@@ -4564,7 +4615,7 @@ training set).</p>
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-predictive-model">Our predictive model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-using-a-grid-search">Tuning using a grid-search</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-need-for-a-validation-set">The need for a validation set</a></li>
@@ -4631,8 +4682,8 @@ By scikit-learn developers
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

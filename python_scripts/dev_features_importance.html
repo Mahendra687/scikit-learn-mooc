@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -40,10 +40,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css?v=80799b6b" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -65,6 +65,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_scripts/dev_features_importance';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/matomo.js?v=8af330ab"></script>
     <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
@@ -76,20 +77,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -115,7 +122,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -702,8 +753,8 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Feature importance</a><ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Feature importance</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#presentation-of-the-dataset">0. Presentation of the dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-model-inspection">1. Linear model inspection</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sign-of-coefficients">Sign of coefficients</a></li>
@@ -923,7 +974,7 @@ this notebook</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1a7f00641a6b8c42fc785d3c2e7298edab023946c85f81959851bb08d9cf9da9.png" src="../_images/1a7f00641a6b8c42fc785d3c2e7298edab023946c85f81959851bb08d9cf9da9.png" />
+<img alt="../_images/d4c4d789394b42f777baefd790dd30b873347e16cb2ef712b65ac8c6009d2b2b.png" src="../_images/d4c4d789394b42f777baefd790dd30b873347e16cb2ef712b65ac8c6009d2b2b.png" />
 </div>
 </div>
 <p>We see in the upper right plot that the median income seems to be positively
@@ -979,7 +1030,7 @@ the coefficient learnt:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/61399184c49d148cb09a799c1fc999cd1ea21a53124abbd405d14d46035e0f94.png" src="../_images/61399184c49d148cb09a799c1fc999cd1ea21a53124abbd405d14d46035e0f94.png" />
+<img alt="../_images/7859db563f0ddb5eb8d75c2350f05944b56f679cb6b7b6fcf91b7c5638bf8ae0.png" src="../_images/7859db563f0ddb5eb8d75c2350f05944b56f679cb6b7b6fcf91b7c5638bf8ae0.png" />
 </div>
 </div>
 <section id="sign-of-coefficients">
@@ -1031,7 +1082,7 @@ features.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 100.0)
 </pre></div>
 </div>
-<img alt="../_images/e1428b4add88ba85914152f76473cc2aa55c0cb9a6846560598d9573c0f69b3e.png" src="../_images/e1428b4add88ba85914152f76473cc2aa55c0cb9a6846560598d9573c0f69b3e.png" />
+<img alt="../_images/3af3f5cc50869d8e7f34ee7a7b71b0c6ec5101f8c26390b2d621e3e9e50cb6d7.png" src="../_images/3af3f5cc50869d8e7f34ee7a7b71b0c6ec5101f8c26390b2d621e3e9e50cb6d7.png" />
 </div>
 </div>
 <p>So before any interpretation, we need to scale each column (removing the mean
@@ -1071,7 +1122,7 @@ model score on testing data: 0.597241071795377
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c8a190d181a23e8038f51de355d5004f541c2229b1e4e635b8e545d4436a3835.png" src="../_images/c8a190d181a23e8038f51de355d5004f541c2229b1e4e635b8e545d4436a3835.png" />
+<img alt="../_images/922ba21bd8dafdaa04272b335631ed76c794ddf4cee6894c3fd8a46c9098f058.png" src="../_images/922ba21bd8dafdaa04272b335631ed76c794ddf4cee6894c3fd8a46c9098f058.png" />
 </div>
 </div>
 <p>Now that the coefficients have been scaled, we can safely compare them.</p>
@@ -1118,7 +1169,7 @@ caution.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e4d32b2010ebbed5e513a3a04a680d528271ba8653c01da3171ddff3bb78ba69.png" src="../_images/e4d32b2010ebbed5e513a3a04a680d528271ba8653c01da3171ddff3bb78ba69.png" />
+<img alt="../_images/3be7b9f3e81a6b32b687b2b510b2f293fe9bc3ca7986ce214fea67b97258c337.png" src="../_images/3be7b9f3e81a6b32b687b2b510b2f293fe9bc3ca7986ce214fea67b97258c337.png" />
 </div>
 </div>
 <p>Every coefficient looks pretty stable, which mean that different Ridge model
@@ -1164,7 +1215,7 @@ model score on testing data: 0.5769786920519312
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9cee7e3f07ceaec7f488b685f977ac589c01d0c566316e21b11ad6b8733ebb80.png" src="../_images/9cee7e3f07ceaec7f488b685f977ac589c01d0c566316e21b11ad6b8733ebb80.png" />
+<img alt="../_images/22ea588de7f703a7abfe18c6f94768182d09ad0e511bb17a1eef0dbc15d9e6bd.png" src="../_images/22ea588de7f703a7abfe18c6f94768182d09ad0e511bb17a1eef0dbc15d9e6bd.png" />
 </div>
 </div>
 <p>Here the model score is a bit lower, because of the strong regularization.
@@ -1199,7 +1250,7 @@ choosing one does not mean that the other is not important for prediction.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/14ef623d34a0adac26166e977da2749d2260fdd60ffaffe4663af33a13fb2357.png" src="../_images/14ef623d34a0adac26166e977da2749d2260fdd60ffaffe4663af33a13fb2357.png" />
+<img alt="../_images/d2ba510bb92d440909a7d709fa8dfc8bb90954c49e9b3a2a85ed476a9f9aa23c.png" src="../_images/d2ba510bb92d440909a7d709fa8dfc8bb90954c49e9b3a2a85ed476a9f9aa23c.png" />
 </div>
 </div>
 <p>We can see that both the coefficients associated to <code class="docutils literal notranslate"><span class="pre">AveRooms</span></code> and <code class="docutils literal notranslate"><span class="pre">AveBedrms</span></code>
@@ -1238,8 +1289,8 @@ investigate the built-in <code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model score on training data: 0.9796096050544697
-model score on testing data: 0.8487871922046824
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model score on training data: 0.9798295185023909
+model score on testing data: 0.8493168762528107
 </pre></div>
 </div>
 </div>
@@ -1268,7 +1319,7 @@ reduction of the criterion brought by that feature.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/29681dc54056da08b03ac8bed65e004da5b82289adbb9420a34e014026482f4b.png" src="../_images/29681dc54056da08b03ac8bed65e004da5b82289adbb9420a34e014026482f4b.png" />
+<img alt="../_images/975d5fe5f4203a7b03009b3dc815dfec1b79eaf0da5048e5f37f28e2ead192e7.png" src="../_images/975d5fe5f4203a7b03009b3dc815dfec1b79eaf0da5048e5f37f28e2ead192e7.png" />
 </div>
 </div>
 <p>Median income is still the most important feature.</p>
@@ -1303,8 +1354,8 @@ feature importance.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model score on training data: 0.9796847847602731
-model score on testing data: 0.8469289406199418
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model score on training data: 0.9798200892609277
+model score on testing data: 0.8482745787785899
 </pre></div>
 </div>
 </div>
@@ -1365,7 +1416,7 @@ remain the same, thus the feature importance will be close to 0.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>feature importance of &quot;MedInc&quot; on train set is 0.686
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>feature importance of &quot;MedInc&quot; on train set is 0.662
 </pre></div>
 </div>
 </div>
@@ -1391,7 +1442,7 @@ inspect the mean and the standard deviation of the feature importance.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>feature importance of &quot;MedInc&quot; on train set is 0.675 ± 0.00882
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>feature importance of &quot;MedInc&quot; on train set is 0.668 ± 0.00758
 </pre></div>
 </div>
 </div>
@@ -1459,7 +1510,7 @@ can now compute the feature permutation importance for all the features.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7e8b54e17061644b4779e53194845123ecf1e6e30a2f8fceee5a39f0a39124d6.png" src="../_images/7e8b54e17061644b4779e53194845123ecf1e6e30a2f8fceee5a39f0a39124d6.png" />
+<img alt="../_images/7211017eed160ee485e65ac12f2791306f3c6a0b839619ed04d9a8afcecb6345.png" src="../_images/7211017eed160ee485e65ac12f2791306f3c6a0b839619ed04d9a8afcecb6345.png" />
 </div>
 </div>
 <p>We see again that the feature <code class="docutils literal notranslate"><span class="pre">MedInc</span></code>, <code class="docutils literal notranslate"><span class="pre">Latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">Longitude</span></code> are very
@@ -1561,8 +1612,8 @@ fitted model</p></li>
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Feature importance</a><ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Feature importance</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#presentation-of-the-dataset">0. Presentation of the dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-model-inspection">1. Linear model inspection</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sign-of-coefficients">Sign of coefficients</a></li>
@@ -1645,8 +1696,8 @@ By scikit-learn developers
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

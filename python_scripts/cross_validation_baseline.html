@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -40,10 +40,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css?v=80799b6b" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -65,6 +65,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_scripts/cross_validation_baseline';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/matomo.js?v=8af330ab"></script>
     <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
@@ -76,20 +77,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -115,7 +122,47 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
     </header>
   
 
@@ -763,13 +810,13 @@ results.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    30.000000
-mean     45.682847
-std       1.123964
-min      43.470414
-25%      45.020267
-50%      45.736755
-75%      46.692236
-max      47.936771
+mean     45.792313
+std       1.222797
+min      43.175161
+25%      44.958838
+50%      45.692458
+75%      46.585810
+max      48.155689
 Name: Decision tree regressor, dtype: float64
 </pre></div>
 </div>
@@ -846,152 +893,152 @@ and the actual decision tree regressor.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>46.618522</td>
+      <td>46.494810</td>
       <td>90.713153</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>46.836795</td>
+      <td>47.080810</td>
       <td>90.539353</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>44.064312</td>
+      <td>44.366830</td>
       <td>91.941912</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>43.908251</td>
+      <td>44.050208</td>
       <td>90.213912</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>47.936771</td>
+      <td>48.155689</td>
       <td>92.015862</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>45.199433</td>
+      <td>45.517942</td>
       <td>90.542490</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>44.020023</td>
+      <td>43.531676</td>
       <td>89.757566</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>44.946190</td>
+      <td>44.521797</td>
       <td>92.477244</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>45.295267</td>
+      <td>44.651517</td>
       <td>90.947952</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>45.212708</td>
+      <td>44.763630</td>
       <td>91.991373</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>47.129019</td>
+      <td>46.623665</td>
       <td>92.023571</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>45.734777</td>
+      <td>46.374482</td>
       <td>90.556965</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>45.807790</td>
+      <td>46.060189</td>
       <td>91.539567</td>
     </tr>
     <tr>
       <th>13</th>
-      <td>45.083207</td>
+      <td>45.520879</td>
       <td>91.185225</td>
     </tr>
     <tr>
       <th>14</th>
-      <td>46.756847</td>
+      <td>47.326688</td>
       <td>92.298971</td>
     </tr>
     <tr>
       <th>15</th>
-      <td>44.719032</td>
+      <td>45.155784</td>
       <td>91.084639</td>
     </tr>
     <tr>
       <th>16</th>
-      <td>45.738732</td>
+      <td>45.544207</td>
       <td>90.984471</td>
     </tr>
     <tr>
       <th>17</th>
-      <td>46.739890</td>
+      <td>46.855565</td>
       <td>89.981744</td>
     </tr>
     <tr>
       <th>18</th>
-      <td>44.999287</td>
+      <td>44.967845</td>
       <td>90.547140</td>
     </tr>
     <tr>
       <th>19</th>
-      <td>46.829281</td>
+      <td>47.467001</td>
       <td>89.820219</td>
     </tr>
     <tr>
       <th>20</th>
-      <td>43.470414</td>
+      <td>43.175161</td>
       <td>91.768721</td>
     </tr>
     <tr>
       <th>21</th>
-      <td>45.804546</td>
+      <td>46.410553</td>
       <td>92.305556</td>
     </tr>
     <tr>
       <th>22</th>
-      <td>45.582915</td>
+      <td>45.676567</td>
       <td>90.503017</td>
     </tr>
     <tr>
       <th>23</th>
-      <td>46.716807</td>
+      <td>46.591492</td>
       <td>92.147974</td>
     </tr>
     <tr>
       <th>24</th>
-      <td>46.355930</td>
+      <td>46.386893</td>
       <td>91.386320</td>
     </tr>
     <tr>
       <th>25</th>
-      <td>45.818043</td>
+      <td>45.705057</td>
       <td>90.815660</td>
     </tr>
     <tr>
       <th>26</th>
-      <td>44.287521</td>
+      <td>44.955835</td>
       <td>92.216574</td>
     </tr>
     <tr>
       <th>27</th>
-      <td>45.883445</td>
+      <td>46.568766</td>
       <td>90.107460</td>
     </tr>
     <tr>
       <th>28</th>
-      <td>45.388653</td>
+      <td>45.679859</td>
       <td>90.620318</td>
     </tr>
     <tr>
       <th>29</th>
-      <td>47.601011</td>
+      <td>47.587981</td>
       <td>91.165331</td>
     </tr>
   </tbody>
@@ -1012,7 +1059,7 @@ and the actual decision tree regressor.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3eabaa287db35184f3d6dd8ac998c17afb35a06babac3ccdfd0a9aa61c00ecaa.png" src="../_images/3eabaa287db35184f3d6dd8ac998c17afb35a06babac3ccdfd0a9aa61c00ecaa.png" />
+<img alt="../_images/138fc6a9f7bd2300cafddc63e90fcc5bd6a29a2a2b689ad7a6c256b367e31f70.png" src="../_images/138fc6a9f7bd2300cafddc63e90fcc5bd6a29a2a2b689ad7a6c256b367e31f70.png" />
 </div>
 </div>
 <p>We see that the generalization performance of our decision tree is far from
@@ -1235,8 +1282,8 @@ By scikit-learn developers
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>
