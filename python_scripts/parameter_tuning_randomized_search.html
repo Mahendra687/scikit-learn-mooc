@@ -65,8 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_scripts/parameter_tuning_randomized_search';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/matomo.js?v=8af330ab"></script>
     <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
+    <script src="../_static/matomo.js?v=8af330ab"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -2555,8 +2555,8 @@ processors.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 10 candidates, totalling 50 fits
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 32.1 s, sys: 1.54 s, total: 33.6 s
-Wall time: 33.6 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 21.9 s, sys: 1.51 s, total: 23.4 s
+Wall time: 23.4 s
 </pre></div>
 </div>
 <div class="output text_html"><style>#sk-container-id-2 {
@@ -3125,11 +3125,11 @@ a.param-doc-link::before {
                                                                                 &#x27;native-country&#x27;])])),
                                              (&#x27;classifier&#x27;,
                                               HistGradientBoostingCla...
-                   param_distributions={&#x27;classifier__l2_regularization&#x27;: &lt;scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x7f93a34666d0&gt;,
-                                        &#x27;classifier__learning_rate&#x27;: &lt;scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x7f93a3467a10&gt;,
-                                        &#x27;classifier__max_bins&#x27;: &lt;__main__.loguniform_int object at 0x7f93a348c810&gt;,
-                                        &#x27;classifier__max_leaf_nodes&#x27;: &lt;__main__.loguniform_int object at 0x7f93a3466650&gt;,
-                                        &#x27;classifier__min_samples_leaf&#x27;: &lt;__main__.loguniform_int object at 0x7f93a348c1d0&gt;},
+                   param_distributions={&#x27;classifier__l2_regularization&#x27;: &lt;scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x7faf350b22d0&gt;,
+                                        &#x27;classifier__learning_rate&#x27;: &lt;scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x7faf350c0250&gt;,
+                                        &#x27;classifier__max_bins&#x27;: &lt;__main__.loguniform_int object at 0x7faf350c0ed0&gt;,
+                                        &#x27;classifier__max_leaf_nodes&#x27;: &lt;__main__.loguniform_int object at 0x7faf352c5c10&gt;,
+                                        &#x27;classifier__min_samples_leaf&#x27;: &lt;__main__.loguniform_int object at 0x7faf350c0850&gt;},
                    verbose=1)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-8" type="checkbox" ><label for="sk-estimator-id-8" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>RandomizedSearchCV</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.8/modules/generated/sklearn.model_selection.RandomizedSearchCV.html">?<span>Documentation for RandomizedSearchCV</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
         <div class="estimator-table">
             <details>
@@ -3165,7 +3165,7 @@ a.param-doc-link::before {
             <span class="param-doc-description">param_distributions: dict or list of dicts<br><br>Dictionary with parameters names (`str`) as keys and distributions<br>or lists of parameters to try. Distributions must provide a ``rvs``<br>method for sampling (such as those from scipy.stats.distributions).<br>If a list is given, it is sampled uniformly.<br>If a list of dicts is given, first a dict is sampled uniformly, and<br>then a parameter is sampled using that dict as above.</span>
         </a>
     </td>
-            <td class="value">{&#x27;classifier__l2_regularization&#x27;: &lt;scipy.stats....x7f93a34666d0&gt;, &#x27;classifier__learning_rate&#x27;: &lt;scipy.stats....x7f93a3467a10&gt;, &#x27;classifier__max_bins&#x27;: &lt;__main__.log...x7f93a348c810&gt;, &#x27;classifier__max_leaf_nodes&#x27;: &lt;__main__.log...x7f93a3466650&gt;, ...}</td>
+            <td class="value">{&#x27;classifier__l2_regularization&#x27;: &lt;scipy.stats....x7faf350b22d0&gt;, &#x27;classifier__learning_rate&#x27;: &lt;scipy.stats....x7faf350c0250&gt;, &#x27;classifier__max_bins&#x27;: &lt;__main__.log...x7faf350c0ed0&gt;, &#x27;classifier__max_leaf_nodes&#x27;: &lt;__main__.log...x7faf352c5c10&gt;, ...}</td>
         </tr>
     
 
@@ -3627,7 +3627,7 @@ a.param-doc-link::before {
             <span class="param-doc-description">learning_rate: float, default=0.1<br><br>The learning rate, also known as *shrinkage*. This is used as a<br>multiplicative factor for the leaves values. Use ``1`` for no<br>shrinkage.</span>
         </a>
     </td>
-            <td class="value">np.float64(0....9039813908082)</td>
+            <td class="value">np.float64(0.5039922916235985)</td>
         </tr>
     
 
@@ -3659,7 +3659,7 @@ a.param-doc-link::before {
             <span class="param-doc-description">max_leaf_nodes: int or None, default=31<br><br>The maximum number of leaves for each tree. Must be strictly greater<br>than 1. If None, there is no maximum limit.</span>
         </a>
     </td>
-            <td class="value">np.int64(152)</td>
+            <td class="value">np.int64(52)</td>
         </tr>
     
 
@@ -3691,7 +3691,7 @@ a.param-doc-link::before {
             <span class="param-doc-description">min_samples_leaf: int, default=20<br><br>The minimum number of samples per leaf. For small datasets with less<br>than a few hundred samples, it is recommended to lower this value<br>since only very shallow trees would be built.</span>
         </a>
     </td>
-            <td class="value">np.int64(63)</td>
+            <td class="value">np.int64(3)</td>
         </tr>
     
 
@@ -3707,7 +3707,7 @@ a.param-doc-link::before {
             <span class="param-doc-description">l2_regularization: float, default=0<br><br>The L2 regularization parameter penalizing leaves with small hessians.<br>Use ``0`` for no regularization (default).</span>
         </a>
     </td>
-            <td class="value">np.float64(1.3110916548413876)</td>
+            <td class="value">np.float64(0....5470099743327)</td>
         </tr>
     
 
@@ -3739,7 +3739,7 @@ a.param-doc-link::before {
             <span class="param-doc-description">max_bins: int, default=255<br><br>The maximum number of bins to use for non-missing values. Before<br>training, each feature of the input array `X` is binned into<br>integer-valued bins, which allows for a much faster training stage.<br>Features with a small number of unique values may use less than<br>``max_bins`` bins. In addition to the ``max_bins`` bins, one more bin<br>is always reserved for missing values. Must be no larger than 255.</span>
         </a>
     </td>
-            <td class="value">np.int64(57)</td>
+            <td class="value">np.int64(224)</td>
         </tr>
     
 
@@ -4065,7 +4065,7 @@ forceTheme('sk-container-id-2');</script></body></div></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The test accuracy score of the best model is 0.86
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The test accuracy score of the best model is 0.87
 </pre></div>
 </div>
 </div>
@@ -4081,11 +4081,11 @@ forceTheme('sk-container-id-2');</script></body></div></div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The best parameters are:
-{&#39;classifier__l2_regularization&#39;: np.float64(1.3110916548413876),
- &#39;classifier__learning_rate&#39;: np.float64(0.013119039813908082),
- &#39;classifier__max_bins&#39;: np.int64(57),
- &#39;classifier__max_leaf_nodes&#39;: np.int64(152),
- &#39;classifier__min_samples_leaf&#39;: np.int64(63)}
+{&#39;classifier__l2_regularization&#39;: np.float64(0.00022695470099743327),
+ &#39;classifier__learning_rate&#39;: np.float64(0.5039922916235985),
+ &#39;classifier__max_bins&#39;: np.int64(224),
+ &#39;classifier__max_leaf_nodes&#39;: np.int64(52),
+ &#39;classifier__min_samples_leaf&#39;: np.int64(3)}
 </pre></div>
 </div>
 </div>
@@ -4146,114 +4146,114 @@ previously.</p>
   </thead>
   <tbody>
     <tr>
-      <th>3</th>
-      <td>1.311092</td>
-      <td>0.013119</td>
-      <td>152</td>
-      <td>63</td>
-      <td>57</td>
-      <td>0.848544</td>
-      <td>0.001237</td>
+      <th>1</th>
+      <td>0.000227</td>
+      <td>0.503992</td>
+      <td>52</td>
+      <td>3</td>
+      <td>224</td>
+      <td>0.863340</td>
+      <td>0.003143</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>0.000016</td>
-      <td>0.028448</td>
-      <td>202</td>
-      <td>8</td>
-      <td>11</td>
-      <td>0.840927</td>
-      <td>0.002600</td>
+      <th>8</th>
+      <td>0.103531</td>
+      <td>0.432651</td>
+      <td>2</td>
+      <td>4</td>
+      <td>112</td>
+      <td>0.855969</td>
+      <td>0.001989</td>
       <td>2</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>0.000049</td>
-      <td>0.011350</td>
-      <td>13</td>
-      <td>14</td>
-      <td>246</td>
-      <td>0.833201</td>
-      <td>0.003855</td>
+      <th>2</th>
+      <td>0.000003</td>
+      <td>0.400244</td>
+      <td>36</td>
+      <td>37</td>
+      <td>17</td>
+      <td>0.849226</td>
+      <td>0.003544</td>
       <td>3</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.000498</td>
-      <td>1.515822</td>
-      <td>50</td>
-      <td>28</td>
-      <td>97</td>
-      <td>0.831017</td>
-      <td>0.005792</td>
+      <td>0.000119</td>
+      <td>0.562507</td>
+      <td>146</td>
+      <td>12</td>
+      <td>43</td>
+      <td>0.843548</td>
+      <td>0.003601</td>
       <td>4</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>1.600606</td>
-      <td>0.006686</td>
-      <td>189</td>
-      <td>15</td>
-      <td>45</td>
-      <td>0.817941</td>
-      <td>0.002495</td>
+      <th>4</th>
+      <td>1.005801</td>
+      <td>0.629032</td>
+      <td>200</td>
+      <td>4</td>
+      <td>29</td>
+      <td>0.843138</td>
+      <td>0.002199</td>
       <td>5</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>29.132932</td>
-      <td>0.024756</td>
-      <td>56</td>
-      <td>25</td>
-      <td>4</td>
-      <td>0.811553</td>
-      <td>0.002418</td>
+      <td>462.104463</td>
+      <td>0.076214</td>
+      <td>13</td>
+      <td>41</td>
+      <td>7</td>
+      <td>0.838088</td>
+      <td>0.002524</td>
       <td>6</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>0.000031</td>
-      <td>0.007753</td>
-      <td>44</td>
-      <td>82</td>
-      <td>3</td>
-      <td>0.784035</td>
-      <td>0.001260</td>
+      <th>5</th>
+      <td>0.000046</td>
+      <td>0.035097</td>
+      <td>16</td>
+      <td>5</td>
+      <td>5</td>
+      <td>0.828206</td>
+      <td>0.002105</td>
       <td>7</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>443.036458</td>
-      <td>0.002618</td>
-      <td>3</td>
-      <td>80</td>
-      <td>6</td>
-      <td>0.758947</td>
-      <td>0.000013</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>0.000001</td>
-      <td>0.004243</td>
+      <th>3</th>
+      <td>6.008576</td>
+      <td>0.058378</td>
       <td>2</td>
-      <td>16</td>
-      <td>67</td>
-      <td>0.758947</td>
-      <td>0.000013</td>
+      <td>17</td>
+      <td>5</td>
+      <td>0.801425</td>
+      <td>0.001530</td>
       <td>8</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>232.799122</td>
-      <td>9.877032</td>
-      <td>29</td>
-      <td>1</td>
-      <td>87</td>
-      <td>0.747125</td>
-      <td>0.056804</td>
-      <td>10</td>
+      <th>7</th>
+      <td>9.972760</td>
+      <td>0.002703</td>
+      <td>72</td>
+      <td>6</td>
+      <td>2</td>
+      <td>0.758947</td>
+      <td>0.000013</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.856724</td>
+      <td>0.001042</td>
+      <td>160</td>
+      <td>9</td>
+      <td>22</td>
+      <td>0.758947</td>
+      <td>0.000013</td>
+      <td>9</td>
     </tr>
   </tbody>
 </table>
