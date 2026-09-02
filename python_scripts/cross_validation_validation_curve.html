@@ -832,7 +832,7 @@ is possible using the <code class="docutils literal notranslate"><span class="pr
     <span class="n">data</span><span class="p">,</span>
     <span class="n">target</span><span class="p">,</span>
     <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
-    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">"neg_mean_absolute_error"</span><span class="p">,</span>
     <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="p">)</span>
@@ -846,8 +846,8 @@ negative mean absolute error into a positive mean absolute error.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">scores</span><span class="p">[[</span><span class="s2">&quot;train error&quot;</span><span class="p">,</span> <span class="s2">&quot;test error&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="o">-</span><span class="n">cv_results</span><span class="p">[</span>
-    <span class="p">[</span><span class="s2">&quot;train_score&quot;</span><span class="p">,</span> <span class="s2">&quot;test_score&quot;</span><span class="p">]</span>
+<span class="n">scores</span><span class="p">[[</span><span class="s2">"train error"</span><span class="p">,</span> <span class="s2">"test error"</span><span class="p">]]</span> <span class="o">=</span> <span class="o">-</span><span class="n">cv_results</span><span class="p">[</span>
+    <span class="p">[</span><span class="s2">"train_score"</span><span class="p">,</span> <span class="s2">"test_score"</span><span class="p">]</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -857,14 +857,14 @@ negative mean absolute error into a positive mean absolute error.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="n">scores</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Mean absolute error (k$)&quot;</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Train and test errors distribution via cross-validation&quot;</span><span class="p">)</span>
+<span class="n">scores</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"black"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Mean absolute error (k$)"</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Train and test errors distribution via cross-validation"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bc4f6f983e8530a94ebc1104cd7aa49e1aa5d5f2ed796c17cb9e68483d57df4b.png" src="../_images/bc4f6f983e8530a94ebc1104cd7aa49e1aa5d5f2ed796c17cb9e68483d57df4b.png" />
+<img alt="../_images/3f0c2a24d11830c680c962a0f1a83897828311b67e4bd701c4535b620f6360ef.png" src="../_images/3f0c2a24d11830c680c962a0f1a83897828311b67e4bd701c4535b620f6360ef.png" />
 </div>
 </div>
 <p>By plotting the distribution of the training and testing errors, we get
@@ -904,28 +904,28 @@ tradeoff between under-fitting and over-fitting.</p>
     <span class="n">regressor</span><span class="p">,</span>
     <span class="n">data</span><span class="p">,</span>
     <span class="n">target</span><span class="p">,</span>
-    <span class="n">param_name</span><span class="o">=</span><span class="s2">&quot;max_depth&quot;</span><span class="p">,</span>
+    <span class="n">param_name</span><span class="o">=</span><span class="s2">"max_depth"</span><span class="p">,</span>
     <span class="n">param_range</span><span class="o">=</span><span class="n">max_depth</span><span class="p">,</span>
     <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
-    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">"neg_mean_absolute_error"</span><span class="p">,</span>
     <span class="n">negate_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">std_display_style</span><span class="o">=</span><span class="s2">&quot;errorbar&quot;</span><span class="p">,</span>
+    <span class="n">std_display_style</span><span class="o">=</span><span class="s2">"errorbar"</span><span class="p">,</span>
     <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">disp</span><span class="o">.</span><span class="n">ax_</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Maximum depth of decision tree&quot;</span><span class="p">,</span>
-    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Mean absolute error (k$)&quot;</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Validate curve for decision tree&quot;</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">"Maximum depth of decision tree"</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Mean absolute error (k$)"</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"Validate curve for decision tree"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 248 ms, sys: 39.7 ms, total: 287 ms
-Wall time: 10.8 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 317 ms, sys: 15.7 ms, total: 332 ms
+Wall time: 10 s
 </pre></div>
 </div>
-<img alt="../_images/1ce91ff3f0bf969fbb17a8c379a7ab47753dc7d2c5c02b640f3b5c7122e3f48c.png" src="../_images/1ce91ff3f0bf969fbb17a8c379a7ab47753dc7d2c5c02b640f3b5c7122e3f48c.png" />
+<img alt="../_images/55c86439fac97b013d2e2c789e9f4333f3023a79f3bf00c31483725a777e4542.png" src="../_images/55c86439fac97b013d2e2c789e9f4333f3023a79f3bf00c31483725a777e4542.png" />
 </div>
 </div>
 <p>The validation curve can be divided into three areas:</p>
