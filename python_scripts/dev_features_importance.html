@@ -67,8 +67,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_scripts/dev_features_importance';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
     <script src="../_static/matomo.js?v=8af330ab"></script>
+    <script src="../_static/sklearn_mooc.js?v=cdec65c7"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -487,6 +487,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../dimensionality/dimred_quiz_m8_01.html">✅ Quiz M8.01</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../dimensionality/dimred_wrap_up_quiz.html">🏁 Wrap-up quiz</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">🚧 Feature selection</span></p>
 <ul class="nav bd-sidenav">
@@ -988,7 +989,7 @@ this notebook</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7306d41ee160a9a35487282ae4e81352b0633bc78ed735a4a76f3dd1ff247489.png" src="../_images/7306d41ee160a9a35487282ae4e81352b0633bc78ed735a4a76f3dd1ff247489.png" />
+<img alt="../_images/08f1348dbe9a6d69effa4007976430bd3489cd9f3f44037861b2150f8adcd3a2.png" src="../_images/08f1348dbe9a6d69effa4007976430bd3489cd9f3f44037861b2150f8adcd3a2.png" />
 </div>
 </div>
 <p>We see in the upper right plot that the median income seems to be positively
@@ -1183,7 +1184,7 @@ caution.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/19ceacea19363ead48214836ebde7697cb22b139d3bf7b3fd344f43bbcab8178.png" src="../_images/19ceacea19363ead48214836ebde7697cb22b139d3bf7b3fd344f43bbcab8178.png" />
+<img alt="../_images/434fc86f04c96aea0245e5f0329b283a6bca3c11fd566c8250232d795172b40c.png" src="../_images/434fc86f04c96aea0245e5f0329b283a6bca3c11fd566c8250232d795172b40c.png" />
 </div>
 </div>
 <p>Every coefficient looks pretty stable, which mean that different Ridge model
@@ -1264,7 +1265,7 @@ choosing one does not mean that the other is not important for prediction.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3d7e43a1727291c7d754d60c897a99e9b78261e889f0e27c184c92d92d679263.png" src="../_images/3d7e43a1727291c7d754d60c897a99e9b78261e889f0e27c184c92d92d679263.png" />
+<img alt="../_images/0c5636b8c0d1d7ecc59fb86acd550e8c1ea6ff828574207f7ced963af2d8d89d.png" src="../_images/0c5636b8c0d1d7ecc59fb86acd550e8c1ea6ff828574207f7ced963af2d8d89d.png" />
 </div>
 </div>
 <p>We can see that both the coefficients associated to <code class="docutils literal notranslate"><span class="pre">AveRooms</span></code> and <code class="docutils literal notranslate"><span class="pre">AveBedrms</span></code>
@@ -1303,8 +1304,8 @@ investigate the built-in <code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model score on training data: 0.9801043610036688
-model score on testing data: 0.8463828715146453
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model score on training data: 0.9800192284708261
+model score on testing data: 0.8473766584400619
 </pre></div>
 </div>
 </div>
@@ -1333,7 +1334,7 @@ reduction of the criterion brought by that feature.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/15ba2ef8fcd1bced1b95154899e84d5d56fb9e05f56faa4dfb0d7e5d8dda66cd.png" src="../_images/15ba2ef8fcd1bced1b95154899e84d5d56fb9e05f56faa4dfb0d7e5d8dda66cd.png" />
+<img alt="../_images/54caf2d27d3255510a3d1ea35c9d211e8cfc0881379c71c78fd3199766b956ec.png" src="../_images/54caf2d27d3255510a3d1ea35c9d211e8cfc0881379c71c78fd3199766b956ec.png" />
 </div>
 </div>
 <p>Median income is still the most important feature.</p>
@@ -1368,8 +1369,8 @@ feature importance.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model score on training data: 0.9793123195254105
-model score on testing data: 0.8467854909846282
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>model score on training data: 0.9797319421453087
+model score on testing data: 0.8468707069322865
 </pre></div>
 </div>
 </div>
@@ -1430,7 +1431,7 @@ remain the same, thus the feature importance will be close to 0.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>feature importance of "MedInc" on train set is 0.676
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>feature importance of "MedInc" on train set is 0.684
 </pre></div>
 </div>
 </div>
@@ -1456,7 +1457,7 @@ inspect the mean and the standard deviation of the feature importance.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>feature importance of "MedInc" on train set is 0.68 ± 0.00903
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>feature importance of "MedInc" on train set is 0.673 ± 0.00895
 </pre></div>
 </div>
 </div>
@@ -1524,7 +1525,7 @@ can now compute the feature permutation importance for all the features.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bee5c58f847955deafeae931c8a33468b35547bb12a49eb961f319dad3c71e36.png" src="../_images/bee5c58f847955deafeae931c8a33468b35547bb12a49eb961f319dad3c71e36.png" />
+<img alt="../_images/cd508ca2834ed6ea09082350f16dc269a7e68bd0ab33bcb9e74f80caa9838352.png" src="../_images/cd508ca2834ed6ea09082350f16dc269a7e68bd0ab33bcb9e74f80caa9838352.png" />
 </div>
 </div>
 <p>We see again that the feature <code class="docutils literal notranslate"><span class="pre">MedInc</span></code>, <code class="docutils literal notranslate"><span class="pre">Latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">Longitude</span></code> are very
